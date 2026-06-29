@@ -1,0 +1,7 @@
+<section class="section text-center"><div class="wrap wrap--narrow" data-reveal>
+  <span class="eyebrow">A gift for you</span>
+  <h1 class="h-display" style="margin:1rem 0">{{ gift_card.balance | money }} to spend in your era</h1>
+  <img src="{{ gift_card.qr_identifier_url }}" alt="Gift card QR" style="margin:1.5rem auto">
+  <p class="lead">Code: <strong>{{ gift_card.code | format_code }}</strong></p>
+  <a href="{{ shop.url }}" class="btn mt-3">Shop PC Era</a>
+</div></section>
