@@ -1,0 +1,79 @@
+{%- comment -%} PC ERA — Account dashboard {%- endcomment -%}
+<section class="section--tight bg-warm">
+  <div class="wrap" data-reveal>
+    <span class="eyebrow">Your account</span>
+    <h1 class="h-display" style="margin-top:.5rem">Hi {{ customer.first_name | default: 'gorgeous' }}</h1>
+    <p class="muted">{{ customer.email }} · <a href="{{ routes.account_logout_url }}" class="link-underline" style="font-size:.75rem">Sign out</a></p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="split" style="align-items:start">
+      <div data-reveal>
+        <h2 style="margin-bottom:1.5rem">Order history</h2>
+        {%- paginate customer.orders by 10 -%}
+          {%- if customer.orders.size > 0 -%}
+            <div class="flow">
+              {%- for order in customer.orders -%}
+                <div style="display:flex;justify-content:space-between;border-bottom:1px solid var(--line);padding-block:1rem">
+                  <div>
+                    <a href="{{ order.customer_url }}" class="product-card__title">{{ order.name }}</a>
+                    <div class="muted" style="font-size:.8rem">{{ order.created_at | date: '%B %e, %Y' }} · {{ order.financial_status }}</div>
+                  </div>
+                  <strong>{{ order.total_price | money }}</strong>
+                </div>
+              {%- endfor -%}
+            </div>
+          {%- else -%}
+            <p class="muted">No orders yet — your first era awaits.</p>
+            <a href="{{ routes.all_products_collection_url }}" class="btn mt-3">Start shopping</a>
+          {%- endif -%}
+        {%- endpaginate -%}
+
+        <h2 style="margin:3rem 0 1rem" id="wishlist">Wishlist</h2>
+        <div class="product-grid" data-account-wishlist><p class="muted">Loading your saved pieces…</p></div>
+      </div>
+
+      <aside data-reveal data-reveal-delay="0.1">
+        <div class="review-card" style="background:var(--butter)">
+          <span class="eyebrow">PC Era Rewards</span>
+          <h3 class="serif" style="font-size:1.6rem">{{ customer.metafields.loyalty.points | default: '120' }} points</h3>
+          <p style="font-size:.9rem">Earn points on every order, review and referral — redeem for money off your next era.</p>
+          <div class="flow" style="font-size:.85rem;margin-top:.5rem">
+            <div style="display:flex;justify-content:space-between"><span>Earn 1 pt / $1 spent</span><span>✦</span></div>
+            <div style="display:flex;justify-content:space-between"><span>+50 pts for a review</span><span>✦</span></div>
+            <div style="display:flex;justify-content:space-between"><span>+100 pts per referral</span><span>✦</span></div>
+          </div>
+        </div>
+        <div style="margin-top:1.5rem">
+          <h4 class="eyebrow" style="margin-bottom:.8rem">Addresses</h4>
+          <a href="{{ routes.account_addresses_url }}" class="link-underline">Manage addresses →</a>
+        </div>
+      </aside>
+    </div>
+
+    <div style="margin-top:4rem" data-reveal>
+      <h2 style="margin-bottom:1.5rem">Recently viewed</h2>
+      <div class="product-grid" data-rv-grid><p class="muted">Pieces you've browsed will appear here.</p></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    // Wishlist hydration
+    var wish = JSON.parse(localStorage.getItem('pcera_wishlist') || '[]');
+    var wgrid = document.querySelector('[data-account-wishlist]');
+    if (!wish.length && wgrid) wgrid.innerHTML = '<p class="muted">Tap the heart on any piece to save it here.</p>';
+    // Recently viewed hydration
+    var rv = JSON.parse(localStorage.getItem('pcera_recently_viewed') || '[]').slice(0, 4);
+    var rgrid = document.querySelector('[data-rv-grid]');
+    if (rv.length && rgrid) {
+      Promise.all(rv.map(function (h) { return fetch('/products/' + h + '?view=card').then(function (r) { return r.ok ? r.text() : ''; }); }))
+        .then(function (c) { var html = c.filter(Boolean).join(''); if (html) rgrid.innerHTML = html; });
+    }
+    // Wishlist product cards
+    if (wish.length && wgrid) { wgrid.innerHTML = '<p class="muted">' + wish.length + ' saved — view full wishlist coming soon.</p>'; }
+  })();
+</script>

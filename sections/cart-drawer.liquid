@@ -1,0 +1,67 @@
+{%- comment -%} PC ERA — Cart drawer (AJAX refreshed via section rendering) {%- endcomment -%}
+{%- liquid
+  assign threshold = settings.cart_free_ship_threshold | times: 100
+  assign remaining = threshold | minus: cart.total_price
+-%}
+<div class="drawer" id="cart-drawer" aria-hidden="true">
+  <div class="drawer__overlay"></div>
+  <aside class="drawer__panel" role="dialog" aria-label="{{ 'cart.title' | t }}">
+    <div class="drawer__head">
+      <h2>{{ 'cart.title' | t }} <span class="muted">({{ cart.item_count }})</span></h2>
+      <button class="icon-btn" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+
+    {%- if settings.cart_free_ship_bar -%}
+      <div class="cart-progress">
+        {%- if cart.total_price >= threshold or cart.item_count == 0 and false -%}
+          {{ 'cart.free_shipping' | t }}
+        {%- elsif remaining > 0 -%}
+          You're {{ remaining | money }} away from complimentary shipping ✦
+        {%- else -%}
+          {{ 'cart.free_shipping' | t }}
+        {%- endif -%}
+      </div>
+    {%- endif -%}
+
+    <div class="drawer__body">
+      {%- if cart.item_count > 0 -%}
+        {%- for item in cart.items -%}
+          <div class="cart-line">
+            <a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 160 }}" alt="{{ item.title | escape }}" width="72" height="96"></a>
+            <div>
+              <a href="{{ item.url }}" class="product-card__title">{{ item.product.title }}</a>
+              {%- unless item.variant.title contains 'Default' -%}<div class="muted" style="font-size:.8rem">{{ item.variant.title }}</div>{%- endunless -%}
+              <div class="muted" style="font-size:.8rem;margin-top:.3rem">Qty {{ item.quantity }}</div>
+              <a href="{{ item.url_to_remove }}" class="link-underline" style="font-size:.7rem;margin-top:.4rem">{{ 'cart.remove' | t }}</a>
+            </div>
+            <div class="product-card__price">{{ item.final_line_price | money }}</div>
+          </div>
+        {%- endfor -%}
+
+        {%- if settings.cart_upsell and recommendations.products.size == 0 -%}{%- endif -%}
+      {%- else -%}
+        <div class="text-center" style="padding-block:3rem">
+          <p class="serif" style="font-size:1.4rem">{{ 'cart.empty' | t }}</p>
+          <a href="{{ routes.all_products_collection_url }}" class="btn mt-3" data-drawer-close>{{ 'cart.continue' | t }}</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- if cart.item_count > 0 -%}
+      <div class="drawer__foot">
+        <div style="display:flex;justify-content:space-between;margin-bottom:1rem">
+          <span class="eyebrow">{{ 'cart.subtotal' | t }}</span>
+          <strong>{{ cart.total_price | money }}</strong>
+        </div>
+        <form action="{{ routes.cart_url }}" method="post">
+          <button type="submit" name="checkout" class="btn btn--block">{{ 'cart.checkout' | t }} — {{ cart.total_price | money }}</button>
+        </form>
+        <p class="muted text-center" style="font-size:.75rem;margin-top:.8rem">Taxes & shipping calculated at checkout · Easy 30-day returns</p>
+      </div>
+    {%- endif -%}
+  </aside>
+</div>
+
+{% schema %}
+{ "name": "Cart drawer", "settings": [] }
+{% endschema %}

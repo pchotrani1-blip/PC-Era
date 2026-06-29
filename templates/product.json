@@ -1,0 +1,7 @@
+{
+  "sections": {
+    "main": { "type": "main-product" },
+    "recent": { "type": "recently-viewed", "settings": {} }
+  },
+  "order": ["main", "recent"]
+}

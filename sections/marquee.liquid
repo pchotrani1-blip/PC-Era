@@ -1,0 +1,24 @@
+{%- comment -%} PC ERA — Era marquee {%- endcomment -%}
+<section class="marquee bg-{{ section.settings.bg }}" aria-hidden="true">
+  <div class="marquee__track">
+    {%- assign phrases = section.settings.phrases | split: ',' -%}
+    {%- for i in (1..2) -%}
+      {%- for phrase in phrases -%}
+        <span>{{ phrase | strip }} <em>era</em> ✦</span>
+      {%- endfor -%}
+    {%- endfor -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Era marquee",
+  "settings": [
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "butter", "label": "Butter" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }
+    ], "default": "butter" },
+    { "type": "text", "id": "phrases", "label": "Phrases (comma separated)", "default": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
+  ],
+  "presets": [{ "name": "Era marquee" }]
+}
+{% endschema %}

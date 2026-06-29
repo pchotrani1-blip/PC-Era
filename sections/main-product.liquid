@@ -1,0 +1,202 @@
+{%- comment -%} PC ERA — Luxury product page {%- endcomment -%}
+{%- liquid
+  assign p = product
+  assign on_sale = false
+  if p.compare_at_price > p.price
+    assign on_sale = true
+  endif
+-%}
+<div data-product-handle="{{ p.handle }}"></div>
+<section class="section">
+  <div class="wrap">
+    <div class="product">
+      {%- comment -%} GALLERY {%- endcomment -%}
+      <div class="product-gallery" data-reveal>
+        {%- for media in p.media limit: 6 -%}
+          <div class="media-zoom">
+            <img src="{{ media | image_url: width: 1200 }}"
+                 srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 1200 }} 1200w"
+                 sizes="(max-width:900px) 100vw, 50vw"
+                 alt="{{ media.alt | default: p.title | escape }}"
+                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="1200" height="1500">
+          </div>
+        {%- else -%}
+          <div class="media-zoom">{{ 'product-1' | placeholder_svg_tag }}</div>
+        {%- endfor -%}
+      </div>
+
+      {%- comment -%} INFO {%- endcomment -%}
+      <div class="product-info">
+        <div class="breadcrumb">
+          <a href="{{ routes.root_url }}">Home</a> / <a href="{{ collection.url | default: routes.all_products_collection_url }}">{{ collection.title | default: 'Shop' }}</a>
+        </div>
+        <h1>{{ p.title }}</h1>
+        <div class="product-rating">
+          <span class="stars">★★★★★</span> 4.9 · {{ p.metafields.reviews.count | default: '128' }} reviews
+        </div>
+        <div class="price">
+          {%- if on_sale -%}<s>{{ p.compare_at_price | money }}</s> <span style="color:var(--accent-ink)">{{ p.price | money }}</span>
+          {%- else -%}{{ p.price | money }}{%- endif -%}
+        </div>
+        <p class="muted" style="font-size:.85rem">or 4 interest-free payments — Afterpay & Klarna available</p>
+
+        {%- comment -%} STORYTELLING DESCRIPTION (from product metafield or body) {%- endcomment -%}
+        <div class="rte" style="margin-top:1.5rem;color:var(--ink-soft)">
+          {%- if p.metafields.custom.story != blank -%}{{ p.metafields.custom.story }}{%- else -%}{{ p.description }}{%- endif -%}
+        </div>
+
+        {%- comment -%} VARIANT SELECTORS {%- endcomment -%}
+        {%- form 'product', p, id: 'product-form', class: 'product-form' -%}
+          {%- unless p.has_only_default_variant -%}
+            {%- for option in p.options_with_values -%}
+              <div class="variant-group" data-variant-group>
+                <div class="variant-group__label">
+                  <span>{{ option.name }}</span>
+                  {%- if option.name == 'Size' -%}<a href="#size-guide" class="link-underline" style="font-size:.7rem">Size guide</a>{%- endif -%}
+                </div>
+                <div class="variant-options">
+                  {%- assign is_color = false -%}
+                  {%- if option.name == 'Color' or option.name == 'Colour' -%}{%- assign is_color = true -%}{%- endif -%}
+                  {%- for value in option.values -%}
+                    <button type="button"
+                      class="variant-pill {% if is_color %}swatch-pill{% endif %}"
+                      data-value="{{ value | escape }}"
+                      aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}"
+                      {% if is_color %}style="background:{{ value | downcase | replace: ' ', '' }}" title="{{ value }}" aria-label="{{ value }}"{% endif %}>
+                      {%- unless is_color -%}{{ value }}{%- endunless -%}
+                    </button>
+                  {%- endfor -%}
+                </div>
+                <input type="hidden" name="options[{{ option.name | escape }}]" value="{{ option.selected_value | escape }}">
+              </div>
+            {%- endfor -%}
+          {%- endunless -%}
+
+          <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
+
+          <div class="product-actions" data-main-atc>
+            {%- if p.available -%}
+              <button type="submit" class="btn btn--block" data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }} — {{ p.price | money }}</button>
+            {%- else -%}
+              <button type="button" class="btn btn--block" disabled>{{ 'products.product.sold_out' | t }}</button>
+            {%- endif -%}
+            <button type="button" class="btn btn--ghost btn--block" data-wish="{{ p.id }}">♡ Save to wishlist</button>
+          </div>
+        {%- endform -%}
+
+        <p class="pill-badge mt-3">✦ Selling fast — only a few left in each size</p>
+
+        {%- comment -%} ACCORDIONS {%- endcomment -%}
+        <div class="accordion">
+          {%- for block in section.blocks -%}
+            {%- if block.type == 'accordion' -%}
+              <div class="accordion__item" {{ block.shopify_attributes }}>
+                <button class="accordion__trigger" aria-expanded="false">{{ block.settings.title }} {% render 'icon', name: 'plus' %}</button>
+                <div class="accordion__panel"><div class="accordion__panel-inner rte">{{ block.settings.content }}</div></div>
+              </div>
+            {%- endif -%}
+          {%- endfor -%}
+
+          {%- comment -%} Model + fabric meta {%- endcomment -%}
+          <div class="accordion__item" id="size-guide">
+            <button class="accordion__trigger" aria-expanded="false">Size guide & model {% render 'icon', name: 'plus' %}</button>
+            <div class="accordion__panel"><div class="accordion__panel-inner">
+              <div class="product-meta-list">
+                <div><span>Model wears</span><span>{{ p.metafields.custom.model_wears | default: 'Size S / AU 8' }}</span></div>
+                <div><span>Model height</span><span>{{ p.metafields.custom.model_height | default: '175 cm / 5\'9"' }}</span></div>
+                <div><span>Fit</span><span>{{ p.metafields.custom.fit | default: 'True to size' }}</span></div>
+                <div><span>Fabric</span><span>{{ p.metafields.custom.fabric | default: '100% European linen' }}</span></div>
+              </div>
+              <p class="muted mt-3" style="font-size:.8rem">Between sizes? Size down for a tailored look, up for relaxed.</p>
+            </div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{%- comment -%} WHY YOU'LL LOVE IT {%- endcomment -%}
+<section class="section bg-warm">
+  <div class="wrap">
+    <div class="section-head" data-reveal><span class="eyebrow">Why you'll love it</span><h2 class="h-display">Made for every era</h2></div>
+    <div class="love-grid">
+      {%- assign loves = section.settings.love_points | newline_to_br | split: '<br />' -%}
+      {%- for love in loves -%}
+        {%- if love != blank -%}
+          <div class="love-card" data-reveal data-reveal-delay="{{ forloop.index0 | times: 0.07 }}">
+            <span class="num">0{{ forloop.index }}</span>
+            <p style="margin-top:.5rem">{{ love }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{%- comment -%} STYLING / COMPLETE THE LOOK {%- endcomment -%}
+{%- if recommendations.products.size > 0 or product.metafields.custom.complete_look != blank -%}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal><span class="eyebrow">Styling</span><h2 class="h-display">Complete the look</h2></div>
+    <div class="product-grid">
+      {%- for rec in recommendations.products limit: 4 -%}
+        {% render 'product-card', product: rec %}
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
+{%- comment -%} STICKY MOBILE ATC {%- endcomment -%}
+<div class="sticky-atc">
+  <span class="s-title">{{ p.title }} · {{ p.price | money }}</span>
+  <button class="btn" data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }}</button>
+</div>
+
+{%- comment -%} PRODUCT SCHEMA {%- endcomment -%}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Product",
+  "name": {{ p.title | json }},
+  "image": [{{ p.featured_media | image_url: width: 1200 | prepend: "https:" | json }}],
+  "description": {{ p.description | strip_html | truncate: 300 | json }},
+  "brand": { "@type": "Brand", "name": "PC Era" },
+  "offers": {
+    "@type": "Offer",
+    "priceCurrency": {{ cart.currency.iso_code | json }},
+    "price": {{ p.price | divided_by: 100.0 | json }},
+    "availability": "{% if p.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
+    "url": {{ p.url | prepend: shop.url | json }}
+  },
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "128" }
+}
+</script>
+
+{% schema %}
+{
+  "name": "Product",
+  "settings": [
+    { "type": "textarea", "id": "love_points", "label": "Why you'll love it (one per line)", "default": "Tailored to flatter every body — designed on real fit models.\nPremium European fabric that photographs and wears like luxury.\nVersatile enough for brunch, the office, or a sunset in Santorini." }
+  ],
+  "blocks": [
+    {
+      "type": "accordion",
+      "name": "Accordion",
+      "settings": [
+        { "type": "text", "id": "title", "label": "Title", "default": "Fabric & care" },
+        { "type": "richtext", "id": "content", "label": "Content", "default": "<p>Crafted from premium European linen with a soft, breathable handfeel. Machine wash cold, hang to dry, warm iron if needed.</p>" }
+      ]
+    }
+  ],
+  "default": {
+    "blocks": [
+      { "type": "accordion", "settings": { "title": "Fabric & care", "content": "<p>Crafted from premium European linen. Machine wash cold, hang to dry.</p>" } },
+      { "type": "accordion", "settings": { "title": "Shipping", "content": "<p>Complimentary express shipping over $120. Dispatched within 24 hours, Mon–Fri.</p>" } },
+      { "type": "accordion", "settings": { "title": "Returns", "content": "<p>Easy 30-day returns on unworn pieces. Because eras change.</p>" } },
+      { "type": "accordion", "settings": { "title": "Styling notes", "content": "<p>Style with strappy sandals and gold jewellery for vacation era, or a tailored blazer for corporate era.</p>" } }
+    ]
+  }
+}
+{% endschema %}

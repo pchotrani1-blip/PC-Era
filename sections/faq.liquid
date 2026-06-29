@@ -1,0 +1,66 @@
+{%- comment -%} PC ERA — FAQ accordion {%- endcomment -%}
+<section class="section bg-{{ section.settings.bg }}">
+  <div class="wrap wrap--narrow">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="h-display">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="accordion" data-reveal>
+      {%- for block in section.blocks -%}
+        <div class="accordion__item" {{ block.shopify_attributes }}>
+          <button class="accordion__trigger" aria-expanded="false">{{ block.settings.question }} {% render 'icon', name: 'plus' %}</button>
+          <div class="accordion__panel"><div class="accordion__panel-inner rte">{{ block.settings.answer }}</div></div>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {%- for block in section.blocks -%}
+    {
+      "@type": "Question",
+      "name": {{ block.settings.question | json }},
+      "acceptedAnswer": { "@type": "Answer", "text": {{ block.settings.answer | strip_html | json }} }
+    }{% unless forloop.last %},{% endunless %}
+    {%- endfor -%}
+  ]
+}
+</script>
+
+{% schema %}
+{
+  "name": "FAQ",
+  "settings": [
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }
+    ], "default": "cream" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Good to know" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Frequently asked" }
+  ],
+  "blocks": [
+    {
+      "type": "qa",
+      "name": "Q&A",
+      "settings": [
+        { "type": "text", "id": "question", "label": "Question", "default": "How do I find my size?" },
+        { "type": "richtext", "id": "answer", "label": "Answer", "default": "<p>Each product page includes a size guide and model measurements. We fit true to size — when between sizes, size down for tailored, up for relaxed.</p>" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "FAQ",
+    "blocks": [
+      { "type": "qa", "settings": { "question": "When will my order ship?", "answer": "<p>Orders are dispatched within 24 hours Mon–Fri. Express shipping is complimentary over $120.</p>" } },
+      { "type": "qa", "settings": { "question": "What is your returns policy?", "answer": "<p>Easy 30-day returns on unworn pieces with tags. Because eras change.</p>" } },
+      { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes — we ship worldwide. Duties and taxes are calculated at checkout for a seamless experience.</p>" } },
+      { "type": "qa", "settings": { "question": "How do I find my size?", "answer": "<p>Each product page has a size guide and model measurements. We fit true to size.</p>" } },
+      { "type": "qa", "settings": { "question": "What payment methods do you accept?", "answer": "<p>All major cards, Shop Pay, PayPal, Apple Pay, plus Afterpay and Klarna for 4 interest-free payments.</p>" } }
+    ]
+  }]
+}
+{% endschema %}

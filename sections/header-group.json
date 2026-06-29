@@ -1,0 +1,14 @@
+{
+  "type": "header",
+  "name": "Header group",
+  "sections": {
+    "header": {
+      "type": "header",
+      "settings": {
+        "announcement": "Complimentary shipping over $120 · The Era of Trend",
+        "menu": "main-menu"
+      }
+    }
+  },
+  "order": ["header"]
+}

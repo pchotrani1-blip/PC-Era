@@ -1,0 +1,10 @@
+{
+  "sections": {
+    "head": {
+      "type": "rich-text",
+      "settings": { "bg": "warm", "eyebrow": "Shop", "heading": "Every era, one wardrobe", "body": "<p>Explore the collections made for each version of her.</p>" }
+    },
+    "list": { "type": "collection-list", "settings": {} }
+  },
+  "order": ["head", "list"]
+}

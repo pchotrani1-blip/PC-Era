@@ -1,0 +1,77 @@
+{
+  "sections": {
+    "hero": {
+      "type": "hero",
+      "settings": {
+        "eyebrow": "Summer ’26 — Now arriving",
+        "heading": "The Era of Trend",
+        "subheading": "Affordable luxury, made to dress every version of her. Soft, confident, on holiday, and everywhere in between.",
+        "cta_text": "Shop new in",
+        "cta2_text": "Discover PC Era"
+      }
+    },
+    "marquee": {
+      "type": "marquee",
+      "settings": { "bg": "butter", "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
+    },
+    "best_sellers": {
+      "type": "featured-collection",
+      "settings": { "bg": "cream", "eyebrow": "The edit", "heading": "Best sellers", "subheading": "The pieces she keeps reaching for.", "count": 4, "cta_text": "Shop best sellers" }
+    },
+    "eras": {
+      "type": "era-collections",
+      "settings": { "bg": "ivory", "eyebrow": "Find your era", "heading": "Made for every era", "subheading": "Whichever version of her is showing up today." },
+      "blocks": {
+        "b1": { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation" } },
+        "b2": { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses" } },
+        "b3": { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Matching Sets" } }
+      },
+      "block_order": ["b1", "b2", "b3"]
+    },
+    "story": {
+      "type": "editorial-split",
+      "settings": {
+        "bg": "warm",
+        "eyebrow": "Our story",
+        "heading": "In my PC Era",
+        "body": "<p>Every girl moves through eras. The confident one. The soft one. The healing one. The main character one. PC Era exists to dress every version of her — so getting dressed feels like a moment, not an afterthought.</p>",
+        "signature": "— Founded for the girl becoming herself.",
+        "cta_text": "Read our story"
+      }
+    },
+    "new_in": {
+      "type": "featured-collection",
+      "settings": { "bg": "ivory", "eyebrow": "Just landed", "heading": "New arrivals", "subheading": "Fresh in for your next chapter.", "count": 4, "cta_text": "Shop new in" }
+    },
+    "ugc": {
+      "type": "in-my-pc-era",
+      "settings": { "bg": "cream", "eyebrow": "#InMyPCEra", "heading": "Styled by you", "subheading": "Real girls, real eras. Tag us to be featured." },
+      "blocks": {
+        "p1": { "type": "post" }, "p2": { "type": "post" }, "p3": { "type": "post" }, "p4": { "type": "post" }, "p5": { "type": "post" }
+      },
+      "block_order": ["p1", "p2", "p3", "p4", "p5"]
+    },
+    "reviews": {
+      "type": "reviews",
+      "settings": { "bg": "warm", "eyebrow": "Loved by the era", "heading": "She said it best", "rating_line": "4.9 / 5 from 2,400+ reviews" },
+      "blocks": {
+        "r1": { "type": "review", "settings": { "quote": "The quality genuinely feels designer. Wore the linen set to brunch and got asked where it's from all day.", "author": "Olivia R.", "detail": "Verified buyer" } },
+        "r2": { "type": "review", "settings": { "quote": "Finally a brand that looks like my Pinterest board. The fit is so flattering and the fabric is buttery.", "author": "Maya T.", "detail": "Verified buyer" } },
+        "r3": { "type": "review", "settings": { "quote": "Packaging alone made me feel like the main character. Will absolutely order again for my Europe trip.", "author": "Sienna L.", "detail": "Verified buyer" } }
+      },
+      "block_order": ["r1", "r2", "r3"]
+    },
+    "trust": {
+      "type": "trust-badges",
+      "settings": { "bg": "cream" },
+      "blocks": {
+        "t1": { "type": "badge", "settings": { "icon": "ship", "title": "Complimentary shipping", "text": "On orders over $120" } },
+        "t2": { "type": "badge", "settings": { "icon": "return", "title": "Easy 30-day returns", "text": "Changed your era? No problem" } },
+        "t3": { "type": "badge", "settings": { "icon": "leaf", "title": "Considered quality", "text": "Premium fabrics, fair pricing" } },
+        "t4": { "type": "badge", "settings": { "icon": "gift", "title": "Collectible packaging", "text": "Butter-yellow, gift-ready" } }
+      },
+      "block_order": ["t1", "t2", "t3", "t4"]
+    }
+  },
+  "order": ["hero", "marquee", "best_sellers", "eras", "story", "new_in", "ugc", "reviews", "trust"]
+}

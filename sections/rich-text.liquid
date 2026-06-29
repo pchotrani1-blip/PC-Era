@@ -1,0 +1,27 @@
+{%- comment -%} PC ERA — Rich text / page content block {%- endcomment -%}
+<section class="section bg-{{ section.settings.bg }}">
+  <div class="wrap wrap--reading {% if section.settings.center %}text-center{% endif %}" data-reveal>
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h2 class="h-display" style="margin-top:1rem">{{ section.settings.heading }}</h2>{%- endif -%}
+    <div class="rte lead" style="margin-top:1.5rem">{{ section.settings.body }}</div>
+    {%- if section.settings.cta_text != blank -%}<a href="{{ section.settings.cta_link }}" class="btn mt-3">{{ section.settings.cta_text }}</a>{%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Rich text",
+  "settings": [
+    { "type": "checkbox", "id": "center", "label": "Center", "default": true },
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }, { "value": "butter", "label": "Butter" }
+    ], "default": "cream" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow" },
+    { "type": "text", "id": "heading", "label": "Heading" },
+    { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Tell your story here.</p>" },
+    { "type": "text", "id": "cta_text", "label": "Button" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Rich text" }]
+}
+{% endschema %}

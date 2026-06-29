@@ -1,0 +1,14 @@
+<section class="section"><div class="wrap wrap--narrow" data-reveal>
+  <div class="section-head"><span class="eyebrow">Join the era</span><h1 class="h-display">Create your account</h1><p>Save your wishlist, track orders and earn rewards.</p></div>
+  {% form 'create_customer' %}
+    {{ form.errors | default_errors }}
+    <div class="flow">
+      <input class="variant-pill" style="width:100%" type="text" name="customer[first_name]" placeholder="First name">
+      <input class="variant-pill" style="width:100%" type="text" name="customer[last_name]" placeholder="Last name">
+      <input class="variant-pill" style="width:100%" type="email" name="customer[email]" placeholder="Email" required>
+      <input class="variant-pill" style="width:100%" type="password" name="customer[password]" placeholder="Password" required>
+      <button class="btn btn--block" type="submit">Create account</button>
+    </div>
+  {% endform %}
+  <p class="text-center mt-3 muted">Already have an account? <a href="{{ routes.account_login_url }}" class="link-underline">Sign in</a></p>
+</div></section>

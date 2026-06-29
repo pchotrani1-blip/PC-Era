@@ -1,0 +1,6 @@
+{
+  "sections": {
+    "contact": { "type": "contact", "settings": { "bg": "ivory" } }
+  },
+  "order": ["contact"]
+}

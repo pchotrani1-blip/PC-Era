@@ -1,0 +1,35 @@
+{
+  "general": {
+    "meta": { "tags": "Tagged \"{{ tags }}\"", "page": "Page {{ page }}" },
+    "search": { "placeholder": "Search the era…", "no_results": "No pieces found for \"{{ terms }}\"" },
+    "newsletter": { "label": "Email address", "button": "Join" }
+  },
+  "accessibility": {
+    "skip_to_content": "Skip to content",
+    "cart": "Cart",
+    "search": "Search",
+    "account": "Account",
+    "wishlist": "Wishlist",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "products": {
+    "product": {
+      "add_to_cart": "Add to bag",
+      "sold_out": "Join the waitlist",
+      "unavailable": "Unavailable",
+      "quantity": "Quantity",
+      "on_sale": "On sale",
+      "from": "From"
+    }
+  },
+  "cart": {
+    "title": "Your bag",
+    "empty": "Your bag is quietly waiting.",
+    "checkout": "Checkout",
+    "subtotal": "Subtotal",
+    "remove": "Remove",
+    "continue": "Continue shopping",
+    "free_shipping": "You've unlocked complimentary shipping ✦"
+  }
+}

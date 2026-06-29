@@ -1,0 +1,55 @@
+[
+  {
+    "name": "theme_info",
+    "theme_name": "PC Era — The Era of Trend",
+    "theme_version": "1.0.0",
+    "theme_author": "PC Era Studio",
+    "theme_documentation_url": "https://pcera.com",
+    "theme_support_url": "https://pcera.com/pages/contact"
+  },
+  {
+    "name": "Brand",
+    "settings": [
+      { "type": "image_picker", "id": "logo", "label": "Logo image (optional)" },
+      { "type": "text", "id": "wordmark", "label": "Wordmark", "default": "PC ERA" },
+      { "type": "image_picker", "id": "favicon", "label": "Favicon" },
+      { "type": "image_picker", "id": "share_image", "label": "Social share image" }
+    ]
+  },
+  {
+    "name": "Colours",
+    "settings": [
+      { "type": "header", "content": "Affordable luxury palette" },
+      { "type": "color", "id": "color_butter", "label": "Butter Yellow", "default": "#F5E9A9" },
+      { "type": "color", "id": "color_ivory", "label": "Warm Ivory", "default": "#FCFAF4" },
+      { "type": "color", "id": "color_cream", "label": "Soft Cream", "default": "#FFFDF8" },
+      { "type": "color", "id": "color_champagne", "label": "Champagne Gold", "default": "#CDA349" },
+      { "type": "color", "id": "color_beige", "label": "Warm Beige", "default": "#EEE7D7" },
+      { "type": "color", "id": "color_ink", "label": "Soft Black", "default": "#222222" }
+    ]
+  },
+  {
+    "name": "Typography",
+    "settings": [
+      { "type": "paragraph", "content": "Headlines: luxury serif (Canela / Fraunces). Accents: editorial italic. Body: modern sans (Neue Haas / Inter)." },
+      { "type": "font_picker", "id": "font_heading", "label": "Heading font", "default": "assistant_n4" },
+      { "type": "font_picker", "id": "font_body", "label": "Body font", "default": "assistant_n4" }
+    ]
+  },
+  {
+    "name": "Cart",
+    "settings": [
+      { "type": "checkbox", "id": "cart_free_ship_bar", "label": "Show free shipping progress bar", "default": true },
+      { "type": "number", "id": "cart_free_ship_threshold", "label": "Free shipping threshold (in store currency)", "default": 120 },
+      { "type": "checkbox", "id": "cart_upsell", "label": "Show 'complete the look' upsell in cart", "default": true }
+    ]
+  },
+  {
+    "name": "Social",
+    "settings": [
+      { "type": "text", "id": "social_instagram", "label": "Instagram", "default": "https://instagram.com/pcera" },
+      { "type": "text", "id": "social_tiktok", "label": "TikTok", "default": "https://tiktok.com/@pcera" },
+      { "type": "text", "id": "social_pinterest", "label": "Pinterest", "default": "https://pinterest.com/pcera" }
+    ]
+  }
+]

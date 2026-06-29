@@ -1,0 +1,49 @@
+{%- comment -%} PC ERA — Trust / value props {%- endcomment -%}
+<section class="section--tight bg-{{ section.settings.bg }}" style="border-block:1px solid var(--line)">
+  <div class="wrap">
+    <div class="trust-row">
+      {%- for block in section.blocks -%}
+        <div data-reveal data-reveal-delay="{{ forloop.index0 | times: 0.06 }}" {{ block.shopify_attributes }}>
+          {% render 'icon', name: block.settings.icon %}
+          <span class="eyebrow">{{ block.settings.title }}</span>
+          <p>{{ block.settings.text }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust badges",
+  "max_blocks": 4,
+  "settings": [
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }
+    ], "default": "cream" }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Badge",
+      "settings": [
+        { "type": "select", "id": "icon", "label": "Icon", "options": [
+          { "value": "ship", "label": "Shipping" }, { "value": "return", "label": "Returns" },
+          { "value": "leaf", "label": "Quality" }, { "value": "gift", "label": "Gift" }
+        ], "default": "ship" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Complimentary shipping" },
+        { "type": "text", "id": "text", "label": "Text", "default": "On all orders over $120" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "Trust badges",
+    "blocks": [
+      { "type": "badge", "settings": { "icon": "ship", "title": "Complimentary shipping", "text": "On orders over $120" } },
+      { "type": "badge", "settings": { "icon": "return", "title": "Easy 30-day returns", "text": "Changed your era? No problem" } },
+      { "type": "badge", "settings": { "icon": "leaf", "title": "Considered quality", "text": "Premium fabrics, fair pricing" } },
+      { "type": "badge", "settings": { "icon": "gift", "title": "Collectible packaging", "text": "Butter-yellow, gift-ready" } }
+    ]
+  }]
+}
+{% endschema %}

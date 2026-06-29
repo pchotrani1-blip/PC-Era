@@ -1,0 +1,27 @@
+{%- comment -%} PC ERA — Mobile navigation drawer {%- endcomment -%}
+<div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+  <div class="mobile-nav__overlay"></div>
+  <nav class="mobile-nav__panel" aria-label="Mobile">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <span class="brand-wordmark" style="font-size:1.2rem">{{ settings.wordmark | default: 'PC ERA' }}</span>
+      <button class="icon-btn" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    </div>
+    {%- for link in linklists[section.settings.menu].links -%}
+      <a href="{{ link.url }}">{{ link.title }}</a>
+    {%- endfor -%}
+    <div style="margin-top:auto;display:flex;gap:1.2rem;padding-top:2rem">
+      <a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>
+      <a href="{{ settings.social_tiktok }}" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>
+      <a href="{{ settings.social_pinterest }}" aria-label="Pinterest">{% render 'icon', name: 'pinterest' %}</a>
+    </div>
+  </nav>
+</div>
+
+{% schema %}
+{
+  "name": "Mobile nav",
+  "settings": [
+    { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" }
+  ]
+}
+{% endschema %}

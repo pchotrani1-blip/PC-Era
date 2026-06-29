@@ -1,0 +1,56 @@
+{%- comment -%} PC ERA — In My PC Era (UGC / community grid) {%- endcomment -%}
+<section class="section bg-{{ section.settings.bg }}">
+  <div class="wrap">
+    <div class="section-head" data-reveal>
+      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+      <h2 class="h-display">{{ section.settings.heading }}</h2>
+      <p>{{ section.settings.subheading }}</p>
+    </div>
+    <div class="ugc-grid" data-reveal>
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link | default: settings.social_instagram }}" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.handle | default: 'PC Era community' | escape }}" loading="lazy" width="500" height="500">
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          {%- endif -%}
+        </a>
+      {%- endfor -%}
+    </div>
+    <div class="text-center mt-4" data-reveal>
+      <a href="{{ settings.social_instagram }}" class="link-underline">Tag @pcera · #InMyPCEra</a>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "In My PC Era",
+  "max_blocks": 10,
+  "settings": [
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "ivory", "label": "Ivory" }, { "value": "cream", "label": "Cream" }
+    ], "default": "ivory" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "#InMyPCEra" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Styled by you" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real girls, real eras. Tag us to be featured." }
+  ],
+  "blocks": [
+    {
+      "type": "post",
+      "name": "Post",
+      "settings": [
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "handle", "label": "Handle / caption" },
+        { "type": "url", "id": "link", "label": "Link" }
+      ]
+    }
+  ],
+  "presets": [{
+    "name": "In My PC Era",
+    "blocks": [
+      { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }
+    ]
+  }]
+}
+{% endschema %}

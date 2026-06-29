@@ -1,0 +1,48 @@
+{
+  "sections": {
+    "head": {
+      "type": "rich-text",
+      "settings": { "bg": "warm", "center": true, "eyebrow": "Good to know", "heading": "Frequently asked", "body": "<p>Everything you need before your pieces arrive. Still curious? Email care@pcera.com.</p>" }
+    },
+    "shipping": {
+      "type": "faq",
+      "settings": { "bg": "cream", "eyebrow": "Shipping & delivery", "heading": "Shipping" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "When will my order ship?", "answer": "<p>Orders are dispatched within 24 hours, Monday to Friday. You'll receive tracking the moment it leaves us.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "How much is shipping?", "answer": "<p>Complimentary express shipping on all orders over $120. Under that, a flat rate is calculated at checkout.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Do you ship internationally?", "answer": "<p>Yes — we ship worldwide. Duties and taxes are calculated transparently at checkout so there are no surprises.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    },
+    "returns": {
+      "type": "faq",
+      "settings": { "bg": "ivory", "eyebrow": "Returns & exchanges", "heading": "Returns" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "What is your returns policy?", "answer": "<p>Easy 30-day returns on unworn pieces with tags attached. Because eras change.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "How do I start a return?", "answer": "<p>Visit your account or our returns portal, enter your order number and email, and we'll email you a label.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Can I exchange for another size?", "answer": "<p>Absolutely. Select 'exchange' in the returns portal and we'll reserve your new size.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    },
+    "sizing": {
+      "type": "faq",
+      "settings": { "bg": "cream", "eyebrow": "Sizing & fit", "heading": "Sizing" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "How do I find my size?", "answer": "<p>Every product page has a size guide and model measurements. We fit true to size — between sizes, size down for tailored, up for relaxed.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "Do your pieces run small?", "answer": "<p>No — we design and grade on real fit models for a consistent, flattering fit across the range.</p>" } }
+      },
+      "block_order": ["q1", "q2"]
+    },
+    "orders": {
+      "type": "faq",
+      "settings": { "bg": "ivory", "eyebrow": "Orders & payments", "heading": "Orders & payments" },
+      "blocks": {
+        "q1": { "type": "qa", "settings": { "question": "Can I change or cancel my order?", "answer": "<p>Email care@pcera.com within 2 hours of ordering and we'll do our best before it's dispatched.</p>" } },
+        "q2": { "type": "qa", "settings": { "question": "What payment methods do you accept?", "answer": "<p>All major cards, Shop Pay, PayPal, Apple Pay, Google Pay, plus Afterpay and Klarna for 4 interest-free payments.</p>" } },
+        "q3": { "type": "qa", "settings": { "question": "Is checkout secure?", "answer": "<p>Yes — checkout is fully encrypted and PCI-compliant via Shopify Payments.</p>" } }
+      },
+      "block_order": ["q1", "q2", "q3"]
+    }
+  },
+  "order": ["head", "shipping", "returns", "sizing", "orders"]
+}

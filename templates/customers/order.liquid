@@ -1,0 +1,13 @@
+<section class="section"><div class="wrap" data-reveal>
+  <div class="section-head"><span class="eyebrow">Order {{ order.name }}</span><h1 class="h-display">Your order</h1><p class="muted">Placed {{ order.created_at | date: '%B %e, %Y' }}</p></div>
+  <div class="wrap--narrow" style="margin-inline:auto">
+    {% for line in order.line_items %}
+      <div class="cart-line" style="grid-template-columns:72px 1fr auto;align-items:center">
+        <img src="{{ line.image | image_url: width: 160 }}" alt="{{ line.title | escape }}" width="72" height="96">
+        <div><span class="product-card__title">{{ line.title }}</span><div class="muted" style="font-size:.8rem">Qty {{ line.quantity }}</div></div>
+        <strong>{{ line.final_line_price | money }}</strong>
+      </div>
+    {% endfor %}
+    <div style="display:flex;justify-content:space-between;margin-top:1.5rem"><span class="eyebrow">Total</span><strong>{{ order.total_price | money }}</strong></div>
+  </div>
+</div></section>

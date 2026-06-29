@@ -1,0 +1,15 @@
+{%- comment -%} PC ERA — Default page {%- endcomment -%}
+<section class="section--tight bg-warm text-center">
+  <div class="wrap wrap--narrow" data-reveal>
+    <span class="eyebrow">PC Era</span>
+    <h1 class="h-display" style="margin-top:.5rem">{{ page.title }}</h1>
+  </div>
+</section>
+<section class="section">
+  <div class="wrap wrap--reading rte" data-reveal style="font-size:1.05rem;line-height:1.8">
+    {{ page.content }}
+  </div>
+</section>
+{% schema %}
+{ "name": "Page", "settings": [] }
+{% endschema %}

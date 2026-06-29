@@ -1,0 +1,28 @@
+<section class="section">
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Your bag</span><h1 class="h-display">Your bag</h1></div>
+    {% if cart.item_count > 0 %}
+      <form action="{{ routes.cart_url }}" method="post">
+        {% for item in cart.items %}
+          <div class="cart-line" style="grid-template-columns:96px 1fr auto auto;align-items:center;max-width:820px;margin-inline:auto">
+            <a href="{{ item.url }}"><img src="{{ item.image | image_url: width: 200 }}" alt="{{ item.title | escape }}" width="96" height="128"></a>
+            <div>
+              <a href="{{ item.url }}" class="product-card__title">{{ item.product.title }}</a>
+              <div class="muted" style="font-size:.8rem">{{ item.variant.title }}</div>
+              <a href="{{ item.url_to_remove }}" class="link-underline" style="font-size:.7rem">Remove</a>
+            </div>
+            <input type="number" name="updates[]" value="{{ item.quantity }}" min="0" class="variant-pill" style="width:64px">
+            <div class="product-card__price">{{ item.final_line_price | money }}</div>
+          </div>
+        {% endfor %}
+        <div class="text-center mt-4" style="max-width:820px;margin-inline:auto">
+          <div style="display:flex;justify-content:space-between;margin-bottom:1rem"><span class="eyebrow">Subtotal</span><strong>{{ cart.total_price | money }}</strong></div>
+          <button type="submit" name="checkout" class="btn btn--block">Checkout</button>
+        </div>
+      </form>
+    {% else %}
+      <p class="text-center serif" style="font-size:1.4rem">{{ 'cart.empty' | t }}</p>
+      <p class="text-center mt-3"><a href="{{ routes.all_products_collection_url }}" class="btn">Continue shopping</a></p>
+    {% endif %}
+  </div>
+</section>

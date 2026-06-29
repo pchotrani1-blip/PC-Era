@@ -1,0 +1,11 @@
+<section class="section"><div class="wrap wrap--narrow" data-reveal>
+  <div class="section-head"><h1 class="h-display">Activate account</h1></div>
+  {% form 'activate_customer_password' %}
+    {{ form.errors | default_errors }}
+    <div class="flow">
+      <input class="variant-pill" style="width:100%" type="password" name="customer[password]" placeholder="Password">
+      <input class="variant-pill" style="width:100%" type="password" name="customer[password_confirmation]" placeholder="Confirm password">
+      <button class="btn btn--block" type="submit">Activate</button>
+    </div>
+  {% endform %}
+</div></section>

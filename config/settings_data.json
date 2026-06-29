@@ -1,0 +1,28 @@
+{
+  "current": {
+    "wordmark": "PC ERA",
+    "color_butter": "#F5E9A9",
+    "color_ivory": "#FCFAF4",
+    "color_cream": "#FFFDF8",
+    "color_champagne": "#CDA349",
+    "color_beige": "#EEE7D7",
+    "color_ink": "#222222",
+    "cart_free_ship_bar": true,
+    "cart_free_ship_threshold": 120,
+    "cart_upsell": true,
+    "social_instagram": "https://instagram.com/pcera",
+    "social_tiktok": "https://tiktok.com/@pcera",
+    "social_pinterest": "https://pinterest.com/pcera"
+  },
+  "presets": {
+    "PC Era": {
+      "wordmark": "PC ERA",
+      "color_butter": "#F5E9A9",
+      "color_ivory": "#FCFAF4",
+      "color_cream": "#FFFDF8",
+      "color_champagne": "#CDA349",
+      "color_beige": "#EEE7D7",
+      "color_ink": "#222222"
+    }
+  }
+}

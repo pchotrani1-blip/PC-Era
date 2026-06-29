@@ -1,0 +1,35 @@
+{%- comment -%} PC ERA — Search results {%- endcomment -%}
+<section class="section--tight bg-warm">
+  <div class="wrap text-center" data-reveal>
+    <span class="eyebrow">Search</span>
+    <h1 class="h-display" style="margin-top:.5rem">{% if search.performed %}Results for “{{ search.terms | escape }}”{% else %}Find your era{% endif %}</h1>
+    <form action="{{ routes.search_url }}" method="get" role="search" style="max-width:520px;margin:1.5rem auto 0;border-bottom:1px solid var(--ink);display:flex">
+      <input type="search" name="q" value="{{ search.terms | escape }}" placeholder="{{ 'general.search.placeholder' | t }}" style="flex:1;border:none;background:transparent;padding:.8rem .2rem">
+      <button class="link-underline" type="submit">Search</button>
+    </form>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    {%- if search.performed -%}
+      {%- if search.results.size > 0 -%}
+        <p class="muted text-center" style="margin-bottom:2rem">{{ search.results_count }} results</p>
+        <div class="product-grid">
+          {%- for item in search.results -%}
+            {%- if item.object_type == 'product' -%}
+              {% render 'product-card', product: item %}
+            {%- endif -%}
+          {%- endfor -%}
+        </div>
+      {%- else -%}
+        <p class="text-center serif" style="font-size:1.4rem">{{ 'general.search.no_results' | t: terms: search.terms }}</p>
+        <p class="text-center mt-3"><a href="{{ routes.all_products_collection_url }}" class="btn btn--ghost">Browse all</a></p>
+      {%- endif -%}
+    {%- endif -%}
+  </div>
+</section>
+
+{% schema %}
+{ "name": "Search", "settings": [] }
+{% endschema %}

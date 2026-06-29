@@ -1,0 +1,9 @@
+<section class="section"><div class="wrap wrap--narrow" data-reveal>
+  <div class="section-head"><span class="eyebrow">Account</span><h1 class="h-display">Your addresses</h1></div>
+  <a href="{{ routes.account_url }}" class="link-underline">← Back to account</a>
+  {% for address in customer.addresses %}
+    <div style="border:1px solid var(--line);border-radius:6px;padding:1.5rem;margin-top:1.5rem">
+      {{ address | format_address }}
+    </div>
+  {% endfor %}
+</div></section>

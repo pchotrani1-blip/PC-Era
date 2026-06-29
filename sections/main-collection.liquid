@@ -1,0 +1,63 @@
+{%- comment -%} PC ERA — Collection / PLP {%- endcomment -%}
+<section class="collection-hero">
+  {%- if collection.image != blank -%}
+    <img src="{{ collection.image | image_url: width: 2000 }}" alt="{{ collection.title | escape }}" width="2000" height="700">
+    <div class="hero__scrim"></div>
+  {%- else -%}
+    <div style="position:absolute;inset:0;background:var(--beige)"></div>
+  {%- endif -%}
+  <div class="collection-hero__inner wrap" {% if collection.image == blank %}style="color:var(--ink)"{% endif %}>
+    <span class="eyebrow" data-reveal>{{ section.settings.eyebrow | default: 'The collection' }}</span>
+    <h1 class="h-display" data-reveal {% if collection.image == blank %}style="color:var(--ink)"{% endif %}>{{ collection.title }}</h1>
+    {%- if collection.description != blank -%}<p class="lead" data-reveal style="max-width:560px;margin:1rem auto 0;{% if collection.image != blank %}color:rgba(252,250,244,.9){% endif %}">{{ collection.description | strip_html | truncate: 160 }}</p>{%- endif -%}
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="collection-toolbar">
+    <div class="filter-pills">
+      <a href="{{ collection.url }}" class="filter-pill {% unless current_tags %}is-active{% endunless %}">All</a>
+      {%- for tag in collection.all_tags limit: 8 -%}
+        <a href="{{ collection.url }}/{{ tag | handle }}" class="filter-pill {% if current_tags contains tag %}is-active{% endif %}">{{ tag }}</a>
+      {%- endfor -%}
+    </div>
+    <form>
+      <select class="sort-select" name="sort_by" onchange="this.form.submit()">
+        {%- assign sort = collection.sort_by | default: collection.default_sort_by -%}
+        <option value="manual" {% if sort == 'manual' %}selected{% endif %}>Featured</option>
+        <option value="best-selling" {% if sort == 'best-selling' %}selected{% endif %}>Best selling</option>
+        <option value="price-ascending" {% if sort == 'price-ascending' %}selected{% endif %}>Price: low to high</option>
+        <option value="price-descending" {% if sort == 'price-descending' %}selected{% endif %}>Price: high to low</option>
+        <option value="created-descending" {% if sort == 'created-descending' %}selected{% endif %}>New arrivals</option>
+      </select>
+    </form>
+  </div>
+</div>
+
+<section class="section--tight">
+  <div class="wrap">
+    {%- paginate collection.products by 24 -%}
+      <div class="product-grid">
+        {%- for product in collection.products -%}
+          {% render 'product-card', product: product, reveal_delay: forloop.index0 | modulo: 4 | times: 0.05 %}
+        {%- else -%}
+          <p class="muted">No pieces in this era yet — check back soon.</p>
+        {%- endfor -%}
+      </div>
+      {%- if paginate.pages > 1 -%}
+        <div class="text-center mt-4">
+          {%- if paginate.next -%}<a href="{{ paginate.next.url }}" class="btn btn--ghost">Load more</a>{%- endif -%}
+        </div>
+      {%- endif -%}
+    {%- endpaginate -%}
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Collection",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The collection" }
+  ]
+}
+{% endschema %}

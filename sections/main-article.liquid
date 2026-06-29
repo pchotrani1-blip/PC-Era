@@ -1,0 +1,42 @@
+{%- comment -%} PC ERA — Journal article {%- endcomment -%}
+<article>
+  <header class="section--tight text-center bg-warm">
+    <div class="wrap wrap--reading" data-reveal>
+      <span class="eyebrow">{{ article.tags.first | default: 'Journal' }}</span>
+      <h1 class="h-display" style="margin:1rem 0 .5rem">{{ article.title }}</h1>
+      <p class="muted" style="font-size:.85rem">{{ article.published_at | date: '%B %e, %Y' }} · {{ article.content | strip_html | size | divided_by: 1000 | plus: 1 }} min read</p>
+    </div>
+  </header>
+
+  {%- if article.image -%}
+    <div class="wrap" style="margin-top:-2rem;position:relative;z-index:2" data-reveal>
+      <img src="{{ article.image | image_url: width: 1600 }}" alt="{{ article.title | escape }}" style="border-radius:4px;width:100%;aspect-ratio:16/9;object-fit:cover" width="1600" height="900">
+    </div>
+  {%- endif -%}
+
+  <section class="section">
+    <div class="wrap wrap--reading rte" data-reveal style="font-size:1.05rem;line-height:1.8">
+      {{ article.content }}
+    </div>
+  </section>
+
+  {%- if blog.comments_enabled? -%}
+    <section class="section--tight bg-ivory">
+      <div class="wrap wrap--reading">
+        <h3 style="margin-bottom:1.5rem">Join the conversation</h3>
+        {%- form 'new_comment', article -%}
+          <div class="flow">
+            <input class="variant-pill" style="width:100%" type="text" name="comment[author]" placeholder="Name" required>
+            <input class="variant-pill" style="width:100%" type="email" name="comment[email]" placeholder="Email" required>
+            <textarea class="variant-pill" style="width:100%;min-height:120px;border-radius:6px" name="comment[body]" placeholder="Your thoughts" required></textarea>
+            <button class="btn">Post comment</button>
+          </div>
+        {%- endform -%}
+      </div>
+    </section>
+  {%- endif -%}
+</article>
+
+{% schema %}
+{ "name": "Article", "settings": [] }
+{% endschema %}

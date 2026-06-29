@@ -1,0 +1,13 @@
+<section class="section"><div class="wrap wrap--narrow" data-reveal>
+  <div class="section-head"><span class="eyebrow">Welcome back</span><h1 class="h-display">Sign in to your era</h1></div>
+  {% form 'customer_login' %}
+    {{ form.errors | default_errors }}
+    <div class="flow">
+      <input class="variant-pill" style="width:100%" type="email" name="customer[email]" placeholder="Email" required>
+      <input class="variant-pill" style="width:100%" type="password" name="customer[password]" placeholder="Password" required>
+      <button class="btn btn--block" type="submit">Sign in</button>
+    </div>
+    <p class="text-center mt-3"><a href="{{ routes.account_recover_url }}" class="link-underline" style="font-size:.75rem">Forgot password?</a></p>
+  {% endform %}
+  <p class="text-center mt-3 muted">New here? <a href="{{ routes.account_register_url }}" class="link-underline">Create an account</a></p>
+</div></section>

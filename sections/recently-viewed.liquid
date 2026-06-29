@@ -1,0 +1,29 @@
+{%- comment -%} PC ERA — Recently viewed (hydrated client-side from localStorage) {%- endcomment -%}
+<section class="section bg-ivory" data-recently-viewed hidden>
+  <div class="wrap">
+    <div class="section-head"><span class="eyebrow">Keep exploring</span><h2 class="h-display">Recently viewed</h2></div>
+    <div class="product-grid" data-rv-grid></div>
+  </div>
+</section>
+
+<script>
+  (function () {
+    var KEY = 'pcera_recently_viewed';
+    var handle = document.querySelector('[data-product-handle]');
+    var current = handle ? handle.dataset.productHandle : null;
+    var list = JSON.parse(localStorage.getItem(KEY) || '[]').filter(function (h) { return h !== current; }).slice(0, 4);
+    if (!list.length) return;
+    var section = document.querySelector('[data-recently-viewed]');
+    var grid = document.querySelector('[data-rv-grid]');
+    Promise.all(list.map(function (h) {
+      return fetch('/products/' + h + '?view=card').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; });
+    })).then(function (cards) {
+      var html = cards.filter(Boolean).join('');
+      if (html) { grid.innerHTML = html; section.hidden = false; }
+    });
+  })();
+</script>
+
+{% schema %}
+{ "name": "Recently viewed", "settings": [] }
+{% endschema %}
