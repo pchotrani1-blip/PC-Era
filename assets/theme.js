@@ -6,6 +6,32 @@
 (function () {
   'use strict';
 
+  /* ---------- Intro loader ---------- */
+  var loader = document.getElementById('pc-loader');
+  if (loader) {
+    window.addEventListener('load', function () {
+      setTimeout(function () { loader.classList.add('done'); }, 800);
+    });
+    // safety: never trap the page
+    setTimeout(function () { loader.classList.add('done'); }, 2600);
+  }
+
+  /* ---------- Scroll progress + cursor sun-glow ---------- */
+  var prog = document.getElementById('pc-progress');
+  var glow = document.getElementById('pc-glow');
+  if (prog) {
+    window.addEventListener('scroll', function () {
+      var h = document.documentElement;
+      prog.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
+    }, { passive: true });
+  }
+  if (glow && window.matchMedia('(pointer:fine)').matches) {
+    window.addEventListener('mousemove', function (e) {
+      glow.style.left = e.clientX + 'px';
+      glow.style.top = e.clientY + 'px';
+    }, { passive: true });
+  } else if (glow) { glow.style.display = 'none'; }
+
   /* ---------- Scroll reveal (soft luxury) ---------- */
   const revealEls = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealEls.length) {

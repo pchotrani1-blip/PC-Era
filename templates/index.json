@@ -3,11 +3,13 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "Summer ’26 — Now arriving",
-        "heading": "The Era of Trend",
-        "subheading": "Affordable luxury, made to dress every version of her. Soft, confident, on holiday, and everywhere in between.",
-        "cta_text": "Shop new in",
-        "cta2_text": "Discover PC Era"
+        "line1": "Dress Your",
+        "line2": "every era",
+        "welcome": "Welcome to PC Era",
+        "cta_text": "Start Your Era",
+        "badge_text": "Quiet",
+        "badge_accent": "luxury",
+        "ribbon_text": "Affordable luxury for every body"
       }
     },
     "marquee": {
@@ -20,11 +22,11 @@
     },
     "eras": {
       "type": "era-collections",
-      "settings": { "bg": "ivory", "eyebrow": "Find your era", "heading": "Made for every era", "subheading": "Whichever version of her is showing up today." },
+      "settings": { "bg": "cream", "eyebrow": "Find your era", "heading": "Made for every era", "subheading": "Whichever version of her is showing up today." },
       "blocks": {
-        "b1": { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation" } },
-        "b2": { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses" } },
-        "b3": { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Matching Sets" } }
+        "b1": { "type": "era", "settings": { "numeral": "i", "title": "Vacation Era", "description": "Airport to aperitivo. Linen, crochet and resort pieces that pack flat and photograph like a postcard.", "cta": "Shop" } },
+        "b2": { "type": "era", "settings": { "numeral": "ii", "title": "Main Character Era", "description": "Some dresses you wear; this one you arrive in. Liquid satin and statement silhouettes for the moment.", "cta": "Shop" } },
+        "b3": { "type": "era", "settings": { "numeral": "iii", "title": "Brunch Era", "description": "Easy, pretty, put-together. Matching sets and sundresses for slow mornings and long tables.", "cta": "Shop" } }
       },
       "block_order": ["b1", "b2", "b3"]
     },
@@ -65,7 +67,7 @@
       "type": "trust-badges",
       "settings": { "bg": "cream" },
       "blocks": {
-        "t1": { "type": "badge", "settings": { "icon": "ship", "title": "Complimentary shipping", "text": "On orders over $120" } },
+        "t1": { "type": "badge", "settings": { "icon": "ship", "title": "Complimentary shipping", "text": "On orders over ₹2,500" } },
         "t2": { "type": "badge", "settings": { "icon": "return", "title": "Easy 30-day returns", "text": "Changed your era? No problem" } },
         "t3": { "type": "badge", "settings": { "icon": "leaf", "title": "Considered quality", "text": "Premium fabrics, fair pricing" } },
         "t4": { "type": "badge", "settings": { "icon": "gift", "title": "Collectible packaging", "text": "Butter-yellow, gift-ready" } }

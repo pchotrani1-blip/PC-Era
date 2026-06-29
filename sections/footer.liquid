@@ -3,7 +3,7 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <img src="{{ 'pc-era-logo-ivory.png' | asset_url }}" alt="{{ shop.name }}" width="120" style="height:64px;width:auto;object-fit:contain;">
+        <div style="display:flex;justify-content:flex-start">{% render 'seal', variant: 'ivory', size: 96 %}</div>
         <div class="visually-hidden">PC Era</div>
         <p>{{ section.settings.tagline | default: 'The Era of Trend. Affordable luxury made to dress every version of her — confident, soft, on holiday, and everything in between.' }}</p>
         <div style="display:flex;gap:1rem;margin-top:1.5rem;">

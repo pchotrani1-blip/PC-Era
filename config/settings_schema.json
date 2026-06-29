@@ -40,7 +40,7 @@
     "name": "Cart",
     "settings": [
       { "type": "checkbox", "id": "cart_free_ship_bar", "label": "Show free shipping progress bar", "default": true },
-      { "type": "number", "id": "cart_free_ship_threshold", "label": "Free shipping threshold (in store currency)", "default": 120 },
+      { "type": "number", "id": "cart_free_ship_threshold", "label": "Free shipping threshold (in store currency)", "default": 2500 },
       { "type": "checkbox", "id": "cart_upsell", "label": "Show 'complete the look' upsell in cart", "default": true }
     ]
   },

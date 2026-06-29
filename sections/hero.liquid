@@ -1,47 +1,55 @@
-{%- comment -%} PC ERA — Editorial hero {%- endcomment -%}
-<section class="hero {% if section.settings.light_text == false %}hero--light{% endif %}">
-  <div class="hero__media">
-    {%- if section.settings.video != blank -%}
-      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false }}
-    {%- elsif section.settings.image != blank -%}
-      <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="{{ section.settings.image.alt | escape }}" width="2400" height="1500" fetchpriority="high">
-    {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag }}
-    {%- endif -%}
-  </div>
-  <div class="hero__scrim"></div>
+{%- comment -%} PC ERA — Hero (ovals + script) {%- endcomment -%}
+<section class="hero bg-butter">
   <div class="wrap">
-    <div class="hero__inner">
-      <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
-      <h1 data-reveal data-reveal-delay="0.08">{{ section.settings.heading }}</h1>
-      <p class="lead" data-reveal data-reveal-delay="0.16">{{ section.settings.subheading }}</p>
-      <div class="hero__cta" data-reveal data-reveal-delay="0.24">
-        {%- if section.settings.cta_text != blank -%}
-          <a href="{{ section.settings.cta_link }}" class="btn btn--light">{{ section.settings.cta_text }}</a>
+    <div class="hero__grid">
+      <div class="oval" data-reveal>
+        {%- if section.settings.image_left != blank -%}
+          <img src="{{ section.settings.image_left | image_url: width: 900 }}" alt="{{ section.settings.image_left.alt | escape }}" width="900" height="1200" fetchpriority="high">
         {%- endif -%}
-        {%- if section.settings.cta2_text != blank -%}
-          <a href="{{ section.settings.cta2_link }}" class="btn btn--ghost" style="color:var(--ivory);border-color:rgba(252,250,244,.6)">{{ section.settings.cta2_text }}</a>
+        {%- if section.settings.badge_text != blank -%}
+          <div class="scallop">
+            <svg class="edge" viewBox="0 0 100 100" aria-hidden="true"><path d="M96.00 50.00 A5 5 0 0 1 92.50 67.60 A5 5 0 0 1 82.53 82.53 A5 5 0 0 1 67.60 92.50 A5 5 0 0 1 50.00 96.00 A5 5 0 0 1 32.40 92.50 A5 5 0 0 1 17.47 82.53 A5 5 0 0 1 7.50 67.60 A5 5 0 0 1 4.00 50.00 A5 5 0 0 1 7.50 32.40 A5 5 0 0 1 17.47 17.47 A5 5 0 0 1 32.40 7.50 A5 5 0 0 1 50.00 4.00 A5 5 0 0 1 67.60 7.50 A5 5 0 0 1 82.53 17.47 A5 5 0 0 1 92.50 32.40 A5 5 0 0 1 96.00 50.00 Z" fill="none" stroke="#CDA349" stroke-width="1"/></svg>
+            <span class="lbl">{{ section.settings.badge_text }}<em>{{ section.settings.badge_accent }}</em></span>
+          </div>
         {%- endif -%}
+      </div>
+
+      <div class="hero__center" data-reveal data-reveal-delay="0.1">
+        <span class="l1 serif-caps">{{ section.settings.line1 }}</span>
+        <span class="l2 script">{{ section.settings.line2 }}</span>
+        <span class="welcome">{{ section.settings.welcome }}</span>
+        <div>
+          {%- if section.settings.cta_text != blank -%}<a href="{{ section.settings.cta_link }}" class="btn">{{ section.settings.cta_text }}</a>{%- endif -%}
+        </div>
+        <span class="scroll-cue">Scroll ↓</span>
+      </div>
+
+      <div class="oval" data-reveal data-reveal-delay="0.05">
+        {%- if section.settings.image_right != blank -%}
+          <img src="{{ section.settings.image_right | image_url: width: 900 }}" alt="{{ section.settings.image_right.alt | escape }}" width="900" height="1200">
+        {%- endif -%}
+        {%- if section.settings.ribbon_text != blank -%}<div class="ribbon">{{ section.settings.ribbon_text }}</div>{%- endif -%}
       </div>
     </div>
   </div>
-  <span class="scroll-cue">Scroll</span>
 </section>
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Background image" },
-    { "type": "video", "id": "video", "label": "Background video (optional)" },
-    { "type": "checkbox", "id": "light_text", "label": "Light text", "default": true },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Summer ’26 — Now arriving" },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "The Era of Trend" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Affordable luxury made to dress every version of her. Soft, confident, on holiday, and everywhere in between." },
-    { "type": "text", "id": "cta_text", "label": "Primary button", "default": "Shop new in" },
-    { "type": "url", "id": "cta_link", "label": "Primary link" },
-    { "type": "text", "id": "cta2_text", "label": "Secondary button", "default": "Discover PC Era" },
-    { "type": "url", "id": "cta2_link", "label": "Secondary link" }
+    { "type": "image_picker", "id": "image_left", "label": "Left oval image" },
+    { "type": "image_picker", "id": "image_right", "label": "Right oval image" },
+    { "type": "text", "id": "line1", "label": "Line 1 (serif caps)", "default": "Dress Your" },
+    { "type": "text", "id": "line2", "label": "Line 2 (script)", "default": "every era" },
+    { "type": "text", "id": "welcome", "label": "Welcome line", "default": "Welcome to PC Era" },
+    { "type": "text", "id": "cta_text", "label": "Button", "default": "Start Your Era" },
+    { "type": "url", "id": "cta_link", "label": "Button link" },
+    { "type": "header", "content": "Badge (left)" },
+    { "type": "text", "id": "badge_text", "label": "Badge text", "default": "Quiet" },
+    { "type": "text", "id": "badge_accent", "label": "Badge script word", "default": "luxury" },
+    { "type": "header", "content": "Ribbon (right)" },
+    { "type": "text", "id": "ribbon_text", "label": "Ribbon text", "default": "Affordable luxury for every body" }
   ],
   "presets": [{ "name": "Hero" }]
 }

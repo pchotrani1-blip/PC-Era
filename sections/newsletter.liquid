@@ -1,7 +1,8 @@
 {%- comment -%} PC ERA — Newsletter / email capture {%- endcomment -%}
 <section class="section bg-{{ section.settings.bg }}">
   <div class="wrap wrap--narrow newsletter" data-reveal>
-    <span class="eyebrow">{{ section.settings.eyebrow }}</span>
+    {% render 'seal', size: 104 %}
+    <span class="eyebrow" style="display:block;margin-top:1.4rem">{{ section.settings.eyebrow }}</span>
     <h2 class="h-display" style="margin-top:.8rem">{{ section.settings.heading }}</h2>
     <p class="lead" style="max-width:520px;margin-inline:auto">{{ section.settings.subheading }}</p>
     {%- form 'customer', data-newsletter: true -%}

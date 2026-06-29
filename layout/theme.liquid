@@ -33,9 +33,11 @@
     {%- comment -%} Brand fonts — replace with licensed Canela / Neue Haas in production {%- endcomment -%}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;1,9..144,400&family=Pinyon+Script&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
     {{ content_for_header }}
+
+    <noscript><style>.loader,.grain,.glow{display:none!important}[data-reveal]{opacity:1!important;transform:none!important}</style></noscript>
 
     {{ 'base.css' | asset_url | stylesheet_tag }}
     <style>
@@ -65,6 +67,12 @@
 
   <body class="template-{{ request.page_type | handle }}">
     <a class="visually-hidden" href="#MainContent">{{ 'accessibility.skip_to_content' | t }}</a>
+
+    <div class="loader" id="pc-loader"><img src="{{ 'pc-era-logo.png' | asset_url }}" alt="{{ shop.name }}" width="120"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="sunwash" aria-hidden="true"></div>
+    <div class="progress" id="pc-progress" aria-hidden="true"></div>
+    <div class="glow" id="pc-glow" aria-hidden="true"></div>
 
     {% sections 'header-group' %}
 
