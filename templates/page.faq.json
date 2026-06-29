@@ -2,7 +2,7 @@
   "sections": {
     "head": {
       "type": "rich-text",
-      "settings": { "bg": "warm", "center": true, "eyebrow": "Good to know", "heading": "Frequently asked", "body": "<p>Everything you need before your pieces arrive. Still curious? Email care@pcera.com.</p>" }
+      "settings": { "bg": "warm", "center": true, "eyebrow": "Good to know", "heading": "Frequently asked", "body": "<p>Everything you need before your pieces arrive. Still curious? Email Wearpcera@gmail.com.</p>" }
     },
     "shipping": {
       "type": "faq",
@@ -37,7 +37,7 @@
       "type": "faq",
       "settings": { "bg": "ivory", "eyebrow": "Orders & payments", "heading": "Orders & payments" },
       "blocks": {
-        "q1": { "type": "qa", "settings": { "question": "Can I change or cancel my order?", "answer": "<p>Email care@pcera.com within 2 hours of ordering and we'll do our best before it's dispatched.</p>" } },
+        "q1": { "type": "qa", "settings": { "question": "Can I change or cancel my order?", "answer": "<p>Email Wearpcera@gmail.com within 2 hours of ordering and we'll do our best before it's dispatched.</p>" } },
         "q2": { "type": "qa", "settings": { "question": "What payment methods do you accept?", "answer": "<p>All major cards, Shop Pay, PayPal, Apple Pay, Google Pay, plus Afterpay and Klarna for 4 interest-free payments.</p>" } },
         "q3": { "type": "qa", "settings": { "question": "Is checkout secure?", "answer": "<p>Yes — checkout is fully encrypted and PCI-compliant via Shopify Payments.</p>" } }
       },

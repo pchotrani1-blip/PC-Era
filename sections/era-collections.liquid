@@ -1,19 +1,24 @@
-{%- comment -%} PC ERA — Made for every era (bordered era cards) {%- endcomment -%}
+{%- comment -%} PC ERA — Made for every era (collection tiles) {%- endcomment -%}
 <section class="section bg-{{ section.settings.bg }}">
   <div class="wrap">
-    <div class="sec-head" data-reveal>
+    <div class="section-head" data-reveal>
       <span class="eyebrow">{{ section.settings.eyebrow }}</span>
       <h2 class="h-display">{{ section.settings.heading }}</h2>
       <p>{{ section.settings.subheading }}</p>
     </div>
-    <div class="eras">
+    <div class="collection-tiles">
       {%- for block in section.blocks -%}
-        <div class="era" data-reveal data-reveal-delay="{{ forloop.index0 | times: 0.07 }}" {{ block.shopify_attributes }}>
-          <div class="num">{{ block.settings.numeral }}</div>
-          <h3>{{ block.settings.title }}</h3>
-          <p>{{ block.settings.description }}</p>
-          {%- if block.settings.cta != blank -%}<a href="{{ block.settings.link }}" class="btn"><span>{{ block.settings.cta }}</span></a>{%- endif -%}
-        </div>
+        <a href="{{ block.settings.link }}" class="collection-tile" data-reveal data-reveal-delay="{{ forloop.index0 | times: 0.06 }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="800" height="1066">
+          {%- else -%}
+            {{ 'lifestyle-2' | placeholder_svg_tag }}
+          {%- endif -%}
+          <span class="collection-tile__label">
+            <span class="eyebrow" style="color:var(--butter)">{{ block.settings.kicker }}</span>
+            <h3>{{ block.settings.title }}</h3>
+          </span>
+        </a>
       {%- endfor -%}
     </div>
   </div>
@@ -25,21 +30,20 @@
   "max_blocks": 6,
   "settings": [
     { "type": "select", "id": "bg", "label": "Background", "options": [
-      { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "butter", "label": "Butter" }
-    ], "default": "cream" },
+      { "value": "ivory", "label": "Ivory" }, { "value": "cream", "label": "Cream" }, { "value": "warm", "label": "Beige" }
+    ], "default": "ivory" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Find your era" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Made for every era" },
     { "type": "text", "id": "subheading", "label": "Subheading", "default": "Whichever version of her is showing up today." }
   ],
   "blocks": [
     {
-      "type": "era",
-      "name": "Era card",
+      "type": "tile",
+      "name": "Collection tile",
       "settings": [
-        { "type": "text", "id": "numeral", "label": "Numeral", "default": "i" },
-        { "type": "text", "id": "title", "label": "Title", "default": "Vacation Era" },
-        { "type": "textarea", "id": "description", "label": "Description", "default": "Airport to aperitivo. Linen and crochet made for European summer." },
-        { "type": "text", "id": "cta", "label": "Button", "default": "Shop" },
+        { "type": "image_picker", "id": "image", "label": "Image" },
+        { "type": "text", "id": "kicker", "label": "Kicker", "default": "Vacation era" },
+        { "type": "text", "id": "title", "label": "Title", "default": "Resort & Vacation" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
@@ -47,9 +51,9 @@
   "presets": [{
     "name": "Era collections",
     "blocks": [
-      { "type": "era", "settings": { "numeral": "i", "title": "Vacation Era" } },
-      { "type": "era", "settings": { "numeral": "ii", "title": "Main Character Era" } },
-      { "type": "era", "settings": { "numeral": "iii", "title": "Brunch Era" } }
+      { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation" } },
+      { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses" } },
+      { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Matching Sets" } }
     ]
   }]
 }

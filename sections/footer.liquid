@@ -3,9 +3,15 @@
   <div class="wrap">
     <div class="footer-top">
       <div class="footer-brand">
-        <div style="display:flex;justify-content:flex-start">{% render 'seal', variant: 'ivory', size: 96 %}</div>
+        <img src="{{ 'pc-era-logo-ivory.png' | asset_url }}" alt="{{ shop.name }}" width="120" style="height:64px;width:auto;object-fit:contain;">
         <div class="visually-hidden">PC Era</div>
         <p>{{ section.settings.tagline | default: 'The Era of Trend. Affordable luxury made to dress every version of her — confident, soft, on holiday, and everything in between.' }}</p>
+        {%- if section.settings.email != blank or section.settings.phone != blank -%}
+          <div style="margin-top:1.2rem;font-size:.8rem;display:grid;gap:.3rem">
+            {%- if section.settings.email != blank -%}<a href="mailto:{{ section.settings.email }}">{{ section.settings.email }}</a>{%- endif -%}
+            {%- if section.settings.phone != blank -%}<a href="tel:+91{{ section.settings.phone | remove: ' ' }}">+91 {{ section.settings.phone }}</a>{%- endif -%}
+          </div>
+        {%- endif -%}
         <div style="display:flex;gap:1rem;margin-top:1.5rem;">
           <a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>
           <a href="{{ settings.social_tiktok }}" aria-label="TikTok">{% render 'icon', name: 'tiktok' %}</a>
@@ -39,7 +45,9 @@
 {
   "name": "Footer",
   "settings": [
-    { "type": "textarea", "id": "tagline", "label": "Brand line" }
+    { "type": "textarea", "id": "tagline", "label": "Brand line" },
+    { "type": "text", "id": "email", "label": "Contact email", "default": "Wearpcera@gmail.com" },
+    { "type": "text", "id": "phone", "label": "Contact phone", "default": "99901 26117" }
   ],
   "blocks": [
     {

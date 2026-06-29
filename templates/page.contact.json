@@ -1,6 +1,14 @@
 {
   "sections": {
-    "contact": { "type": "contact", "settings": { "bg": "ivory" } }
+    "contact": {
+      "type": "contact",
+      "settings": {
+        "bg": "ivory",
+        "email": "Wearpcera@gmail.com",
+        "phone": "99901 26117",
+        "hours": "Mon–Sat, 10am–6pm"
+      }
+    }
   },
   "order": ["contact"]
 }
