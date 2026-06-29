@@ -6,27 +6,21 @@
 <header class="site-header">
   <div class="wrap">
     <div class="header-bar">
-      <nav class="header-nav" aria-label="Primary">
-        {%- for link in linklists[section.settings.menu].links -%}
-          <a href="{{ link.url }}">{{ link.title }}</a>
-        {%- endfor -%}
-      </nav>
+      <div class="header-left">
+        <button class="icon-btn nav-toggle" data-nav-open aria-label="{{ 'accessibility.menu' | t }}">{% render 'icon', name: 'menu' %}</button>
+        <a href="{{ routes.search_url }}" class="icon-btn" aria-label="{{ 'accessibility.search' | t }}">{% render 'icon', name: 'search' %}</a>
+        <a href="{{ routes.account_url }}" class="link-underline" style="padding:0">Log In</a>
+      </div>
 
-      <button class="icon-btn nav-toggle" data-nav-open aria-label="{{ 'accessibility.menu' | t }}">
-        {% render 'icon', name: 'menu' %}
-      </button>
-
-      <a href="{{ routes.root_url }}" class="brand-wordmark">
+      <a href="{{ routes.root_url }}" class="brand-wordmark" aria-label="{{ shop.name }}">
         {%- if section.settings.logo != blank -%}
-          <img src="{{ section.settings.logo | image_url: width: 220 }}" alt="{{ shop.name }}" width="120" style="height:42px;width:auto;object-fit:contain;">
+          <img src="{{ section.settings.logo | image_url: width: 320 }}" alt="{{ shop.name }}" width="160">
         {%- else -%}
-          <img src="{{ 'pc-era-logo.png' | asset_url }}" alt="{{ shop.name }}" width="100" style="height:48px;width:auto;object-fit:contain;">
+          <img src="{{ 'pc-era-logo.png' | asset_url }}" alt="{{ shop.name }}" width="160">
         {%- endif -%}
       </a>
 
       <div class="header-utils">
-        <a href="{{ routes.search_url }}" class="icon-btn" aria-label="{{ 'accessibility.search' | t }}">{% render 'icon', name: 'search' %}</a>
-        <a href="{{ routes.account_url }}" class="icon-btn" aria-label="{{ 'accessibility.account' | t }}">{% render 'icon', name: 'account' %}</a>
         <a href="{{ routes.account_url }}#wishlist" class="icon-btn" aria-label="{{ 'accessibility.wishlist' | t }}">
           {% render 'icon', name: 'heart' %}<span class="cart-count" data-wish-count>0</span>
         </a>
@@ -35,6 +29,12 @@
         </button>
       </div>
     </div>
+
+    <nav class="header-nav" aria-label="Primary">
+      {%- for link in linklists[section.settings.menu].links -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endfor -%}
+    </nav>
   </div>
 </header>
 
