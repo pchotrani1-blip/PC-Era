@@ -65,5 +65,5 @@ PC Era ranks on **affordable luxury / contemporary women's fashion** intent: era
 6. Feed title pattern for Shopping (more keyword-led than on-site): `PC Era Amalfi Linen Matching Set - Women's Linen Co-ord - Butter`.
 
 ## Local/brand SERP
-- Claim brand name on Instagram/TikTok/Pinterest (consistent @pcera).
+- Claim brand name on Instagram/TikTok/Pinterest (consistent @wearpcera).
 - Build `Organization.sameAs` links (socials) into schema for a richer brand panel.

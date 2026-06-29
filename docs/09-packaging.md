@@ -27,7 +27,7 @@ The unboxing is the brand's first physical handshake and a content moment. Every
 ## Inserts that drive repeat & UGC
 - **Discount card:** "Your next era — 10% off, code on the back."
 - **Referral card:** "Give a friend 15%, get 15%."
-- **UGC prompt:** "Tag @pcera & #InMyPCEra — be featured & earn 50 points."
+- **UGC prompt:** "Tag @wearpcera & #InMyPCEra — be featured & earn 50 points."
 - **QR styling card:** links to the product's "complete the look".
 
 ## Sustainability notes

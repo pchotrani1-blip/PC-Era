@@ -34,7 +34,7 @@ Low-fidelity blueprints for every page. Maps 1:1 to the theme's sections/templat
 │        ▢        ▢        ▢        ▢                       │
 ├──────────────────────────────────────────────────────────┤
 │            #InMyPCEra · STYLED BY YOU                    │
-│   [u][u][u][u][u]    Tag @pcera #InMyPCEra               │ 5-up UGC
+│   [u][u][u][u][u]    Tag @wearpcera #InMyPCEra               │ 5-up UGC
 ├──────────────────────────────────────────────────────────┤
 │         ★★★★★  She said it best · 4.9 / 2,400+           │
 │   [ review ]      [ review ]      [ review ]             │

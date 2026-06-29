@@ -35,7 +35,7 @@ The fit is true, the fabric photographs like luxury. She wears it to brunch; som
 **Brand job:** product quality must exceed the price tag — this is the whole flywheel.
 
 ## 9. Sharing
-She tags @pcera, #InMyPCEra, earns 50 points, gets reposted, feels seen. Her friends ask; she shares her 15% referral code.
+She tags @wearpcera, #InMyPCEra, earns 50 points, gets reposted, feels seen. Her friends ask; she shares her 15% referral code.
 **Brand job:** make sharing rewarding and easy; turn customers into the campaign.
 
 ## 10. Repeat

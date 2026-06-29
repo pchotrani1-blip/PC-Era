@@ -53,7 +53,7 @@
 - **Eyebrow:** #InMyPCEra
 - **Heading:** Styled by you
 - **Sub:** Real girls, real eras. Tag us to be featured.
-- **Footer link:** Tag @pcera · #InMyPCEra
+- **Footer link:** Tag @wearpcera · #InMyPCEra
 
 ## 9. Reviews
 - **Eyebrow:** Loved by the era

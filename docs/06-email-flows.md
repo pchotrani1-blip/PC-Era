@@ -2,7 +2,7 @@
 
 Platform: **Klaviyo** (recommended). Design language: cream background, serif headlines, one editorial image per email, butter-yellow CTA buttons on ink, lots of whitespace. Keep copy short.
 
-Global signature footer: *In your PC Era — @pcera · Unsubscribe · Manage preferences.*
+Global signature footer: *In your PC Era — @wearpcera · Unsubscribe · Manage preferences.*
 
 ---
 
@@ -35,7 +35,7 @@ Global signature footer: *In your PC Era — @pcera · Unsubscribe · Manage pre
 - **Dispatched (subject:** "Your era is on its way")
   Tracking button, est. delivery, styling tip for the piece they bought.
 - **Delivered (subject:** "It's here — show us your era")
-  Unboxing prompt: "Tag @pcera & #InMyPCEra to be featured." Review request seed.
+  Unboxing prompt: "Tag @wearpcera & #InMyPCEra to be featured." Review request seed.
 
 ## 6. Review request (1–2 emails)
 - **+7 days post-delivery (subject:** "How's your {product}?")
