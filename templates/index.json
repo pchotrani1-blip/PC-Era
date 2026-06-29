@@ -14,9 +14,9 @@
       "type": "marquee",
       "settings": { "bg": "butter", "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
     },
-    "best_sellers": {
+    "new_in_top": {
       "type": "featured-collection",
-      "settings": { "bg": "cream", "eyebrow": "The edit", "heading": "Best sellers", "subheading": "The pieces she keeps reaching for.", "count": 4, "cta_text": "Shop best sellers" }
+      "settings": { "bg": "cream", "eyebrow": "Just landed", "heading": "New In", "subheading": "The first chapter of PC Era.", "count": 4, "cta_text": "Shop new in" }
     },
     "eras": {
       "type": "era-collections",
@@ -39,9 +39,9 @@
         "cta_text": "Read our story"
       }
     },
-    "new_in": {
+    "the_edit": {
       "type": "featured-collection",
-      "settings": { "bg": "ivory", "eyebrow": "Just landed", "heading": "New arrivals", "subheading": "Fresh in for your next chapter.", "count": 4, "cta_text": "Shop new in" }
+      "settings": { "bg": "ivory", "eyebrow": "Hand-picked", "heading": "The Edit", "subheading": "A few of our favourites to start your era.", "count": 4, "cta_text": "Shop the edit" }
     },
     "ugc": {
       "type": "in-my-pc-era",
@@ -73,5 +73,5 @@
       "block_order": ["t1", "t2", "t3", "t4"]
     }
   },
-  "order": ["hero", "marquee", "best_sellers", "eras", "story", "new_in", "ugc", "reviews", "trust"]
+  "order": ["hero", "marquee", "new_in_top", "eras", "story", "the_edit", "ugc", "trust"]
 }
