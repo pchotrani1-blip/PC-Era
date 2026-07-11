@@ -20,13 +20,14 @@
     },
     "eras": {
       "type": "era-collections",
-      "settings": { "bg": "ivory", "eyebrow": "Find your era", "heading": "Made for every era", "subheading": "Whichever version of her is showing up today." },
+      "settings": { "bg": "ivory", "eyebrow": "Find your era", "heading": "Shop by category", "subheading": "Every era, every piece — find your next." },
       "blocks": {
-        "b1": { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation" } },
-        "b2": { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses" } },
-        "b3": { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Matching Sets" } }
+        "b1": { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses", "link": "/collections/dresses" } },
+        "b2": { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Co-ords", "link": "/collections/co-ords" } },
+        "b3": { "type": "tile", "settings": { "kicker": "Soft girl era", "title": "Tops", "link": "/collections/tops" } },
+        "b4": { "type": "tile", "settings": { "kicker": "Corporate era", "title": "Trousers", "link": "/collections/trousers" } }
       },
-      "block_order": ["b1", "b2", "b3"]
+      "block_order": ["b1", "b2", "b3", "b4"]
     },
     "story": {
       "type": "editorial-split",
