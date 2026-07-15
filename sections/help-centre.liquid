@@ -1,0 +1,48 @@
+{%- comment -%} PC ERA — Help centre {%- endcomment -%}
+<section class="section help-centre">
+  <div class="wrap wrap--reading text-center">
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h1 class="h-display" style="margin-top:1rem">{{ section.settings.heading | replace: 'help', '<em class="accent-italic">help</em>' }}</h1>{%- endif -%}
+    {%- if section.settings.intro != blank -%}<div class="rte lead" style="margin-top:1.5rem">{{ section.settings.intro }}</div>{%- endif -%}
+  </div>
+
+  <div class="wrap">
+    <div class="help-grid">
+      {%- if section.settings.email != blank -%}
+        <a class="help-card" href="mailto:{{ section.settings.email }}">
+          <span class="help-card__label">✉ Email</span>
+          <span class="help-card__value">{{ section.settings.email }}</span>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.phone != blank -%}
+        {%- assign wa = section.settings.phone | remove: ' ' | remove: '+' -%}
+        <a class="help-card" href="https://wa.me/{{ wa }}" target="_blank" rel="noopener">
+          <span class="help-card__label">☏ WhatsApp / Call</span>
+          <span class="help-card__value">{{ section.settings.phone }}</span>
+        </a>
+      {%- endif -%}
+      {%- if section.settings.instagram_handle != blank -%}
+        <a class="help-card" href="{{ settings.social_instagram }}" target="_blank" rel="noopener">
+          <span class="help-card__label">◎ Instagram</span>
+          <span class="help-card__value">{{ section.settings.instagram_handle }}</span>
+        </a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Help centre",
+  "settings": [
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Help Centre" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "We're here to help" },
+    { "type": "richtext", "id": "intro", "label": "Intro", "default": "<p>Have a question? Need help with your order? We're always happy to assist. Whether it's sizing, shipping, returns, or anything else, our team will get back to you as soon as possible.</p>" },
+    { "type": "header", "content": "Contact details" },
+    { "type": "text", "id": "email", "label": "Email", "default": "wearpcera@gmail.com" },
+    { "type": "text", "id": "phone", "label": "WhatsApp / phone", "default": "+91 99901 26117" },
+    { "type": "text", "id": "instagram_handle", "label": "Instagram handle", "default": "@wearpcera" }
+  ],
+  "presets": [{ "name": "Help centre" }]
+}
+{% endschema %}

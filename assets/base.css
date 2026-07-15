@@ -449,6 +449,13 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 @keyframes nlpFade { from { opacity: 0; } to { opacity: 1; } }
 @keyframes nlpPop { from { opacity: 0; transform: translate(-50%, -46%); } to { opacity: 1; transform: translate(-50%, -50%); } }
 
+/* Help centre */
+.help-centre .help-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: clamp(2rem, 4vw, 3rem); }
+.help-card { display: flex; flex-direction: column; gap: .5rem; padding: 1.6rem 1.8rem; background: var(--bg-warm); border-radius: var(--radius); transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease); }
+.help-card:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(34, 34, 34, .08); }
+.help-card__label { font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--champagne); }
+.help-card__value { font-family: var(--font-serif); font-size: 1.15rem; word-break: break-word; }
+
 /* -----------------------------------------------------------
    11. PRODUCT PAGE
    ----------------------------------------------------------- */

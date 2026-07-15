@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "help-centre"
+    }
+  },
+  "order": ["main"]
+}
