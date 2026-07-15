@@ -288,10 +288,18 @@
       "settings": {
         "bg": "cream"
       }
+    },
+    "media_banner": {
+      "type": "media-banner",
+      "settings": {
+        "bg": "cream",
+        "ratio": "16 / 9"
+      }
     }
   },
   "order": [
     "hero",
+    "media_banner",
     "welcome",
     "new_in_top",
     "marquee",
