@@ -1,9 +1,17 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
       "type": "hero",
       "settings": {
-        "light_text": true,
         "eyebrow": "Our story",
         "heading": "In my PC Era",
         "subheading": "An affordable luxury house built for every version of her.",
@@ -14,8 +22,8 @@
     "intro": {
       "type": "rich-text",
       "settings": {
-        "bg": "cream",
         "center": true,
+        "bg": "cream",
         "eyebrow": "Why we started",
         "heading": "Fashion shouldn't only be saved for occasions",
         "body": "<p>PC Era began with a simple belief: every girl moves through different eras of her life — and she deserves to feel elevated in all of them. The confident era. The soft girl era. The vacation era. The healing era. The main character era. We were tired of choosing between clothes that looked designer and clothes we could actually afford. So we built the brand we wished existed.</p>"
@@ -24,8 +32,8 @@
     "split1": {
       "type": "editorial-split",
       "settings": {
-        "bg": "warm",
         "reverse": false,
+        "bg": "warm",
         "eyebrow": "The meaning",
         "heading": "What “In My PC Era” means",
         "body": "<p>An era isn't a trend — it's a feeling. It's the chapter you're living right now. PC Era exists to dress that chapter, so getting dressed feels intentional, not accidental. Everyday moments — coffee, pilates, a slow Sunday — become a little more cinematic.</p><p>Quiet luxury, European-summer ease, Pinterest-board beauty. Made accessible.</p>",
@@ -35,8 +43,8 @@
     "split2": {
       "type": "editorial-split",
       "settings": {
-        "bg": "ivory",
         "reverse": true,
+        "bg": "ivory",
         "eyebrow": "About the founder",
         "heading": "Meet Palak Chotrani",
         "body": "<p>Hi, I'm Palak Chotrani, founder of PC ERA. I started this brand with one vision — to create timeless, effortlessly stylish pieces that make women feel confident through every chapter of life. Every collection is thoughtfully designed with quality, versatility, and modern femininity at its heart.</p><p>Fashion evolves, but confidence never goes out of style. At PC ERA, we design versatile wardrobe staples that transcend trends, celebrating simplicity, quality, and thoughtful craftsmanship. Every piece is created to become part of your story — today, tomorrow, and for every era ahead.</p>",
@@ -45,19 +53,66 @@
     },
     "values": {
       "type": "trust-badges",
-      "settings": { "bg": "cream" },
       "blocks": {
-        "v1": { "type": "badge", "settings": { "icon": "leaf", "title": "Considered quality", "text": "Premium fabrics, honest pricing" } },
-        "v2": { "type": "badge", "settings": { "icon": "gift", "title": "Designed to be loved", "text": "Collectible, gift-ready details" } },
-        "v3": { "type": "badge", "settings": { "icon": "ship", "title": "Made for real life", "text": "Versatile across every era" } },
-        "v4": { "type": "badge", "settings": { "icon": "return", "title": "She comes first", "text": "Easy returns, real care" } }
+        "v1": {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "title": "Considered quality",
+            "text": "Premium fabrics, honest pricing"
+          }
+        },
+        "v2": {
+          "type": "badge",
+          "settings": {
+            "icon": "gift",
+            "title": "Designed to be loved",
+            "text": "Collectible, gift-ready details"
+          }
+        },
+        "v3": {
+          "type": "badge",
+          "settings": {
+            "icon": "ship",
+            "title": "Made for real life",
+            "text": "Versatile across every era"
+          }
+        },
+        "v4": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "title": "She comes first",
+            "text": "Easy returns, real care"
+          }
+        }
       },
-      "block_order": ["v1", "v2", "v3", "v4"]
+      "block_order": [
+        "v1",
+        "v2",
+        "v3",
+        "v4"
+      ],
+      "settings": {
+        "bg": "cream"
+      }
     },
     "cta": {
       "type": "newsletter",
-      "settings": { "bg": "butter", "eyebrow": "Join the era", "heading": "Become part of the story", "subheading": "New arrivals, private edits and 10% off your first chapter." }
+      "settings": {
+        "bg": "butter",
+        "eyebrow": "Join the era",
+        "heading": "Become part of the story",
+        "subheading": "New arrivals, private edits and 10% off your first chapter."
+      }
     }
   },
-  "order": ["hero", "intro", "split1", "split2", "values", "cta"]
+  "order": [
+    "hero",
+    "intro",
+    "split1",
+    "split2",
+    "values",
+    "cta"
+  ]
 }

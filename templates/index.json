@@ -12,6 +12,7 @@
     "hero": {
       "type": "hero",
       "settings": {
+        "image": "shopify://shop_images/photo-1539008835657-9e8e9680c956.jpg",
         "eyebrow": "The Summer Edit — Vol. 26",
         "heading": "Summer",
         "heading_accent": "’26.",
