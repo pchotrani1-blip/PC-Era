@@ -298,16 +298,16 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 
 /* Editorial hero — Summer '26 */
 .hero-ed { position: relative; overflow: hidden; min-height: clamp(560px, 88vh, 900px); display: flex; align-items: center; background: linear-gradient(168deg, #C4D4DD 0%, #D8DAD3 38%, #F1ECDF 70%, #FBF4E4 100%); }
-.hero-ed__photo { position: absolute; top: 0; right: 0; width: 52%; height: 100%; z-index: 1; }
+.hero-ed__photo { position: absolute; inset: 0; z-index: 1; }
 .hero-ed__photo img { width: 100%; height: 100%; object-fit: cover; }
-.hero-ed__photo::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, #C4D4DD 0%, rgba(196,212,221,0) 46%); z-index: 2; }
+.hero-ed__scrim { position: absolute; inset: 0; z-index: 2; background: linear-gradient(95deg, rgba(252,250,244,.86) 0%, rgba(252,250,244,.55) 34%, rgba(252,250,244,.15) 66%, rgba(252,250,244,0) 100%); }
 .hero-ed__est { position: absolute; right: clamp(.4rem, 1.4vw, 1.3rem); top: 50%; transform: translateY(-50%); writing-mode: vertical-rl; z-index: 3; font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--ink-soft); opacity: .55; }
 .hero-ed .wrap { position: relative; z-index: 3; width: 100%; }
 .hero-ed__inner { max-width: 620px; padding-block: clamp(2rem, 6vw, 4rem); }
 .hero-ed__eyebrow { color: var(--champagne); }
 .hero-ed__title { margin: .7rem 0 1.3rem; line-height: .9; }
-.hero-ed__title-main { display: block; font-family: var(--font-serif); font-weight: 500; font-size: clamp(3.6rem, 12vw, 9rem); letter-spacing: -.01em; color: var(--ink); }
-.hero-ed__title-accent { display: block; font-family: var(--font-italic); font-style: italic; font-size: clamp(2.4rem, 7.5vw, 5.2rem); color: var(--champagne); margin-top: .05em; }
+.hero-ed__title-main { display: block; font-family: var(--font-serif); font-weight: 500; font-size: clamp(2.6rem, 7vw, 5.4rem); letter-spacing: -.01em; color: var(--ink); }
+.hero-ed__title-accent { display: block; font-family: var(--font-italic); font-style: italic; font-size: clamp(1.8rem, 4.5vw, 3.4rem); color: var(--champagne); margin-top: .05em; }
 .hero-ed__lead { font-family: var(--font-sans); font-size: clamp(1.05rem, 1.4vw, 1.25rem); color: var(--ink-soft); max-width: 32ch; margin-bottom: 1.9rem; }
 .hero-ed__cta { display: flex; gap: var(--s-2); flex-wrap: wrap; }
 .hero-ed__eyebrow { animation: heroReveal .7s var(--ease) both; }
@@ -348,8 +348,7 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .ig-embeds { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .ig-embeds .instagram-media { flex: 0 1 328px; min-width: 300px; margin: 0 !important; }
 @media (max-width: 900px) {
-  .hero-ed__photo { width: 100%; opacity: .3; }
-  .hero-ed__photo::before { background: linear-gradient(180deg, rgba(196,212,221,.15) 0%, #FBF4E4 90%); }
+  .hero-ed__scrim { background: linear-gradient(180deg, rgba(252,250,244,.5) 0%, rgba(252,250,244,.35) 45%, rgba(252,250,244,.72) 100%); }
   .hero-ed__inner { max-width: 100%; }
   .hero-ed__est { display: none; }
 }

@@ -2,8 +2,9 @@
 <section class="hero-ed">
   {%- if section.settings.image != blank -%}
     <div class="hero-ed__photo">
-      <img src="{{ section.settings.image | image_url: width: 1800 }}" alt="{{ section.settings.image.alt | escape }}" width="1800" height="2000" fetchpriority="high">
+      <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="{{ section.settings.image.alt | escape }}" width="2400" height="1400" fetchpriority="high">
     </div>
+    <div class="hero-ed__scrim"></div>
   {%- endif -%}
 
   {%- if section.settings.est_text != blank -%}
