@@ -11,7 +11,9 @@
       {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
     </div>
 
-    {%- if has_embed -%}
+    {%- if section.settings.feed_embed != blank -%}
+      <div class="ig-feed">{{ section.settings.feed_embed }}</div>
+    {%- elsif has_embed -%}
       <div class="ig-embeds">
         {%- for block in section.blocks -%}
           {%- if block.settings.embed_url != blank -%}
@@ -52,7 +54,8 @@
     ], "default": "ivory" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "#InMyPCEra" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Styled by you" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real girls, real eras. Follow along on Instagram." }
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real girls, real eras. Follow along on Instagram." },
+    { "type": "html", "id": "feed_embed", "label": "Auto feed embed code", "info": "Paste an Instagram widget embed (e.g. from LightWidget or SnapWidget) for a live, auto-updating feed. Overrides the individual posts below." }
   ],
   "blocks": [
     {
