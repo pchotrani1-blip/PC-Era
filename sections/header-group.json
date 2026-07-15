@@ -65,6 +65,50 @@
         "cta_text": "Shop new in",
         "cta_link": ""
       }
+    },
+    "era_collections_39Epb6": {
+      "type": "era-collections",
+      "blocks": {
+        "tile_NKfXqE": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Vacation era",
+            "title": "Resort & Vacation",
+            "color": "#cfd9de",
+            "link": ""
+          }
+        },
+        "tile_XUL838": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Main character era",
+            "title": "Dresses",
+            "color": "#f1e2e0",
+            "link": ""
+          }
+        },
+        "tile_QM8EqF": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Off-duty",
+            "title": "Matching Sets",
+            "color": "#e0e5d8",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "tile_NKfXqE",
+        "tile_XUL838",
+        "tile_QM8EqF"
+      ],
+      "name": "Era collections",
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "Find your era",
+        "heading": "Made for every era",
+        "subheading": "Whichever version of her is showing up today."
+      }
     }
   },
   "order": [
@@ -72,6 +116,7 @@
     "hero_ARqBP4",
     "welcome_VXHbfK",
     "collection_list_TNUqcM",
-    "collection_slider_3KLCdn"
+    "collection_slider_3KLCdn",
+    "era_collections_39Epb6"
   ]
 }
