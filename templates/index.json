@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "sections": {
     "hero": {
@@ -34,9 +43,9 @@
     "new_in_top": {
       "type": "collection-slider",
       "settings": {
-        "bg": "cream",
         "collection": "shop-all",
         "count": 12,
+        "bg": "cream",
         "eyebrow": "Just landed",
         "heading": "New In",
         "subheading": "The latest to land in your era — swipe through.",
@@ -46,20 +55,14 @@
     },
     "eras": {
       "type": "era-collections",
-      "settings": {
-        "bg": "ivory",
-        "eyebrow": "Find your era",
-        "heading": "Made for every era",
-        "subheading": "Whichever version of her is showing up today."
-      },
       "blocks": {
         "b1": {
           "type": "tile",
           "settings": {
             "kicker": "Main character era",
             "title": "Dresses",
-            "link": "/collections/dresses",
-            "color": "#F1E2E0"
+            "color": "#F1E2E0",
+            "link": "/collections/dresses"
           }
         },
         "b2": {
@@ -67,8 +70,8 @@
           "settings": {
             "kicker": "Brunch era",
             "title": "Co-ord Sets",
-            "link": "/collections/co-ord-sets",
-            "color": "#E0E5D8"
+            "color": "#E0E5D8",
+            "link": "/collections/co-ord-sets"
           }
         },
         "b3": {
@@ -76,8 +79,8 @@
           "settings": {
             "kicker": "Soft girl era",
             "title": "Tops",
-            "link": "/collections/tops",
-            "color": "#E7E2EC"
+            "color": "#E7E2EC",
+            "link": "/collections/tops"
           }
         },
         "b4": {
@@ -85,8 +88,8 @@
           "settings": {
             "kicker": "Corporate era",
             "title": "Trousers",
-            "link": "/collections/trousers",
-            "color": "#E4DCCF"
+            "color": "#E4DCCF",
+            "link": "/collections/trousers"
           }
         },
         "b5": {
@@ -94,8 +97,8 @@
           "settings": {
             "kicker": "Vacation era",
             "title": "Skirts",
-            "link": "/collections/skirts",
-            "color": "#CFD9DE"
+            "color": "#CFD9DE",
+            "link": "/collections/skirts"
           }
         }
       },
@@ -105,7 +108,13 @@
         "b3",
         "b4",
         "b5"
-      ]
+      ],
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "Find your era",
+        "heading": "Made for every era",
+        "subheading": "Whichever version of her is showing up today."
+      }
     },
     "story": {
       "type": "editorial-split",
@@ -121,38 +130,37 @@
     "the_edit": {
       "type": "featured-collection",
       "settings": {
-        "bg": "ivory",
         "collection": "dresses",
+        "count": 4,
+        "bg": "ivory",
         "eyebrow": "Hand-picked",
         "heading": "The Edit",
         "subheading": "A few of our favourites to start your era.",
-        "count": 4,
         "cta_text": "Shop dresses"
       }
     },
     "ugc": {
       "type": "in-my-pc-era",
-      "settings": {
-        "bg": "cream",
-        "eyebrow": "#InMyPCEra",
-        "heading": "Styled by you",
-        "subheading": "Real girls, real eras. Tag us to be featured."
-      },
       "blocks": {
         "p1": {
-          "type": "post"
+          "type": "post",
+          "settings": {}
         },
         "p2": {
-          "type": "post"
+          "type": "post",
+          "settings": {}
         },
         "p3": {
-          "type": "post"
+          "type": "post",
+          "settings": {}
         },
         "p4": {
-          "type": "post"
+          "type": "post",
+          "settings": {}
         },
         "p5": {
-          "type": "post"
+          "type": "post",
+          "settings": {}
         }
       },
       "block_order": [
@@ -161,16 +169,16 @@
         "p3",
         "p4",
         "p5"
-      ]
+      ],
+      "settings": {
+        "bg": "cream",
+        "eyebrow": "#InMyPCEra",
+        "heading": "Styled by you",
+        "subheading": "Real girls, real eras. Tag us to be featured."
+      }
     },
     "reviews": {
       "type": "reviews",
-      "settings": {
-        "bg": "warm",
-        "eyebrow": "Loved by the era",
-        "heading": "She said it best",
-        "rating_line": "4.9 / 5 from 2,400+ reviews"
-      },
       "blocks": {
         "r1": {
           "type": "review",
@@ -201,13 +209,16 @@
         "r1",
         "r2",
         "r3"
-      ]
+      ],
+      "settings": {
+        "bg": "warm",
+        "eyebrow": "Loved by the era",
+        "heading": "She said it best",
+        "rating_line": "4.9 / 5 from 2,400+ reviews"
+      }
     },
     "trust": {
       "type": "trust-badges",
-      "settings": {
-        "bg": "cream"
-      },
       "blocks": {
         "t1": {
           "type": "badge",
@@ -247,7 +258,10 @@
         "t2",
         "t3",
         "t4"
-      ]
+      ],
+      "settings": {
+        "bg": "cream"
+      }
     }
   },
   "order": [
@@ -259,6 +273,7 @@
     "story",
     "the_edit",
     "ugc",
+    "reviews",
     "trust"
   ]
 }
