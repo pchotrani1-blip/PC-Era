@@ -48,14 +48,30 @@
     },
     "collection_list_TNUqcM": {
       "type": "collection-list",
+      "disabled": true,
       "name": "Collection list",
       "settings": {}
+    },
+    "collection_slider_3KLCdn": {
+      "type": "collection-slider",
+      "name": "Collection slider",
+      "settings": {
+        "collection": "new-arrivals",
+        "count": 9,
+        "bg": "cream",
+        "eyebrow": "Just landed",
+        "heading": "New In",
+        "subheading": "The latest to land in your era.",
+        "cta_text": "Shop new in",
+        "cta_link": ""
+      }
     }
   },
   "order": [
     "header",
     "hero_ARqBP4",
     "welcome_VXHbfK",
-    "collection_list_TNUqcM"
+    "collection_list_TNUqcM",
+    "collection_slider_3KLCdn"
   ]
 }
