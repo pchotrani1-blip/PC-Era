@@ -33,10 +33,29 @@
         "cta2_link": "",
         "est_text": "PC ERA — Est. 2026"
       }
+    },
+    "welcome_VXHbfK": {
+      "type": "welcome",
+      "name": "Welcome",
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "Welcome",
+        "heading": "Welcome to PC Era",
+        "body": "<p>Affordable luxury, made to dress every era of her. Soft, confident pieces for slow mornings, golden hours and every version of you — welcome to your era.</p>",
+        "cta_text": "",
+        "cta_link": ""
+      }
+    },
+    "collection_list_TNUqcM": {
+      "type": "collection-list",
+      "name": "Collection list",
+      "settings": {}
     }
   },
   "order": [
     "header",
-    "hero_ARqBP4"
+    "hero_ARqBP4",
+    "welcome_VXHbfK",
+    "collection_list_TNUqcM"
   ]
 }
