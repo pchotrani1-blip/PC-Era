@@ -30,14 +30,8 @@
         "eyebrow": "Welcome",
         "heading": "Welcome to PC Era",
         "body": "<p>Considered pieces for the woman becoming herself. Quiet luxury, soft silhouettes and fabrics made to live in — welcome to your era.</p>",
-        "cta_text": ""
-      }
-    },
-    "marquee": {
-      "type": "marquee",
-      "settings": {
-        "bg": "butter",
-        "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate"
+        "cta_text": "",
+        "cta_link": ""
       }
     },
     "new_in_top": {
@@ -53,6 +47,13 @@
         "cta_link": "shopify://collections/shop-all"
       }
     },
+    "marquee": {
+      "type": "marquee",
+      "settings": {
+        "bg": "butter",
+        "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate"
+      }
+    },
     "eras": {
       "type": "era-collections",
       "blocks": {
@@ -61,7 +62,7 @@
           "settings": {
             "kicker": "Main character era",
             "title": "Dresses",
-            "color": "#F1E2E0",
+            "color": "#f1e2e0",
             "link": "/collections/dresses"
           }
         },
@@ -70,7 +71,7 @@
           "settings": {
             "kicker": "Brunch era",
             "title": "Co-ord Sets",
-            "color": "#E0E5D8",
+            "color": "#e0e5d8",
             "link": "/collections/co-ord-sets"
           }
         },
@@ -79,7 +80,7 @@
           "settings": {
             "kicker": "Soft girl era",
             "title": "Tops",
-            "color": "#E7E2EC",
+            "color": "#e7e2ec",
             "link": "/collections/tops"
           }
         },
@@ -88,7 +89,7 @@
           "settings": {
             "kicker": "Corporate era",
             "title": "Trousers",
-            "color": "#E4DCCF",
+            "color": "#e4dccf",
             "link": "/collections/trousers"
           }
         },
@@ -97,7 +98,7 @@
           "settings": {
             "kicker": "Vacation era",
             "title": "Skirts",
-            "color": "#CFD9DE",
+            "color": "#cfd9de",
             "link": "/collections/skirts"
           }
         }
@@ -119,12 +120,14 @@
     "story": {
       "type": "editorial-split",
       "settings": {
+        "reverse": false,
         "bg": "warm",
         "eyebrow": "Our story",
         "heading": "In my PC Era",
         "body": "<p>Every girl moves through eras. The confident one. The soft one. The healing one. The main character one. PC Era exists to dress every version of her — so getting dressed feels like a moment, not an afterthought.</p>",
         "signature": "— Founded for the girl becoming herself.",
-        "cta_text": "Read our story"
+        "cta_text": "Read our story",
+        "cta_link": ""
       }
     },
     "the_edit": {
@@ -136,7 +139,8 @@
         "eyebrow": "Hand-picked",
         "heading": "The Edit",
         "subheading": "A few of our favourites to start your era.",
-        "cta_text": "Shop dresses"
+        "cta_text": "Shop dresses",
+        "cta_link": ""
       }
     },
     "ugc": {
@@ -144,23 +148,38 @@
       "blocks": {
         "p1": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": ""
+          }
         },
         "p2": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": ""
+          }
         },
         "p3": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": ""
+          }
         },
         "p4": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": ""
+          }
         },
         "p5": {
           "type": "post",
-          "settings": {}
+          "settings": {
+            "handle": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
@@ -214,7 +233,7 @@
         "bg": "warm",
         "eyebrow": "Loved by the era",
         "heading": "She said it best",
-        "rating_line": "4.9 / 5 from 2,400+ reviews"
+        "rating_line": "4.9 / 5"
       }
     },
     "trust": {
@@ -267,8 +286,8 @@
   "order": [
     "hero",
     "welcome",
-    "marquee",
     "new_in_top",
+    "marquee",
     "eras",
     "story",
     "the_edit",
