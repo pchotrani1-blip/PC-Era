@@ -289,17 +289,22 @@
         "bg": "cream"
       }
     },
-    "media_banner": {
-      "type": "media-banner",
+    "summer_duo": {
+      "type": "video-duo",
       "settings": {
-        "bg": "cream",
-        "ratio": "16 / 9"
+        "bg": "ivory",
+        "ratio": "3 / 4",
+        "eyebrow": "The Summer Edit",
+        "heading": "Summer Collection",
+        "text": "Soft silhouettes, golden-hour tones and pieces made for every era of your summer.",
+        "cta_text": "Shop now",
+        "cta_link": "shopify://collections/shop-all"
       }
     }
   },
   "order": [
     "hero",
-    "media_banner",
+    "summer_duo",
     "welcome",
     "new_in_top",
     "marquee",
