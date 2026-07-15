@@ -3,11 +3,15 @@
     "hero": {
       "type": "hero",
       "settings": {
-        "eyebrow": "Summer ’26 — Now arriving",
-        "heading": "The Era of Trend",
-        "subheading": "Affordable luxury, made to dress every version of her. Soft, confident, on holiday, and everywhere in between.",
-        "cta_text": "Shop new in",
-        "cta2_text": "Discover PC Era"
+        "eyebrow": "The Summer Edit — Vol. 26",
+        "heading": "Summer",
+        "heading_accent": "’26.",
+        "subheading": "Made for slow mornings, golden hours and every era of yours.",
+        "cta_text": "Shop collection",
+        "cta_link": "shopify://collections/shop-all",
+        "cta2_text": "Explore new arrivals",
+        "cta2_link": "shopify://collections/new-arrivals",
+        "est_text": "PC ERA — Est. 2026"
       }
     },
     "marquee": {

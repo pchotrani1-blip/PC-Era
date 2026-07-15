@@ -1,47 +1,55 @@
-{%- comment -%} PC ERA — Editorial hero {%- endcomment -%}
-<section class="hero {% if section.settings.light_text == false %}hero--light{% endif %}">
-  <div class="hero__media">
-    {%- if section.settings.video != blank -%}
-      {{ section.settings.video | video_tag: autoplay: true, loop: true, muted: true, playsinline: true, controls: false }}
-    {%- elsif section.settings.image != blank -%}
-      <img src="{{ section.settings.image | image_url: width: 2400 }}" alt="{{ section.settings.image.alt | escape }}" width="2400" height="1500" fetchpriority="high">
-    {%- else -%}
-      {{ 'lifestyle-1' | placeholder_svg_tag }}
-    {%- endif -%}
-  </div>
-  <div class="hero__scrim"></div>
+{%- comment -%} PC ERA — Editorial hero (Summer '26) {%- endcomment -%}
+<section class="hero-ed">
+  {%- if section.settings.image != blank -%}
+    <div class="hero-ed__photo">
+      <img src="{{ section.settings.image | image_url: width: 1800 }}" alt="{{ section.settings.image.alt | escape }}" width="1800" height="2000" fetchpriority="high">
+    </div>
+  {%- endif -%}
+
+  {%- if section.settings.est_text != blank -%}
+    <span class="hero-ed__est">{{ section.settings.est_text }}</span>
+  {%- endif -%}
+
   <div class="wrap">
-    <div class="hero__inner">
-      <span class="eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
-      <h1 data-reveal data-reveal-delay="0.08">{{ section.settings.heading }}</h1>
-      <p class="lead" data-reveal data-reveal-delay="0.16">{{ section.settings.subheading }}</p>
-      <div class="hero__cta" data-reveal data-reveal-delay="0.24">
+    <div class="hero-ed__inner">
+      {%- if section.settings.eyebrow != blank -%}
+        <span class="eyebrow hero-ed__eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+      {%- endif -%}
+      <h1 class="hero-ed__title" data-reveal data-reveal-delay="0.08">
+        <span class="hero-ed__title-main">{{ section.settings.heading }}</span>
+        {%- if section.settings.heading_accent != blank -%}
+          <span class="hero-ed__title-accent">{{ section.settings.heading_accent }}</span>
+        {%- endif -%}
+      </h1>
+      {%- if section.settings.subheading != blank -%}
+        <p class="hero-ed__lead" data-reveal data-reveal-delay="0.16">{{ section.settings.subheading }}</p>
+      {%- endif -%}
+      <div class="hero-ed__cta" data-reveal data-reveal-delay="0.24">
         {%- if section.settings.cta_text != blank -%}
-          <a href="{{ section.settings.cta_link }}" class="btn btn--light">{{ section.settings.cta_text }}</a>
+          <a href="{{ section.settings.cta_link }}" class="btn">{{ section.settings.cta_text }} <span aria-hidden="true">&#8599;</span></a>
         {%- endif -%}
         {%- if section.settings.cta2_text != blank -%}
-          <a href="{{ section.settings.cta2_link }}" class="btn btn--ghost" style="color:var(--ivory);border-color:rgba(252,250,244,.6)">{{ section.settings.cta2_text }}</a>
+          <a href="{{ section.settings.cta2_link }}" class="btn btn--ghost">{{ section.settings.cta2_text }}</a>
         {%- endif -%}
       </div>
     </div>
   </div>
-  <span class="scroll-cue">Scroll</span>
 </section>
 
 {% schema %}
 {
   "name": "Hero",
   "settings": [
-    { "type": "image_picker", "id": "image", "label": "Background image" },
-    { "type": "video", "id": "video", "label": "Background video (optional)" },
-    { "type": "checkbox", "id": "light_text", "label": "Light text", "default": true },
-    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Summer ’26 — Now arriving" },
-    { "type": "textarea", "id": "heading", "label": "Heading", "default": "The Era of Trend" },
-    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Affordable luxury made to dress every version of her. Soft, confident, on holiday, and everywhere in between." },
-    { "type": "text", "id": "cta_text", "label": "Primary button", "default": "Shop new in" },
+    { "type": "image_picker", "id": "image", "label": "Hero photo (right side)" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The Summer Edit — Vol. 26" },
+    { "type": "text", "id": "heading", "label": "Heading (main)", "default": "Summer" },
+    { "type": "text", "id": "heading_accent", "label": "Heading (accent, gold)", "default": "’26." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Made for slow mornings, golden hours and every era of yours." },
+    { "type": "text", "id": "cta_text", "label": "Primary button", "default": "Shop collection" },
     { "type": "url", "id": "cta_link", "label": "Primary link" },
-    { "type": "text", "id": "cta2_text", "label": "Secondary button", "default": "Discover PC Era" },
-    { "type": "url", "id": "cta2_link", "label": "Secondary link" }
+    { "type": "text", "id": "cta2_text", "label": "Secondary button", "default": "Explore new arrivals" },
+    { "type": "url", "id": "cta2_link", "label": "Secondary link" },
+    { "type": "text", "id": "est_text", "label": "Side text", "default": "PC ERA — Est. 2026" }
   ],
   "presets": [{ "name": "Hero" }]
 }
