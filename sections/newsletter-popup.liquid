@@ -1,0 +1,54 @@
+{%- comment -%} PC ERA — Newsletter popup {%- endcomment -%}
+{%- if section.settings.enabled -%}
+<div class="nl-popup" id="nlPopup" aria-hidden="true">
+  <div class="nl-popup__overlay" data-nlp-close></div>
+  <div class="nl-popup__card" role="dialog" aria-modal="true" aria-label="{{ section.settings.heading | escape }}">
+    <button class="nl-popup__close icon-btn" data-nlp-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
+    {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+    {%- if section.settings.heading != blank -%}<h3 class="h-display">{{ section.settings.heading | replace: 'Era', '<em class="accent-italic">Era</em>' }}</h3>{%- endif -%}
+    {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
+    {%- form 'customer', data-newsletter: true -%}
+      <input type="hidden" name="contact[tags]" value="newsletter,popup">
+      {%- if form.posted_successfully? -%}
+        <p class="nl-success">You're in — check your inbox.</p>
+      {%- else -%}
+        <div class="nl-field">
+          <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required aria-label="Email address">
+          <button type="submit">{{ section.settings.button }} <span aria-hidden="true">&#8599;</span></button>
+        </div>
+      {%- endif -%}
+    {%- endform -%}
+    <button type="button" class="nl-popup__dismiss" data-nlp-close>{{ section.settings.dismiss_text }}</button>
+  </div>
+</div>
+<script>
+(function(){
+  var KEY = 'pcera_nlp_dismissed';
+  var pop = document.getElementById('nlPopup');
+  if(!pop) return;
+  var delay = {{ section.settings.delay | default: 6 }} * 1000;
+  function open(){ pop.classList.add('is-open'); pop.setAttribute('aria-hidden','false'); }
+  function close(){ pop.classList.remove('is-open'); pop.setAttribute('aria-hidden','true'); try{ localStorage.setItem(KEY,'1'); }catch(e){} }
+  try{ if(localStorage.getItem(KEY)) return; }catch(e){}
+  setTimeout(open, delay);
+  pop.querySelectorAll('[data-nlp-close]').forEach(function(el){ el.addEventListener('click', close); });
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+})();
+</script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Newsletter popup",
+  "settings": [
+    { "type": "checkbox", "id": "enabled", "label": "Enable popup", "default": true },
+    { "type": "range", "id": "delay", "label": "Show after", "min": 0, "max": 30, "step": 1, "unit": "s", "default": 6 },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The newsletter" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "Join the Era." },
+    { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Early access to new drops, private sales and quiet inspiration — straight to your inbox." },
+    { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "you@email.com" },
+    { "type": "text", "id": "button", "label": "Button", "default": "Subscribe" },
+    { "type": "text", "id": "dismiss_text", "label": "Dismiss text", "default": "No thanks" }
+  ]
+}
+{% endschema %}

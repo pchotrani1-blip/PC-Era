@@ -1,0 +1,8 @@
+{
+  "sections": {
+    "main": {
+      "type": "size-chart"
+    }
+  },
+  "order": ["main"]
+}
