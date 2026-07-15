@@ -14,6 +14,17 @@
         "est_text": "PC ERA — Est. 2026"
       }
     },
+    "welcome": {
+      "type": "welcome",
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "Welcome",
+        "heading": "Welcome to PC Era",
+        "body": "<p>Affordable luxury, made to dress every era of her. Soft, confident pieces for slow mornings, golden hours and every version of you — welcome to your era.</p>",
+        "cta_text": "Shop the collection",
+        "cta_link": "shopify://collections/shop-all"
+      }
+    },
     "marquee": {
       "type": "marquee",
       "settings": { "bg": "butter", "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
@@ -79,5 +90,5 @@
       "block_order": ["t1", "t2", "t3", "t4"]
     }
   },
-  "order": ["hero", "marquee", "new_in_top", "eras", "story", "the_edit", "ugc", "trust"]
+  "order": ["hero", "welcome", "marquee", "new_in_top", "eras", "story", "the_edit", "ugc", "trust"]
 }

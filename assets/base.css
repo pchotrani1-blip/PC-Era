@@ -315,6 +315,11 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .hero-ed__lead { animation: heroReveal .7s var(--ease) .16s both; }
 .hero-ed__cta { animation: heroReveal .7s var(--ease) .24s both; }
 @keyframes heroReveal { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: none; } }
+
+/* Welcome */
+.welcome__title { margin-top: 1rem; }
+.welcome__body { margin-top: 1.4rem; }
+.welcome__cta { margin-top: 2rem; }
 @media (max-width: 900px) {
   .hero-ed__photo { width: 100%; opacity: .3; }
   .hero-ed__photo::before { background: linear-gradient(180deg, rgba(196,212,221,.15) 0%, #FBF4E4 90%); }
