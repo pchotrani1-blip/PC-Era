@@ -1,28 +1,43 @@
-{%- comment -%} PC ERA — Made for every era (collection tiles) {%- endcomment -%}
-<section class="section bg-{{ section.settings.bg }}">
+{%- comment -%} PC ERA — Made for every era (colour-block tiles, swipeable) {%- endcomment -%}
+<section class="section bg-{{ section.settings.bg }} era-sec">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="h-display">{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subheading }}</p>
+    <div class="na-slider__head">
+      <div class="na-slider__intro">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading | replace: 'every', '<em class="accent-italic">every</em>' }}</h2>{%- endif -%}
+        {%- if section.settings.subheading != blank -%}<p class="na-slider__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+      </div>
+      <div class="na-slider__nav">
+        <button type="button" class="na-arrow" aria-label="Previous" data-slide-prev>&#8592;</button>
+        <button type="button" class="na-arrow" aria-label="Next" data-slide-next>&#8594;</button>
+      </div>
     </div>
-    <div class="collection-tiles">
+
+    <div class="era-track" data-slider>
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link }}" class="collection-tile" data-reveal data-reveal-delay="{{ forloop.index0 | times: 0.06 }}" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            <img src="{{ block.settings.image | image_url: width: 800 }}" alt="{{ block.settings.title | escape }}" loading="lazy" width="800" height="1066">
-          {%- else -%}
-            {{ 'lifestyle-2' | placeholder_svg_tag }}
-          {%- endif -%}
-          <span class="collection-tile__label">
-            <span class="eyebrow" style="color:var(--butter)">{{ block.settings.kicker }}</span>
-            <h3>{{ block.settings.title }}</h3>
+        <a href="{{ block.settings.link }}" class="era-tile" style="background: {{ block.settings.color | default: '#EDE6D8' }}" {{ block.shopify_attributes }}>
+          <span class="era-tile__kicker">{{ block.settings.kicker }}</span>
+          <span class="era-tile__foot">
+            <span class="era-tile__title">{{ block.settings.title }}</span>
+            <span class="era-tile__shop">Shop the era <span aria-hidden="true">&#8594;</span></span>
           </span>
         </a>
       {%- endfor -%}
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var sec = document.currentScript.previousElementSibling;
+  if(!sec) return;
+  var track = sec.querySelector('[data-slider]');
+  if(!track) return;
+  function step(){ var it = track.querySelector('.era-tile'); return it ? it.getBoundingClientRect().width + 20 : 320; }
+  var p = sec.querySelector('[data-slide-prev]'), n = sec.querySelector('[data-slide-next]');
+  if(p) p.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+  if(n) n.addEventListener('click', function(){ track.scrollBy({left:step(), behavior:'smooth'}); });
+})();
+</script>
 
 {% schema %}
 {
@@ -41,9 +56,9 @@
       "type": "tile",
       "name": "Collection tile",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
         { "type": "text", "id": "kicker", "label": "Kicker", "default": "Vacation era" },
         { "type": "text", "id": "title", "label": "Title", "default": "Resort & Vacation" },
+        { "type": "color", "id": "color", "label": "Tile colour", "default": "#EDE6D8" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
@@ -51,9 +66,9 @@
   "presets": [{
     "name": "Era collections",
     "blocks": [
-      { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation" } },
-      { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses" } },
-      { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Matching Sets" } }
+      { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Resort & Vacation", "color": "#CFD9DE" } },
+      { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses", "color": "#F1E2E0" } },
+      { "type": "tile", "settings": { "kicker": "Off-duty", "title": "Matching Sets", "color": "#E0E5D8" } }
     ]
   }]
 }

@@ -26,23 +26,86 @@
     },
     "marquee": {
       "type": "marquee",
-      "settings": { "bg": "butter", "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
+      "settings": {
+        "bg": "butter",
+        "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate"
+      }
     },
     "new_in_top": {
       "type": "collection-slider",
-      "settings": { "bg": "cream", "collection": "shop-all", "count": 12, "eyebrow": "Just landed", "heading": "New In", "subheading": "The latest to land in your era — swipe through.", "cta_text": "Shop new in", "cta_link": "shopify://collections/shop-all" }
+      "settings": {
+        "bg": "cream",
+        "collection": "shop-all",
+        "count": 12,
+        "eyebrow": "Just landed",
+        "heading": "New In",
+        "subheading": "The latest to land in your era — swipe through.",
+        "cta_text": "Shop new in",
+        "cta_link": "shopify://collections/shop-all"
+      }
     },
     "eras": {
       "type": "era-collections",
-      "settings": { "bg": "ivory", "eyebrow": "Find your era", "heading": "Shop by category", "subheading": "Every era, every piece — find your next." },
-      "blocks": {
-        "b1": { "type": "tile", "settings": { "kicker": "Main character era", "title": "Dresses", "link": "/collections/dresses" } },
-        "b2": { "type": "tile", "settings": { "kicker": "Brunch era", "title": "Co-ord Sets", "link": "/collections/co-ord-sets" } },
-        "b3": { "type": "tile", "settings": { "kicker": "Soft girl era", "title": "Tops", "link": "/collections/tops" } },
-        "b4": { "type": "tile", "settings": { "kicker": "Corporate era", "title": "Trousers", "link": "/collections/trousers" } },
-        "b5": { "type": "tile", "settings": { "kicker": "Vacation era", "title": "Skirts", "link": "/collections/skirts" } }
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "Find your era",
+        "heading": "Made for every era",
+        "subheading": "Whichever version of her is showing up today."
       },
-      "block_order": ["b1", "b2", "b3", "b4", "b5"]
+      "blocks": {
+        "b1": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Main character era",
+            "title": "Dresses",
+            "link": "/collections/dresses",
+            "color": "#F1E2E0"
+          }
+        },
+        "b2": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Brunch era",
+            "title": "Co-ord Sets",
+            "link": "/collections/co-ord-sets",
+            "color": "#E0E5D8"
+          }
+        },
+        "b3": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Soft girl era",
+            "title": "Tops",
+            "link": "/collections/tops",
+            "color": "#E7E2EC"
+          }
+        },
+        "b4": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Corporate era",
+            "title": "Trousers",
+            "link": "/collections/trousers",
+            "color": "#E4DCCF"
+          }
+        },
+        "b5": {
+          "type": "tile",
+          "settings": {
+            "kicker": "Vacation era",
+            "title": "Skirts",
+            "link": "/collections/skirts",
+            "color": "#CFD9DE"
+          }
+        }
+      },
+      "block_order": [
+        "b1",
+        "b2",
+        "b3",
+        "b4",
+        "b5"
+      ]
     },
     "story": {
       "type": "editorial-split",
@@ -57,37 +120,145 @@
     },
     "the_edit": {
       "type": "featured-collection",
-      "settings": { "bg": "ivory", "collection": "dresses", "eyebrow": "Hand-picked", "heading": "The Edit", "subheading": "A few of our favourites to start your era.", "count": 4, "cta_text": "Shop dresses" }
+      "settings": {
+        "bg": "ivory",
+        "collection": "dresses",
+        "eyebrow": "Hand-picked",
+        "heading": "The Edit",
+        "subheading": "A few of our favourites to start your era.",
+        "count": 4,
+        "cta_text": "Shop dresses"
+      }
     },
     "ugc": {
       "type": "in-my-pc-era",
-      "settings": { "bg": "cream", "eyebrow": "#InMyPCEra", "heading": "Styled by you", "subheading": "Real girls, real eras. Tag us to be featured." },
-      "blocks": {
-        "p1": { "type": "post" }, "p2": { "type": "post" }, "p3": { "type": "post" }, "p4": { "type": "post" }, "p5": { "type": "post" }
+      "settings": {
+        "bg": "cream",
+        "eyebrow": "#InMyPCEra",
+        "heading": "Styled by you",
+        "subheading": "Real girls, real eras. Tag us to be featured."
       },
-      "block_order": ["p1", "p2", "p3", "p4", "p5"]
+      "blocks": {
+        "p1": {
+          "type": "post"
+        },
+        "p2": {
+          "type": "post"
+        },
+        "p3": {
+          "type": "post"
+        },
+        "p4": {
+          "type": "post"
+        },
+        "p5": {
+          "type": "post"
+        }
+      },
+      "block_order": [
+        "p1",
+        "p2",
+        "p3",
+        "p4",
+        "p5"
+      ]
     },
     "reviews": {
       "type": "reviews",
-      "settings": { "bg": "warm", "eyebrow": "Loved by the era", "heading": "She said it best", "rating_line": "4.9 / 5 from 2,400+ reviews" },
-      "blocks": {
-        "r1": { "type": "review", "settings": { "quote": "The quality genuinely feels designer. Wore the linen set to brunch and got asked where it's from all day.", "author": "Olivia R.", "detail": "Verified buyer" } },
-        "r2": { "type": "review", "settings": { "quote": "Finally a brand that looks like my Pinterest board. The fit is so flattering and the fabric is buttery.", "author": "Maya T.", "detail": "Verified buyer" } },
-        "r3": { "type": "review", "settings": { "quote": "Packaging alone made me feel like the main character. Will absolutely order again for my Europe trip.", "author": "Sienna L.", "detail": "Verified buyer" } }
+      "settings": {
+        "bg": "warm",
+        "eyebrow": "Loved by the era",
+        "heading": "She said it best",
+        "rating_line": "4.9 / 5 from 2,400+ reviews"
       },
-      "block_order": ["r1", "r2", "r3"]
+      "blocks": {
+        "r1": {
+          "type": "review",
+          "settings": {
+            "quote": "The quality genuinely feels designer. Wore the linen set to brunch and got asked where it's from all day.",
+            "author": "Olivia R.",
+            "detail": "Verified buyer"
+          }
+        },
+        "r2": {
+          "type": "review",
+          "settings": {
+            "quote": "Finally a brand that looks like my Pinterest board. The fit is so flattering and the fabric is buttery.",
+            "author": "Maya T.",
+            "detail": "Verified buyer"
+          }
+        },
+        "r3": {
+          "type": "review",
+          "settings": {
+            "quote": "Packaging alone made me feel like the main character. Will absolutely order again for my Europe trip.",
+            "author": "Sienna L.",
+            "detail": "Verified buyer"
+          }
+        }
+      },
+      "block_order": [
+        "r1",
+        "r2",
+        "r3"
+      ]
     },
     "trust": {
       "type": "trust-badges",
-      "settings": { "bg": "cream" },
-      "blocks": {
-        "t1": { "type": "badge", "settings": { "icon": "ship", "title": "Complimentary shipping", "text": "On orders over ₹2,500" } },
-        "t2": { "type": "badge", "settings": { "icon": "return", "title": "Easy 30-day returns", "text": "Changed your era? No problem" } },
-        "t3": { "type": "badge", "settings": { "icon": "leaf", "title": "Considered quality", "text": "Premium fabrics, fair pricing" } },
-        "t4": { "type": "badge", "settings": { "icon": "gift", "title": "Collectible packaging", "text": "Butter-yellow, gift-ready" } }
+      "settings": {
+        "bg": "cream"
       },
-      "block_order": ["t1", "t2", "t3", "t4"]
+      "blocks": {
+        "t1": {
+          "type": "badge",
+          "settings": {
+            "icon": "ship",
+            "title": "Complimentary shipping",
+            "text": "On orders over ₹2,500"
+          }
+        },
+        "t2": {
+          "type": "badge",
+          "settings": {
+            "icon": "return",
+            "title": "Easy 30-day returns",
+            "text": "Changed your era? No problem"
+          }
+        },
+        "t3": {
+          "type": "badge",
+          "settings": {
+            "icon": "leaf",
+            "title": "Considered quality",
+            "text": "Premium fabrics, fair pricing"
+          }
+        },
+        "t4": {
+          "type": "badge",
+          "settings": {
+            "icon": "gift",
+            "title": "Collectible packaging",
+            "text": "Butter-yellow, gift-ready"
+          }
+        }
+      },
+      "block_order": [
+        "t1",
+        "t2",
+        "t3",
+        "t4"
+      ]
     }
   },
-  "order": ["hero", "welcome", "marquee", "new_in_top", "eras", "story", "the_edit", "ugc", "trust"]
+  "order": [
+    "hero",
+    "welcome",
+    "marquee",
+    "new_in_top",
+    "eras",
+    "story",
+    "the_edit",
+    "ugc",
+    "trust"
+  ]
 }
