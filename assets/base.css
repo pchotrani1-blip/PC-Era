@@ -217,7 +217,7 @@ h3 { font-size: var(--fs-h3); }
 .header-bar { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding-block: .9rem; gap: 1rem; }
 .header-left { display: flex; align-items: center; gap: .9rem; justify-self: start; }
 .header-left a { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; }
-.header-nav { display: flex; gap: var(--s-4); justify-content: center; border-top: 1px solid var(--line); padding-top: .85rem; }
+.header-nav { display: flex; align-items: center; gap: 1.35rem; }
 .header-nav a { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; position: relative; padding-block: .35rem; }
 .header-nav a::after { content:""; position:absolute; left:0; bottom:0; height:1px; width:100%; background: var(--ink); transform: scaleX(0); transform-origin:left; transition: transform var(--dur-1) var(--ease); }
 .header-nav a:hover::after { transform: scaleX(1); }
@@ -237,6 +237,7 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .brand-wordmark { justify-self: center; display: inline-flex; align-items: center; }
 .brand-wordmark img { height: 66px; width: auto; object-fit: contain; }
 .header-utils { display: flex; gap: var(--s-2); justify-content: flex-end; align-items: center; }
+.header-login { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; padding: 0; }
 .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; transition: color var(--dur-1) var(--ease); }
 .icon-btn:hover { color: var(--accent-ink); }
 .cart-count { position: absolute; top: 4px; right: 2px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--ink); color: var(--ivory); font-size: 10px; line-height: 16px; text-align: center; font-family: var(--font-sans); }
