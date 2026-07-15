@@ -1,0 +1,66 @@
+{%- comment -%} PC ERA — Collection slider (swipeable) {%- endcomment -%}
+<section class="section bg-{{ section.settings.bg }} na-slider">
+  <div class="wrap">
+    <div class="na-slider__head">
+      <div class="na-slider__intro">
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading }}</h2>{%- endif -%}
+        {%- if section.settings.subheading != blank -%}<p class="na-slider__sub">{{ section.settings.subheading }}</p>{%- endif -%}
+      </div>
+      <div class="na-slider__nav">
+        <button type="button" class="na-arrow" aria-label="Previous" data-slide-prev>&#8592;</button>
+        <button type="button" class="na-arrow" aria-label="Next" data-slide-next>&#8594;</button>
+      </div>
+    </div>
+
+    {%- assign coll = collections[section.settings.collection] -%}
+    <div class="na-slider__track" data-slider>
+      {%- if coll.products.size > 0 -%}
+        {%- for product in coll.products limit: section.settings.count -%}
+          <div class="na-slider__item">{% render 'product-card', product: product %}</div>
+        {%- endfor -%}
+      {%- else -%}
+        {%- for i in (1..6) -%}
+          <div class="na-slider__item">
+            <article class="product-card"><div class="product-card__media">{{ 'product-1' | placeholder_svg_tag: 'placeholder' }}</div><div class="product-card__info"><span class="product-card__title">Sample piece</span></div></article>
+          </div>
+        {%- endfor -%}
+      {%- endif -%}
+    </div>
+
+    {%- if section.settings.cta_text != blank -%}
+      <div class="text-center mt-4"><a href="{{ section.settings.cta_link | default: coll.url }}" class="btn btn--ghost">{{ section.settings.cta_text }}</a></div>
+    {%- endif -%}
+  </div>
+</section>
+<script>
+(function(){
+  var sec = document.currentScript.previousElementSibling;
+  if(!sec) return;
+  var track = sec.querySelector('[data-slider]');
+  if(!track) return;
+  function step(){ var it = track.querySelector('.na-slider__item'); return it ? it.getBoundingClientRect().width + 20 : 300; }
+  var p = sec.querySelector('[data-slide-prev]'), n = sec.querySelector('[data-slide-next]');
+  if(p) p.addEventListener('click', function(){ track.scrollBy({left:-step(), behavior:'smooth'}); });
+  if(n) n.addEventListener('click', function(){ track.scrollBy({left:step(), behavior:'smooth'}); });
+})();
+</script>
+
+{% schema %}
+{
+  "name": "Collection slider",
+  "settings": [
+    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "range", "id": "count", "label": "Products", "min": 4, "max": 16, "step": 1, "default": 12 },
+    { "type": "select", "id": "bg", "label": "Background", "options": [
+      { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }, { "value": "butter", "label": "Butter" }
+    ], "default": "cream" },
+    { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Just landed" },
+    { "type": "text", "id": "heading", "label": "Heading", "default": "New In" },
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "The latest to land in your era." },
+    { "type": "text", "id": "cta_text", "label": "Button", "default": "Shop new in" },
+    { "type": "url", "id": "cta_link", "label": "Button link" }
+  ],
+  "presets": [{ "name": "Collection slider" }]
+}
+{% endschema %}

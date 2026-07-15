@@ -29,8 +29,8 @@
       "settings": { "bg": "butter", "phrases": "Confident, Soft girl, Vacation, Main character, Brunch, Healing, Date night, Corporate" }
     },
     "new_in_top": {
-      "type": "featured-collection",
-      "settings": { "bg": "cream", "collection": "new-arrivals", "eyebrow": "Just landed", "heading": "New In", "subheading": "The first chapter of PC Era.", "count": 4, "cta_text": "Shop new in" }
+      "type": "collection-slider",
+      "settings": { "bg": "cream", "collection": "shop-all", "count": 12, "eyebrow": "Just landed", "heading": "New In", "subheading": "The latest to land in your era — swipe through.", "cta_text": "Shop new in", "cta_link": "shopify://collections/shop-all" }
     },
     "eras": {
       "type": "era-collections",
