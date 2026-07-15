@@ -149,14 +149,15 @@
         "p1": {
           "type": "post",
           "settings": {
+            "embed_url": "https://www.instagram.com/reel/Daj9UNQKSW3/",
             "handle": "",
-            "link": "",
-            "embed_url": "https://www.instagram.com/reel/Daj9UNQKSW3/"
+            "link": ""
           }
         },
         "p2": {
           "type": "post",
           "settings": {
+            "embed_url": "",
             "handle": "",
             "link": ""
           }
@@ -164,6 +165,7 @@
         "p3": {
           "type": "post",
           "settings": {
+            "embed_url": "",
             "handle": "",
             "link": ""
           }
@@ -171,6 +173,7 @@
         "p4": {
           "type": "post",
           "settings": {
+            "embed_url": "",
             "handle": "",
             "link": ""
           }
@@ -178,6 +181,7 @@
         "p5": {
           "type": "post",
           "settings": {
+            "embed_url": "",
             "handle": "",
             "link": ""
           }
@@ -193,8 +197,9 @@
       "settings": {
         "bg": "cream",
         "eyebrow": "#InMyPCEra",
-        "heading": "Styled by you",
-        "subheading": "Real girls, real eras. Tag us to be featured."
+        "heading": "Our Latest On Instagram",
+        "subheading": "Real girls, real eras. Tag us to be featured.",
+        "feed_embed": ""
       }
     },
     "reviews": {
