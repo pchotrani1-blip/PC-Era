@@ -48,7 +48,7 @@
     "name": "Social",
     "settings": [
       { "type": "text", "id": "social_instagram", "label": "Instagram", "default": "https://instagram.com/wearpcera" },
-      { "type": "text", "id": "social_tiktok", "label": "TikTok", "default": "https://tiktok.com/@wearpcera" },
+      { "type": "text", "id": "social_facebook", "label": "Facebook", "default": "https://facebook.com/wearpcera" },
       { "type": "text", "id": "social_pinterest", "label": "Pinterest", "default": "https://pinterest.com/wearpcera" }
     ]
   }
