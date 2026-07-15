@@ -237,7 +237,7 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .brand-wordmark { justify-self: center; display: inline-flex; align-items: center; }
 .brand-wordmark img { height: 66px; width: auto; object-fit: contain; }
 .header-utils { display: flex; gap: var(--s-2); justify-content: flex-end; align-items: center; }
-.header-login { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; padding: 0; }
+.header-nav--right { margin-right: .5rem; }
 .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; transition: color var(--dur-1) var(--ease); }
 .icon-btn:hover { color: var(--accent-ink); }
 .cart-count { position: absolute; top: 4px; right: 2px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--ink); color: var(--ivory); font-size: 10px; line-height: 16px; text-align: center; font-family: var(--font-sans); }

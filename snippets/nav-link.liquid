@@ -1,0 +1,13 @@
+{%- comment -%} Renders one primary-nav link; dropdown when it has children. Param: link {%- endcomment -%}
+{%- if link.links.size > 0 -%}
+  <details class="nav-group">
+    <summary>{{ link.title }}<span class="nav-plus" aria-hidden="true"></span></summary>
+    <div class="nav-submenu">
+      {%- for child in link.links -%}
+        <a href="{{ child.url }}"{% if child.current %} aria-current="page"{% endif %}>{{ child.title }}</a>
+      {%- endfor -%}
+    </div>
+  </details>
+{%- else -%}
+  <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+{%- endif -%}
