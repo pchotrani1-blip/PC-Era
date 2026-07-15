@@ -1,18 +1,67 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "footer",
   "name": "Footer group",
   "sections": {
-    "newsletter": { "type": "newsletter", "settings": {} },
+    "newsletter": {
+      "type": "newsletter",
+      "settings": {
+        "bg": "butter",
+        "eyebrow": "Join the era",
+        "heading": "Subscribe to our",
+        "subheading": "Be first to new arrivals, restocks and private edits. No noise — only the good stuff.",
+        "placeholder": "Your email",
+        "button": "Join",
+        "note": "By subscribing you agree to receive PC Era emails. Unsubscribe anytime."
+      }
+    },
     "footer": {
       "type": "footer",
       "blocks": {
-        "shop": { "type": "menu", "settings": { "heading": "Shop", "menu": "footer-shop" } },
-        "help": { "type": "menu", "settings": { "heading": "Help", "menu": "footer-help" } },
-        "house": { "type": "menu", "settings": { "heading": "House", "menu": "footer-house" } }
+        "shop": {
+          "type": "menu",
+          "settings": {
+            "heading": "Shop",
+            "menu": ""
+          }
+        },
+        "help": {
+          "type": "menu",
+          "settings": {
+            "heading": "Help",
+            "menu": ""
+          }
+        },
+        "house": {
+          "type": "menu",
+          "settings": {
+            "heading": "House",
+            "menu": ""
+          }
+        }
       },
-      "block_order": ["shop", "help", "house"],
-      "settings": {}
+      "block_order": [
+        "shop",
+        "help",
+        "house"
+      ],
+      "settings": {
+        "tagline": "",
+        "email": "Wearpcera@gmail.com",
+        "phone": "99901 26117"
+      }
     }
   },
-  "order": ["newsletter", "footer"]
+  "order": [
+    "newsletter",
+    "footer"
+  ]
 }

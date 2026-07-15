@@ -1,3 +1,12 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
 {
   "type": "header",
   "name": "Header group",
@@ -5,10 +14,29 @@
     "header": {
       "type": "header",
       "settings": {
-        "announcement": "Summer '26 now live — Sign up to our newsletter to enter this era",
-        "menu": "main-menu"
+        "menu": "main-menu",
+        "announcement": "Summer '26 now live — Sign up to our newsletter to enter this era"
+      }
+    },
+    "hero_ARqBP4": {
+      "type": "hero",
+      "name": "Hero",
+      "settings": {
+        "image": "shopify://shop_images/photo-1539008835657-9e8e9680c956.jpg",
+        "eyebrow": "The Summer Edit — Vol. 26",
+        "heading": "Summer",
+        "heading_accent": "’26.",
+        "subheading": "Made for slow mornings, golden hours and every era of yours.",
+        "cta_text": "Shop collection",
+        "cta_link": "",
+        "cta2_text": "Explore new arrivals",
+        "cta2_link": "",
+        "est_text": "PC ERA — Est. 2026"
       }
     }
   },
-  "order": ["header"]
+  "order": [
+    "header",
+    "hero_ARqBP4"
+  ]
 }
