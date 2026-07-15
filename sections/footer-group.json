@@ -14,13 +14,14 @@
     "newsletter": {
       "type": "newsletter",
       "settings": {
-        "bg": "butter",
-        "eyebrow": "Join the era",
-        "heading": "Subscribe to our Newsletter to enter this era❤️",
-        "subheading": "Be first to new arrivals, restocks and private edits. No noise — only the good stuff.",
-        "placeholder": "Your email",
-        "button": "Join",
-        "note": "By subscribing you agree to receive PC Era emails. Unsubscribe anytime."
+        "bg": "warm",
+        "eyebrow": "The newsletter",
+        "heading": "Join the Era.",
+        "subheading": "Receive early access to new drops, private sales and moments of quiet inspiration. Nothing more.",
+        "email_label": "Your email",
+        "placeholder": "you@email.com",
+        "button": "Subscribe",
+        "note": "By subscribing, you agree to our privacy policy. Unsubscribe anytime."
       }
     },
     "footer": {
@@ -30,21 +31,21 @@
           "type": "menu",
           "settings": {
             "heading": "Shop",
-            "menu": ""
+            "menu": "footer-shop"
           }
         },
         "help": {
           "type": "menu",
           "settings": {
             "heading": "Help",
-            "menu": ""
+            "menu": "footer-help"
           }
         },
         "house": {
           "type": "menu",
           "settings": {
-            "heading": "House",
-            "menu": ""
+            "heading": "Company",
+            "menu": "footer-house"
           }
         }
       },
