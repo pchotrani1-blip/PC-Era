@@ -343,6 +343,10 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .era-tile__title { display: block; font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 2.6vw, 2.5rem); line-height: 1.05; }
 .era-tile__shop { display: inline-block; margin-top: 1rem; font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
 @media (max-width: 600px) { .era-sec .na-slider__nav { display: none; } .era-tile { width: 74vw; } }
+
+/* Instagram embeds */
+.ig-embeds { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
+.ig-embeds .instagram-media { flex: 0 1 328px; min-width: 300px; margin: 0 !important; }
 @media (max-width: 900px) {
   .hero-ed__photo { width: 100%; opacity: .3; }
   .hero-ed__photo::before { background: linear-gradient(180deg, rgba(196,212,221,.15) 0%, #FBF4E4 90%); }

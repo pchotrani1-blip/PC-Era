@@ -1,55 +1,75 @@
-{%- comment -%} PC ERA — In My PC Era (UGC / community grid) {%- endcomment -%}
+{%- comment -%} PC ERA — In My PC Era (Instagram posts / reels) {%- endcomment -%}
+{%- assign has_embed = false -%}
+{%- for block in section.blocks -%}
+  {%- if block.settings.embed_url != blank -%}{%- assign has_embed = true -%}{%- endif -%}
+{%- endfor -%}
 <section class="section bg-{{ section.settings.bg }}">
   <div class="wrap">
-    <div class="section-head" data-reveal>
-      <span class="eyebrow">{{ section.settings.eyebrow }}</span>
-      <h2 class="h-display">{{ section.settings.heading }}</h2>
-      <p>{{ section.settings.subheading }}</p>
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading }}</h2>{%- endif -%}
+      {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
     </div>
-    <div class="ugc-grid" data-reveal>
-      {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link | default: settings.social_instagram }}" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
-          {%- if block.settings.image != blank -%}
-            <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.handle | default: 'PC Era community' | escape }}" loading="lazy" width="500" height="500">
-          {%- else -%}
-            {{ 'lifestyle-2' | placeholder_svg_tag }}
+
+    {%- if has_embed -%}
+      <div class="ig-embeds">
+        {%- for block in section.blocks -%}
+          {%- if block.settings.embed_url != blank -%}
+            <blockquote class="instagram-media" data-instgrm-permalink="{{ block.settings.embed_url }}" data-instgrm-version="14" {{ block.shopify_attributes }}>
+              <a href="{{ block.settings.embed_url }}" target="_blank" rel="noopener">View this post on Instagram</a>
+            </blockquote>
           {%- endif -%}
-        </a>
-      {%- endfor -%}
-    </div>
-    <div class="text-center mt-4" data-reveal>
-      <a href="{{ settings.social_instagram }}" class="link-underline">Tag @wearpcera · #InMyPCEra</a>
+        {%- endfor -%}
+      </div>
+    {%- else -%}
+      <div class="ugc-grid">
+        {%- for block in section.blocks -%}
+          <a href="{{ block.settings.link | default: settings.social_instagram }}" target="_blank" rel="noopener" {{ block.shopify_attributes }}>
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 500 }}" alt="{{ block.settings.handle | default: 'PC Era community' | escape }}" loading="lazy" width="500" height="500">
+            {%- else -%}
+              {{ 'lifestyle-2' | placeholder_svg_tag }}
+            {%- endif -%}
+          </a>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="text-center mt-4">
+      <a href="{{ settings.social_instagram }}" target="_blank" rel="noopener" class="btn btn--ghost">Follow @wearpcera</a>
     </div>
   </div>
 </section>
+{%- if has_embed -%}<script async src="//www.instagram.com/embed.js"></script>{%- endif -%}
 
 {% schema %}
 {
   "name": "In My PC Era",
-  "max_blocks": 10,
+  "max_blocks": 12,
   "settings": [
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "ivory", "label": "Ivory" }, { "value": "cream", "label": "Cream" }
     ], "default": "ivory" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "#InMyPCEra" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Styled by you" },
-    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real girls, real eras. Tag us to be featured." }
+    { "type": "text", "id": "subheading", "label": "Subheading", "default": "Real girls, real eras. Follow along on Instagram." }
   ],
   "blocks": [
     {
       "type": "post",
-      "name": "Post",
+      "name": "Instagram post / reel",
       "settings": [
-        { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "handle", "label": "Handle / caption" },
-        { "type": "url", "id": "link", "label": "Link" }
+        { "type": "url", "id": "embed_url", "label": "Instagram post / reel link", "info": "Paste the link to a post or reel (e.g. https://www.instagram.com/reel/XXXXXXXX/). Shows the real Instagram post." },
+        { "type": "image_picker", "id": "image", "label": "Image (fallback if no link above)" },
+        { "type": "text", "id": "handle", "label": "Caption / handle" },
+        { "type": "url", "id": "link", "label": "Image link" }
       ]
     }
   ],
   "presets": [{
     "name": "In My PC Era",
     "blocks": [
-      { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }
+      { "type": "post" }, { "type": "post" }, { "type": "post" }, { "type": "post" }
     ]
   }]
 }
