@@ -335,15 +335,14 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 
 /* Era colour-block tiles */
 .accent-italic { font-family: var(--font-italic); font-style: italic; color: var(--champagne); }
-.era-sec .na-slider__nav { display: none; }
-.era-track { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.25rem; }
-.era-tile { min-height: clamp(320px, 32vw, 460px); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.5rem, 2.4vw, 2.2rem); border-radius: var(--radius); color: var(--ink); text-decoration: none; transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease); }
+.era-track { display: flex; gap: 1.25rem; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; padding-bottom: .5rem; scrollbar-width: none; }
+.era-track::-webkit-scrollbar { display: none; }
+.era-tile { flex: 0 0 auto; width: clamp(260px, 31vw, 380px); scroll-snap-align: start; min-height: clamp(360px, 40vw, 500px); display: flex; flex-direction: column; justify-content: space-between; padding: clamp(1.5rem, 2.4vw, 2.2rem); border-radius: var(--radius); color: var(--ink); text-decoration: none; transition: transform var(--dur-2) var(--ease), box-shadow var(--dur-2) var(--ease); }
 .era-tile:hover { transform: translateY(-4px); box-shadow: 0 18px 40px rgba(34,34,34,.1); }
 .era-tile__kicker { font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; color: var(--ink-soft); }
 .era-tile__title { display: block; font-family: var(--font-serif); font-weight: 500; font-size: clamp(1.8rem, 2.6vw, 2.5rem); line-height: 1.05; }
 .era-tile__shop { display: inline-block; margin-top: 1rem; font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
-@media (max-width: 700px) { .era-track { grid-template-columns: repeat(2, 1fr); } }
-@media (max-width: 440px) { .era-track { grid-template-columns: 1fr; } }
+@media (max-width: 600px) { .era-sec .na-slider__nav { display: none; } .era-tile { width: 74vw; } }
 @media (max-width: 900px) {
   .hero-ed__photo { width: 100%; opacity: .3; }
   .hero-ed__photo::before { background: linear-gradient(180deg, rgba(196,212,221,.15) 0%, #FBF4E4 90%); }
