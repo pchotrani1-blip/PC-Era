@@ -1,6 +1,15 @@
 {%- comment -%} PC ERA — Header {%- endcomment -%}
 {%- if section.settings.announcement != blank -%}
-  <div class="announcement">{{ section.settings.announcement }}</div>
+  {%- capture ann_heart -%}<svg class="announcement__heart" viewBox="0 0 24 24" width="13" height="13" role="img" aria-hidden="true"><path fill="currentColor" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>{%- endcapture -%}
+  <div class="announcement">
+    <span class="announcement__sr">{{ section.settings.announcement }}</span>
+    <div class="announcement__track" aria-hidden="true">
+      {%- for i in (1..8) -%}
+        <span class="announcement__item">{{ section.settings.announcement }}</span>
+        <span class="announcement__sep">{{ ann_heart }}</span>
+      {%- endfor -%}
+    </div>
+  </div>
 {%- endif -%}
 
 <header class="site-header">
@@ -44,7 +53,7 @@
   "settings": [
     { "type": "image_picker", "id": "logo", "label": "Logo" },
     { "type": "link_list", "id": "menu", "label": "Menu", "default": "main-menu" },
-    { "type": "text", "id": "announcement", "label": "Announcement bar", "default": "Complimentary shipping over ₹2,500 · The Era of Trend" }
+    { "type": "text", "id": "announcement", "label": "Announcement bar", "default": "Summer '26 now live — Sign up to our newsletter to enter this era" }
   ]
 }
 {% endschema %}

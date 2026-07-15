@@ -227,7 +227,15 @@ h3 { font-size: var(--fs-h3); }
 .icon-btn { display: inline-flex; align-items: center; justify-content: center; width: 40px; height: 40px; position: relative; transition: color var(--dur-1) var(--ease); }
 .icon-btn:hover { color: var(--accent-ink); }
 .cart-count { position: absolute; top: 4px; right: 2px; min-width: 16px; height: 16px; padding: 0 4px; border-radius: 999px; background: var(--ink); color: var(--ivory); font-size: 10px; line-height: 16px; text-align: center; font-family: var(--font-sans); }
-.announcement { background: var(--ink); color: var(--ivory); text-align: center; font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; padding: .55rem 1rem; }
+.announcement { background: var(--butter); color: #fff; overflow: hidden; padding: .55rem 0; }
+.announcement__sr { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.announcement__track { display: inline-flex; align-items: center; gap: 1.5rem; white-space: nowrap; animation: announcement 34s linear infinite; will-change: transform; }
+.announcement:hover .announcement__track { animation-play-state: paused; }
+.announcement__item { font-size: var(--fs-xs); letter-spacing: var(--tracking-wide); text-transform: uppercase; }
+.announcement__sep { display: inline-flex; align-items: center; color: #fff; }
+.announcement__heart { display: block; }
+@keyframes announcement { to { transform: translateX(-50%); } }
+@media (prefers-reduced-motion: reduce) { .announcement__track { animation: none; } }
 .nav-toggle { display: none; }
 
 /* -----------------------------------------------------------
