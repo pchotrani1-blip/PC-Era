@@ -13,18 +13,18 @@
   <div class="wrap">
     <div class="hero-ed__inner">
       {%- if section.settings.eyebrow != blank -%}
-        <span class="eyebrow hero-ed__eyebrow" data-reveal>{{ section.settings.eyebrow }}</span>
+        <span class="eyebrow hero-ed__eyebrow">{{ section.settings.eyebrow }}</span>
       {%- endif -%}
-      <h1 class="hero-ed__title" data-reveal data-reveal-delay="0.08">
+      <h1 class="hero-ed__title">
         <span class="hero-ed__title-main">{{ section.settings.heading }}</span>
         {%- if section.settings.heading_accent != blank -%}
           <span class="hero-ed__title-accent">{{ section.settings.heading_accent }}</span>
         {%- endif -%}
       </h1>
       {%- if section.settings.subheading != blank -%}
-        <p class="hero-ed__lead" data-reveal data-reveal-delay="0.16">{{ section.settings.subheading }}</p>
+        <p class="hero-ed__lead">{{ section.settings.subheading }}</p>
       {%- endif -%}
-      <div class="hero-ed__cta" data-reveal data-reveal-delay="0.24">
+      <div class="hero-ed__cta">
         {%- if section.settings.cta_text != blank -%}
           <a href="{{ section.settings.cta_link }}" class="btn">{{ section.settings.cta_text }} <span aria-hidden="true">&#8599;</span></a>
         {%- endif -%}
