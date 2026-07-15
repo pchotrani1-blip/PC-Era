@@ -37,7 +37,7 @@
           {%- for link in menu_links offset: nav_half -%}{% render 'nav-link', link: link %}{%- endfor -%}
         </nav>
         <a href="{{ routes.search_url }}" class="icon-btn" aria-label="{{ 'accessibility.search' | t }}">{% render 'icon', name: 'search' %}</a>
-        <a href="{{ routes.account_url }}" class="icon-btn" aria-label="Account">{% render 'icon', name: 'account' %}</a>
+        <a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}" class="icon-btn" aria-label="{% if customer %}Account{% else %}Log in{% endif %}">{% render 'icon', name: 'account' %}</a>
         <a href="{{ routes.account_url }}#wishlist" class="icon-btn" aria-label="{{ 'accessibility.wishlist' | t }}">
           {% render 'icon', name: 'heart' %}<span class="cart-count" data-wish-count>0</span>
         </a>
