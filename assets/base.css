@@ -221,6 +221,19 @@ h3 { font-size: var(--fs-h3); }
 .header-nav a { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; position: relative; padding-block: .35rem; }
 .header-nav a::after { content:""; position:absolute; left:0; bottom:0; height:1px; width:100%; background: var(--ink); transform: scaleX(0); transform-origin:left; transition: transform var(--dur-1) var(--ease); }
 .header-nav a:hover::after { transform: scaleX(1); }
+/* Nav dropdown (desktop) + shared plus icon */
+.nav-plus { position: relative; display: inline-block; width: 9px; height: 9px; margin-left: .1rem; flex: none; }
+.nav-plus::before, .nav-plus::after { content: ""; position: absolute; background: currentColor; transition: transform var(--dur-1) var(--ease); }
+.nav-plus::before { left: 0; top: 4px; width: 9px; height: 1px; }
+.nav-plus::after { left: 4px; top: 0; width: 1px; height: 9px; }
+details[open] > summary .nav-plus::after { transform: scaleY(0); }
+.header-nav .nav-group { position: relative; }
+.header-nav summary { list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: .4rem; font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; padding-block: .35rem; }
+.header-nav summary::-webkit-details-marker { display: none; }
+.header-nav .nav-submenu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%); min-width: 190px; background: var(--cream); border: 1px solid var(--line); border-radius: var(--radius); padding: .4rem 0; display: grid; z-index: 60; box-shadow: 0 12px 34px rgba(34,34,34,.1); }
+.header-nav .nav-submenu a { padding: .5rem 1.2rem; font-size: var(--fs-xs); letter-spacing: var(--tracking-mid); text-transform: uppercase; }
+.header-nav .nav-submenu a::after { display: none; }
+.header-nav .nav-submenu a:hover { background: var(--bg-warm); }
 .brand-wordmark { justify-self: center; display: inline-flex; align-items: center; }
 .brand-wordmark img { height: 66px; width: auto; object-fit: contain; }
 .header-utils { display: flex; gap: var(--s-2); justify-content: flex-end; align-items: center; }
@@ -486,3 +499,10 @@ h3 { font-size: var(--fs-h3); }
 .mobile-nav.is-open .mobile-nav__overlay { opacity:1; }
 .mobile-nav.is-open .mobile-nav__panel { transform:none; }
 .mobile-nav a { font-family: var(--font-serif); font-size: 1.5rem; padding-block: .4rem; border-bottom: 1px solid var(--line-soft); }
+.mobile-nav .m-nav-group summary { list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between; font-family: var(--font-serif); font-size: 1.5rem; padding-block: .4rem; border-bottom: 1px solid var(--line-soft); }
+.mobile-nav .m-nav-group summary::-webkit-details-marker { display: none; }
+.mobile-nav .m-nav-group .nav-plus { width: 14px; height: 14px; }
+.mobile-nav .m-nav-group .nav-plus::before { top: 6px; width: 14px; }
+.mobile-nav .m-nav-group .nav-plus::after { left: 6px; height: 14px; }
+.mobile-nav .m-nav-sub { display: grid; padding: .1rem 0 .5rem .9rem; }
+.mobile-nav .m-nav-sub a { font-size: 1.1rem; border-bottom: none; padding-block: .3rem; opacity: .85; }

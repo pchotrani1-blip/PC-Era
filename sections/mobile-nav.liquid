@@ -7,7 +7,18 @@
       <button class="icon-btn" data-drawer-close aria-label="{{ 'accessibility.close' | t }}">{% render 'icon', name: 'close' %}</button>
     </div>
     {%- for link in linklists[section.settings.menu].links -%}
-      <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- if link.links.size > 0 -%}
+        <details class="m-nav-group">
+          <summary>{{ link.title }}<span class="nav-plus" aria-hidden="true"></span></summary>
+          <div class="m-nav-sub">
+            {%- for child in link.links -%}
+              <a href="{{ child.url }}">{{ child.title }}</a>
+            {%- endfor -%}
+          </div>
+        </details>
+      {%- else -%}
+        <a href="{{ link.url }}">{{ link.title }}</a>
+      {%- endif -%}
     {%- endfor -%}
     <div style="margin-top:auto;display:flex;gap:1.2rem;padding-top:2rem">
       <a href="{{ settings.social_instagram }}" aria-label="Instagram">{% render 'icon', name: 'instagram' %}</a>
