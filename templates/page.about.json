@@ -14,9 +14,13 @@
       "settings": {
         "eyebrow": "Our story",
         "heading": "In my PC Era",
+        "heading_accent": "’26.",
         "subheading": "An affordable luxury house built for every version of her.",
         "cta_text": "Shop the collections",
-        "cta2_text": ""
+        "cta_link": "",
+        "cta2_text": "",
+        "cta2_link": "",
+        "est_text": "PC ERA — Est. 2026"
       }
     },
     "intro": {
@@ -26,18 +30,23 @@
         "bg": "cream",
         "eyebrow": "Why we started",
         "heading": "Fashion shouldn't only be saved for occasions",
-        "body": "<p>PC Era began with a simple belief: every girl moves through different eras of her life — and she deserves to feel elevated in all of them. The confident era. The soft girl era. The vacation era. The healing era. The main character era. We were tired of choosing between clothes that looked designer and clothes we could actually afford. So we built the brand we wished existed.</p>"
+        "body": "<p>PC Era began with a simple belief: every girl moves through different eras of her life — and she deserves to feel elevated in all of them. The confident era. The soft girl era. The vacation era. The healing era. The main character era. We were tired of choosing between clothes that looked designer and clothes we could actually afford. So we built the brand we wished existed.</p>",
+        "cta_text": "",
+        "cta_link": ""
       }
     },
     "split1": {
       "type": "editorial-split",
       "settings": {
+        "image": "shopify://shop_images/pop-up.jpg",
         "reverse": false,
         "bg": "warm",
         "eyebrow": "The meaning",
         "heading": "What “In My PC Era” means",
         "body": "<p>An era isn't a trend — it's a feeling. It's the chapter you're living right now. PC Era exists to dress that chapter, so getting dressed feels intentional, not accidental. Everyday moments — coffee, pilates, a slow Sunday — become a little more cinematic.</p><p>Quiet luxury, European-summer ease, Pinterest-board beauty. Made accessible.</p>",
-        "signature": "Every version of her, dressed beautifully."
+        "signature": "Every version of her, dressed beautifully.",
+        "cta_text": "Read our story",
+        "cta_link": ""
       }
     },
     "split2": {
@@ -48,7 +57,9 @@
         "eyebrow": "About the founder",
         "heading": "Meet Palak Chotrani",
         "body": "<p>Hi, I'm Palak Chotrani, founder of PC ERA. I started this brand with one vision — to create timeless, effortlessly stylish pieces that make women feel confident through every chapter of life. Every collection is thoughtfully designed with quality, versatility, and modern femininity at its heart.</p><p>Fashion evolves, but confidence never goes out of style. At PC ERA, we design versatile wardrobe staples that transcend trends, celebrating simplicity, quality, and thoughtful craftsmanship. Every piece is created to become part of your story — today, tomorrow, and for every era ahead.</p>",
-        "signature": "— Palak Chotrani, Founder of PC ERA"
+        "signature": "— Palak Chotrani, Founder of PC ERA",
+        "cta_text": "Read our story",
+        "cta_link": ""
       }
     },
     "values": {
@@ -103,7 +114,11 @@
         "bg": "butter",
         "eyebrow": "Join the era",
         "heading": "Become part of the story",
-        "subheading": "New arrivals, private edits and 10% off your first chapter."
+        "subheading": "New arrivals, private edits and 10% off your first chapter.",
+        "email_label": "Your email",
+        "placeholder": "you@email.com",
+        "button": "Subscribe",
+        "note": "By subscribing, you agree to our privacy policy. Unsubscribe anytime."
       }
     }
   },
