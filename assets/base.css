@@ -366,8 +366,9 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .ig-embeds { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .ig-embeds .instagram-media { flex: 0 1 328px; min-width: 300px; margin: 0 !important; }
 @media (max-width: 900px) {
-  .hero-ed__scrim { background: linear-gradient(180deg, rgba(252,250,244,.5) 0%, rgba(252,250,244,.35) 45%, rgba(252,250,244,.72) 100%); }
-  .hero-ed__inner { max-width: 100%; }
+  .hero-ed { align-items: flex-end; }
+  .hero-ed__scrim { background: linear-gradient(180deg, rgba(252,250,244,0) 0%, rgba(252,250,244,0) 45%, rgba(252,250,244,.58) 100%); }
+  .hero-ed__inner { max-width: 100%; padding-bottom: clamp(2rem, 8vw, 3.5rem); }
   .hero-ed__est { display: none; }
 }
 
