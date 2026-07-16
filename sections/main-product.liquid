@@ -164,7 +164,9 @@
 </section>
 
 {%- comment -%} STYLING / COMPLETE THE LOOK {%- endcomment -%}
-{%- if recommendations.products.size > 0 or product.metafields.custom.complete_look != blank -%}
+{%- assign has_recs = false -%}
+{%- if recommendations.performed and recommendations.products.size > 0 -%}{%- assign has_recs = true -%}{%- endif -%}
+{%- if has_recs or product.metafields.custom.complete_look != blank -%}
 <section class="section">
   <div class="wrap">
     <div class="section-head" data-reveal><span class="eyebrow">Styling</span><h2 class="h-display">Complete the look</h2></div>
