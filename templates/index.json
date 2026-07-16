@@ -207,21 +207,6 @@
         "feed_embed": "https://www.instagram.com/p/Da2PNGiKbcw/?igsh=MXcwaGt4ZTl3OHQzcw=="
       }
     },
-    "story": {
-      "type": "editorial-split",
-      "settings": {
-        "image": "",
-        "reverse": true,
-        "compact": true,
-        "bg": "warm",
-        "eyebrow": "Our story",
-        "heading": "In my PC Era",
-        "body": "<p>Every girl moves through eras. The confident one. The soft one. The healing one. The main character one. PC Era exists to dress every version of her — so getting dressed feels like a moment, not an afterthought.</p>",
-        "signature": "— Founded for the girl becoming herself.",
-        "cta_text": "Read our story",
-        "cta_link": "shopify://pages/about"
-      }
-    },
     "reviews": {
       "type": "reviews",
       "blocks": {
@@ -318,7 +303,6 @@
     "eras",
     "the_edit",
     "ugc",
-    "story",
     "reviews",
     "trust"
   ]
