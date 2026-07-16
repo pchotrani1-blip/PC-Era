@@ -42,7 +42,7 @@
 
         {%- comment -%} STORYTELLING DESCRIPTION (from product metafield or body) {%- endcomment -%}
         <div class="rte" style="margin-top:1.5rem;color:var(--ink-soft)">
-          {%- if p.metafields.custom.story != blank -%}{{ p.metafields.custom.story }}{%- else -%}{{ p.description }}{%- endif -%}
+          {%- if p.metafields.custom.story != blank -%}{{ p.metafields.custom.story }}{%- else -%}{{ p.description | split: '<!--DETAILS-->' | first }}{%- endif -%}
         </div>
 
         {%- comment -%} VARIANT SELECTORS {%- endcomment -%}
@@ -108,6 +108,8 @@
                     {%- endif -%}
                   {%- endfor -%}
                 </div>
+              {%- elsif p.description contains '<!--DETAILS-->' -%}
+                <div class="rte">{{ p.description | split: '<!--DETAILS-->' | last }}</div>
               {%- else -%}
                 <div class="product-meta-list">
                   {%- if p.metafields.custom.fabric != blank -%}<div><span>Fabric</span><span>{{ p.metafields.custom.fabric }}</span></div>{%- endif -%}
