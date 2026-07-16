@@ -50,14 +50,14 @@
     "new_in_top": {
       "type": "collection-slider",
       "settings": {
-        "collection": "shop-all",
+        "collection": "new-arrivals",
         "count": 12,
         "bg": "cream",
         "eyebrow": "Just landed",
         "heading": "New In",
         "subheading": "The latest to land in your era — swipe through.",
         "cta_text": "Shop new in",
-        "cta_link": "shopify://collections/shop-all"
+        "cta_link": "shopify://collections/new-arrivals"
       }
     },
     "marquee": {
