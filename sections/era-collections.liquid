@@ -15,7 +15,10 @@
 
     <div class="era-track" data-slider>
       {%- for block in section.blocks -%}
-        <a href="{{ block.settings.link }}" class="era-tile" style="background: {{ block.settings.color | default: '#EDE6D8' }}" {{ block.shopify_attributes }}>
+        <a href="{{ block.settings.link }}" class="era-tile{% if block.settings.image != blank %} era-tile--img{% endif %}" style="background: {{ block.settings.color | default: '#EDE6D8' }}" {{ block.shopify_attributes }}>
+          {%- if block.settings.image != blank -%}
+            <img class="era-tile__bg" src="{{ block.settings.image | image_url: width: 800 }}" srcset="{{ block.settings.image | image_url: width: 500 }} 500w, {{ block.settings.image | image_url: width: 800 }} 800w" sizes="(max-width:600px) 74vw, 33vw" alt="{{ block.settings.title | escape }}" loading="lazy">
+          {%- endif -%}
           <span class="era-tile__kicker">{{ block.settings.kicker }}</span>
           <span class="era-tile__foot">
             <span class="era-tile__title">{{ block.settings.title }}</span>
@@ -58,7 +61,8 @@
       "settings": [
         { "type": "text", "id": "kicker", "label": "Kicker", "default": "Vacation era" },
         { "type": "text", "id": "title", "label": "Title", "default": "Resort & Vacation" },
-        { "type": "color", "id": "color", "label": "Tile colour", "default": "#EDE6D8" },
+        { "type": "image_picker", "id": "image", "label": "Tile image", "info": "Recommended 800×1000. Shown instead of the tile colour." },
+        { "type": "color", "id": "color", "label": "Tile colour (fallback)", "default": "#EDE6D8" },
         { "type": "url", "id": "link", "label": "Link" }
       ]
     }
