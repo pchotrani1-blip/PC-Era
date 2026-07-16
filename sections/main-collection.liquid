@@ -1,5 +1,17 @@
 {%- comment -%} PC ERA — Collection / PLP {%- endcomment -%}
-{%- assign banner = collection.image | default: section.settings.default_banner -%}
+{%- assign banner = collection.image -%}
+{%- if banner == blank -%}
+  {%- case collection.handle -%}
+    {%- when 'dresses' -%}{%- assign banner = section.settings.banner_dresses -%}
+    {%- when 'tops' -%}{%- assign banner = section.settings.banner_tops -%}
+    {%- when 'skirts' -%}{%- assign banner = section.settings.banner_skirts -%}
+    {%- when 'trousers' -%}{%- assign banner = section.settings.banner_trousers -%}
+    {%- when 'co-ord-sets' -%}{%- assign banner = section.settings.banner_coords -%}
+    {%- when 'new-arrivals' -%}{%- assign banner = section.settings.banner_new_arrivals -%}
+    {%- when 'shop-all' -%}{%- assign banner = section.settings.banner_shop_all -%}
+  {%- endcase -%}
+  {%- assign banner = banner | default: section.settings.default_banner -%}
+{%- endif -%}
 <section class="collection-hero{% unless banner != blank %} collection-hero--plain{% endunless %}">
   {%- if banner != blank -%}
     <img src="{{ banner | image_url: width: 2000 }}" alt="{{ collection.title | escape }}" width="2000" height="700" loading="eager">
@@ -57,7 +69,16 @@
   "name": "Collection",
   "settings": [
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "The collection" },
-    { "type": "image_picker", "id": "default_banner", "label": "Default banner image", "info": "Shown at the top of any collection that doesn't have its own image. A collection's own image (Collections → edit → Image) always takes priority." }
+    { "type": "image_picker", "id": "default_banner", "label": "Default banner image", "info": "Fallback shown on any collection that has no hero image set below (and no image of its own). A collection's own image, set in Collections → edit → Image, always wins." },
+    { "type": "header", "content": "Hero image per collection" },
+    { "type": "paragraph", "content": "Pick a banner for each collection. Leave blank to use the default banner above." },
+    { "type": "image_picker", "id": "banner_new_arrivals", "label": "New Arrivals hero" },
+    { "type": "image_picker", "id": "banner_shop_all", "label": "Shop All hero" },
+    { "type": "image_picker", "id": "banner_dresses", "label": "Dresses hero" },
+    { "type": "image_picker", "id": "banner_tops", "label": "Tops hero" },
+    { "type": "image_picker", "id": "banner_skirts", "label": "Skirts hero" },
+    { "type": "image_picker", "id": "banner_trousers", "label": "Trousers hero" },
+    { "type": "image_picker", "id": "banner_coords", "label": "Co-ord Sets hero" }
   ]
 }
 {% endschema %}

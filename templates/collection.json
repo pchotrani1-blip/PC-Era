@@ -13,7 +13,12 @@
       "type": "main-collection",
       "settings": {
         "eyebrow": "The collection",
-        "default_banner": "shopify://shop_images/Untitled_design_abcc4503-4574-4bbf-b117-2c6159abaf95.png"
+        "default_banner": "shopify://shop_images/Untitled_design_abcc4503-4574-4bbf-b117-2c6159abaf95.png",
+        "banner_dresses": "shopify://shop_images/photo-1539008835657-9e8e9680c956.jpg",
+        "banner_tops": "shopify://shop_images/IMG_0068.png",
+        "banner_skirts": "shopify://shop_images/IMG_0103.png",
+        "banner_trousers": "shopify://shop_images/1CAD8FFE-838E-4AE9-B03B-4A6A32420340.jpg",
+        "banner_coords": "shopify://shop_images/Untitled_design.png"
       }
     }
   },
