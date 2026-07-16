@@ -212,6 +212,7 @@
       "settings": {
         "image": "shopify://shop_images/pop-up.jpg",
         "reverse": true,
+        "compact": true,
         "bg": "warm",
         "eyebrow": "Our story",
         "heading": "In my PC Era",

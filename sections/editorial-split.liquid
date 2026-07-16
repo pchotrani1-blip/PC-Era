@@ -1,4 +1,18 @@
 {%- comment -%} PC ERA — Editorial split (founder story / brand statement) {%- endcomment -%}
+{%- if section.settings.compact -%}
+  <section class="section section--tight bg-{{ section.settings.bg }}">
+    <div class="wrap">
+      <div class="editorial-compact" data-reveal>
+        {%- if section.settings.image != blank -%}<img class="editorial-compact__img" src="{{ section.settings.image | image_url: width: 900 }}" alt="{{ section.settings.image.alt | escape }}" loading="lazy">{%- endif -%}
+        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+        {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading }}</h2>{%- endif -%}
+        <div class="rte">{{ section.settings.body }}</div>
+        {%- if section.settings.signature != blank -%}<p class="italic-accent">{{ section.settings.signature }}</p>{%- endif -%}
+        {%- if section.settings.cta_text != blank -%}<a href="{{ section.settings.cta_link }}" class="btn">{{ section.settings.cta_text }}</a>{%- endif -%}
+      </div>
+    </div>
+  </section>
+{%- else -%}
 <section class="section bg-{{ section.settings.bg }}">
   <div class="wrap">
     <div class="split {% if section.settings.reverse %}split--reverse{% endif %}">
@@ -23,6 +37,7 @@
     </div>
   </div>
 </section>
+{%- endif -%}
 
 {% schema %}
 {
@@ -30,6 +45,7 @@
   "settings": [
     { "type": "image_picker", "id": "image", "label": "Image" },
     { "type": "checkbox", "id": "reverse", "label": "Image on right", "default": false },
+    { "type": "checkbox", "id": "compact", "label": "Compact (small, centered — no image)", "default": false },
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }, { "value": "butter", "label": "Butter" }
     ], "default": "warm" },

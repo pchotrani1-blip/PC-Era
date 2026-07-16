@@ -386,6 +386,12 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .split__body h2 { margin-bottom: var(--s-2); }
 .split__body p + p { margin-top: var(--s-2); }
 .split__body .btn { margin-top: var(--s-3); }
+.editorial-compact { max-width: 620px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; align-items: center; gap: .7rem; }
+.editorial-compact .h-display { font-size: clamp(1.6rem, 3vw, 2.4rem); margin: .2rem 0; }
+.editorial-compact .rte { color: var(--ink-soft); }
+.editorial-compact .italic-accent { font-size: 1.15rem; margin-top: .3rem; }
+.editorial-compact .btn { margin-top: 1rem; }
+.editorial-compact__img { width: 100%; max-width: 300px; aspect-ratio: 4/5; object-fit: cover; border-radius: var(--radius); margin-bottom: 1rem; }
 
 /* Era chips */
 .era-row { display: flex; flex-wrap: wrap; gap: .6rem; }
