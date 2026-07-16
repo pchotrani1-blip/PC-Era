@@ -75,6 +75,7 @@
           "settings": {
             "kicker": "Main character era",
             "title": "Dresses",
+            "image": "shopify://shop_images/Untitled_design_-_3_7c14c4e9-5c21-4af1-a16f-821d3aea429c.png",
             "color": "#f1e2e0",
             "link": "/collections/dresses"
           }
@@ -84,6 +85,7 @@
           "settings": {
             "kicker": "Brunch era",
             "title": "Co-ord Sets",
+            "image": "shopify://shop_images/Untitled_design_-_2.png",
             "color": "#e0e5d8",
             "link": "/collections/co-ord-sets"
           }
@@ -93,6 +95,7 @@
           "settings": {
             "kicker": "Soft girl era",
             "title": "Tops",
+            "image": "shopify://shop_images/Untitled_design_-_1_c4ab3ae3-f013-40f1-afe3-befea95e3ef8.png",
             "color": "#e7e2ec",
             "link": "/collections/tops"
           }
@@ -102,6 +105,7 @@
           "settings": {
             "kicker": "Corporate era",
             "title": "Trousers",
+            "image": "shopify://shop_images/Untitled_design_-_4.png",
             "color": "#e4dccf",
             "link": "/collections/trousers"
           }
