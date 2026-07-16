@@ -9,5 +9,10 @@
     </div>
   </details>
 {%- else -%}
-  <a href="{{ link.url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
+  {%- assign link_url = link.url -%}
+  {%- assign link_title_dc = link.title | downcase -%}
+  {%- if link_title_dc contains 'new arrival' -%}
+    {%- assign link_url = collections['new-arrivals'].url | default: '/collections/new-arrivals' -%}
+  {%- endif -%}
+  <a href="{{ link_url }}"{% if link.current %} aria-current="page"{% endif %}>{{ link.title }}</a>
 {%- endif -%}
