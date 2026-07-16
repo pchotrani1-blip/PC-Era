@@ -24,6 +24,18 @@
         "est_text": "PC ERA — Est. 2026"
       }
     },
+    "summer_duo": {
+      "type": "video-duo",
+      "settings": {
+        "eyebrow": "The Summer Edit",
+        "heading": "Summer Collection",
+        "text": "Soft silhouettes, golden-hour tones and pieces made for every era of your summer.",
+        "cta_text": "Shop now",
+        "cta_link": "shopify://collections/shop-all",
+        "ratio": "3 / 4",
+        "bg": "ivory"
+      }
+    },
     "welcome": {
       "type": "welcome",
       "settings": {
@@ -200,7 +212,7 @@
         "eyebrow": "#InMyPCEra",
         "heading": "Our Latest On Instagram",
         "subheading": "Real girls, real eras. Tag us to be featured.",
-        "feed_embed": ""
+        "feed_embed": "https://www.instagram.com/p/Da2PNGiKbcw/?igsh=MXcwaGt4ZTl3OHQzcw=="
       }
     },
     "reviews": {
@@ -287,18 +299,6 @@
       ],
       "settings": {
         "bg": "cream"
-      }
-    },
-    "summer_duo": {
-      "type": "video-duo",
-      "settings": {
-        "bg": "ivory",
-        "ratio": "3 / 4",
-        "eyebrow": "The Summer Edit",
-        "heading": "Summer Collection",
-        "text": "Soft silhouettes, golden-hour tones and pieces made for every era of your summer.",
-        "cta_text": "Shop now",
-        "cta_link": "shopify://collections/shop-all"
       }
     }
   },
