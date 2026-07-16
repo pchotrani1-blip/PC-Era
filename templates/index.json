@@ -135,20 +135,6 @@
         "subheading": "Whichever version of her is showing up today."
       }
     },
-    "story": {
-      "type": "editorial-split",
-      "settings": {
-        "image": "shopify://shop_images/1CAD8FFE-838E-4AE9-B03B-4A6A32420340.jpg",
-        "reverse": false,
-        "bg": "warm",
-        "eyebrow": "Our story",
-        "heading": "In my PC Era",
-        "body": "<p>Every girl moves through eras. The confident one. The soft one. The healing one. The main character one. PC Era exists to dress every version of her — so getting dressed feels like a moment, not an afterthought.</p>",
-        "signature": "— Founded for the girl becoming herself.",
-        "cta_text": "Read our story",
-        "cta_link": "shopify://pages/about"
-      }
-    },
     "the_edit": {
       "type": "featured-collection",
       "settings": {
@@ -219,6 +205,20 @@
         "heading": "Our Latest On Instagram",
         "subheading": "Real girls, real eras. Tag us to be featured.",
         "feed_embed": "https://www.instagram.com/p/Da2PNGiKbcw/?igsh=MXcwaGt4ZTl3OHQzcw=="
+      }
+    },
+    "story": {
+      "type": "editorial-split",
+      "settings": {
+        "image": "shopify://shop_images/pop-up.jpg",
+        "reverse": true,
+        "bg": "warm",
+        "eyebrow": "Our story",
+        "heading": "In my PC Era",
+        "body": "<p>Every girl moves through eras. The confident one. The soft one. The healing one. The main character one. PC Era exists to dress every version of her — so getting dressed feels like a moment, not an afterthought.</p>",
+        "signature": "— Founded for the girl becoming herself.",
+        "cta_text": "Read our story",
+        "cta_link": "shopify://pages/about"
       }
     },
     "reviews": {
@@ -315,9 +315,9 @@
     "new_in_top",
     "marquee",
     "eras",
-    "story",
     "the_edit",
     "ugc",
+    "story",
     "reviews",
     "trust"
   ]
