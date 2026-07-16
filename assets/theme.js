@@ -47,6 +47,24 @@
     if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
   });
 
+  /* ---------- Swipeable product-card carousels ---------- */
+  document.querySelectorAll('[data-pc-track]').forEach((track) => {
+    const media = track.closest('.product-card__media');
+    if (!media) return;
+    const dots = media.querySelectorAll('.pc-dot');
+    const prev = media.querySelector('[data-pc-prev]');
+    const next = media.querySelector('[data-pc-next]');
+    const go = (dir) => track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    if (prev) prev.addEventListener('click', (e) => { e.preventDefault(); go(-1); });
+    if (next) next.addEventListener('click', (e) => { e.preventDefault(); go(1); });
+    if (dots.length) {
+      track.addEventListener('scroll', () => {
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach((d, di) => d.classList.toggle('is-active', di === i));
+      }, { passive: true });
+    }
+  });
+
   /* ---------- Generic toggle drawers (cart / nav / search) ---------- */
   function bindDrawer(triggerSel, drawerSel) {
     const drawer = document.querySelector(drawerSel);

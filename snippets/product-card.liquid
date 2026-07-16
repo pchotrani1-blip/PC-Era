@@ -1,31 +1,40 @@
 {%- comment -%}
   PC ERA product card
   Params: product (object), badge (string, optional), reveal_delay (number)
-  Editorial: dual-image hover, wishlist, quick-add, colour swatches.
+  Editorial: swipeable image carousel, wishlist, quick-add, colour swatches.
 {%- endcomment -%}
 {%- liquid
-  assign img1 = product.featured_media
-  assign img2 = product.media[1]
   assign on_sale = false
   if product.compare_at_price > product.price
     assign on_sale = true
   endif
+  assign imgs = product.images
 -%}
 <article class="product-card" data-reveal {% if reveal_delay %}data-reveal-delay="{{ reveal_delay }}"{% endif %}>
-  <a href="{{ product.url }}" class="product-card__media" aria-label="{{ product.title | escape }}">
+  <div class="product-card__media">
     {%- if badge -%}<span class="product-card__badge">{{ badge }}</span>
     {%- elsif on_sale -%}<span class="product-card__badge">Last chance</span>
     {%- elsif product.tags contains 'new' -%}<span class="product-card__badge">New in</span>
     {%- endif -%}
-    {%- if img1 -%}
-      <img class="is-first" src="{{ img1 | image_url: width: 700 }}" srcset="{{ img1 | image_url: width: 400 }} 400w, {{ img1 | image_url: width: 700 }} 700w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ img1.alt | default: product.title | escape }}" loading="lazy" width="700" height="933">
-    {%- else -%}
-      {{ 'product-1' | placeholder_svg_tag: 'product-card__media' }}
+
+    <div class="pc-track" data-pc-track>
+      {%- for image in imgs limit: 6 -%}
+        <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">
+          <img src="{{ image | image_url: width: 700 }}" srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 700 }} 700w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" width="700" height="933">
+        </a>
+      {%- else -%}
+        <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">{{ 'product-1' | placeholder_svg_tag }}</a>
+      {%- endfor -%}
+    </div>
+
+    {%- if imgs.size > 1 -%}
+      <button type="button" class="pc-nav pc-nav--prev" data-pc-prev aria-label="Previous image">&lsaquo;</button>
+      <button type="button" class="pc-nav pc-nav--next" data-pc-next aria-label="Next image">&rsaquo;</button>
+      <div class="pc-dots">
+        {%- for image in imgs limit: 6 -%}<span class="pc-dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
+      </div>
     {%- endif -%}
-    {%- if img2 -%}
-      <img class="is-second" src="{{ img2 | image_url: width: 700 }}" alt="" loading="lazy" width="700" height="933">
-    {%- endif -%}
-  </a>
+  </div>
 
   <button class="product-card__wish" data-wish="{{ product.id }}" aria-label="Save to wishlist">
     {% render 'icon', name: 'heart', width: 18, height: 18 %}
