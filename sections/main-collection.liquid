@@ -1,17 +1,16 @@
 {%- comment -%} PC ERA — Collection / PLP {%- endcomment -%}
-{%- assign banner = collection.image -%}
-{%- if banner == blank -%}
-  {%- case collection.handle -%}
-    {%- when 'dresses' -%}{%- assign banner = section.settings.banner_dresses -%}
-    {%- when 'tops' -%}{%- assign banner = section.settings.banner_tops -%}
-    {%- when 'skirts' -%}{%- assign banner = section.settings.banner_skirts -%}
-    {%- when 'trousers' -%}{%- assign banner = section.settings.banner_trousers -%}
-    {%- when 'co-ord-sets' -%}{%- assign banner = section.settings.banner_coords -%}
-    {%- when 'new-arrivals' -%}{%- assign banner = section.settings.banner_new_arrivals -%}
-    {%- when 'shop-all' -%}{%- assign banner = section.settings.banner_shop_all -%}
-  {%- endcase -%}
-  {%- assign banner = banner | default: section.settings.default_banner -%}
-{%- endif -%}
+{%- comment -%} Banner priority: editor hero slot → collection's own image → default banner {%- endcomment -%}
+{%- assign banner = '' -%}
+{%- case collection.handle -%}
+  {%- when 'dresses' -%}{%- assign banner = section.settings.banner_dresses -%}
+  {%- when 'tops' -%}{%- assign banner = section.settings.banner_tops -%}
+  {%- when 'skirts' -%}{%- assign banner = section.settings.banner_skirts -%}
+  {%- when 'trousers' -%}{%- assign banner = section.settings.banner_trousers -%}
+  {%- when 'co-ord-sets' -%}{%- assign banner = section.settings.banner_coords -%}
+  {%- when 'new-arrivals' -%}{%- assign banner = section.settings.banner_new_arrivals -%}
+  {%- when 'shop-all' -%}{%- assign banner = section.settings.banner_shop_all -%}
+{%- endcase -%}
+{%- assign banner = banner | default: collection.image | default: section.settings.default_banner -%}
 <section class="collection-hero{% unless banner != blank %} collection-hero--plain{% endunless %}">
   {%- if banner != blank -%}
     <img src="{{ banner | image_url: width: 2000 }}" alt="{{ collection.title | escape }}" width="2000" height="700" loading="eager">
