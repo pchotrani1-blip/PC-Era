@@ -8,7 +8,7 @@
     </div>
 
     {%- assign coll = collections[section.settings.collection] -%}
-    <div class="product-grid">
+    <div class="product-grid{% if section.settings.count == 3 %} product-grid--3{% elsif section.settings.count == 2 %} product-grid--2{% endif %}">
       {%- if coll.products.size > 0 -%}
         {%- for product in coll.products limit: section.settings.count -%}
           {% render 'product-card', product: product, reveal_delay: forloop.index0 | times: 0.05 %}
