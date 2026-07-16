@@ -210,7 +210,7 @@
     "story": {
       "type": "editorial-split",
       "settings": {
-        "image": "shopify://shop_images/pop-up.jpg",
+        "image": "",
         "reverse": true,
         "compact": true,
         "bg": "warm",
