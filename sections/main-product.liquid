@@ -88,6 +88,36 @@
 
         {%- comment -%} ACCORDIONS {%- endcomment -%}
         <div class="accordion">
+          {%- comment -%} PRODUCT DETAILS {%- endcomment -%}
+          <div class="accordion__item">
+            <button class="accordion__trigger" aria-expanded="true">Product details {% render 'icon', name: 'plus' %}</button>
+            <div class="accordion__panel"><div class="accordion__panel-inner">
+              {%- if p.metafields.custom.product_details != blank -%}
+                <div class="product-meta-list">
+                  {%- assign detail_lines = p.metafields.custom.product_details | newline_to_br | split: '<br />' -%}
+                  {%- for line in detail_lines -%}
+                    {%- assign l = line | strip -%}
+                    {%- if l != blank -%}
+                      {%- if l contains ':' -%}
+                        {%- assign label = l | split: ':' | first | strip -%}
+                        {%- assign value = l | remove_first: label | remove_first: ':' | strip -%}
+                        <div><span>{{ label }}</span><span>{{ value }}</span></div>
+                      {%- else -%}
+                        <div><span>&nbsp;</span><span>{{ l }}</span></div>
+                      {%- endif -%}
+                    {%- endif -%}
+                  {%- endfor -%}
+                </div>
+              {%- else -%}
+                <div class="product-meta-list">
+                  {%- if p.metafields.custom.fabric != blank -%}<div><span>Fabric</span><span>{{ p.metafields.custom.fabric }}</span></div>{%- endif -%}
+                  <div><span>Fit</span><span>{{ p.metafields.custom.fit | default: 'True to size' }}</span></div>
+                  <div><span>Care</span><span>Gentle machine wash cold, hang to dry, cool iron</span></div>
+                </div>
+              {%- endif -%}
+            </div></div>
+          </div>
+
           {%- for block in section.blocks -%}
             {%- if block.type == 'accordion' -%}
               <div class="accordion__item" {{ block.shopify_attributes }}>
@@ -102,10 +132,9 @@
             <button class="accordion__trigger" aria-expanded="false">Size guide & model {% render 'icon', name: 'plus' %}</button>
             <div class="accordion__panel"><div class="accordion__panel-inner">
               <div class="product-meta-list">
-                <div><span>Model wears</span><span>{{ p.metafields.custom.model_wears | default: 'Size S / AU 8' }}</span></div>
+                <div><span>Model wears</span><span>{{ p.metafields.custom.model_wears | default: 'Size S' }}</span></div>
                 <div><span>Model height</span><span>{{ p.metafields.custom.model_height | default: '175 cm / 5ft 9in' }}</span></div>
                 <div><span>Fit</span><span>{{ p.metafields.custom.fit | default: 'True to size' }}</span></div>
-                <div><span>Fabric</span><span>{{ p.metafields.custom.fabric | default: '100% European linen' }}</span></div>
               </div>
               <p class="muted mt-3" style="font-size:.8rem">Between sizes? Size down for a tailored look, up for relaxed.</p>
             </div></div>

@@ -41,6 +41,12 @@
     });
   });
 
+  /* Open any accordion pre-marked as expanded (e.g. Product details) */
+  document.querySelectorAll('.accordion__trigger[aria-expanded="true"]').forEach((trigger) => {
+    const panel = trigger.nextElementSibling;
+    if (panel) panel.style.maxHeight = panel.scrollHeight + 'px';
+  });
+
   /* ---------- Generic toggle drawers (cart / nav / search) ---------- */
   function bindDrawer(triggerSel, drawerSel) {
     const drawer = document.querySelector(drawerSel);
