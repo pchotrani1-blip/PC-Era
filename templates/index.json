@@ -138,6 +138,7 @@
     "story": {
       "type": "editorial-split",
       "settings": {
+        "image": "shopify://shop_images/1CAD8FFE-838E-4AE9-B03B-4A6A32420340.jpg",
         "reverse": false,
         "bg": "warm",
         "eyebrow": "Our story",
