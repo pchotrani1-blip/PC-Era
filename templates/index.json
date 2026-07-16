@@ -162,7 +162,7 @@
         "p2": {
           "type": "post",
           "settings": {
-            "embed_url": "",
+            "embed_url": "https://www.instagram.com/p/Da2PNGiKbcw/",
             "handle": "",
             "link": ""
           }
@@ -204,7 +204,7 @@
         "eyebrow": "#InMyPCEra",
         "heading": "Our Latest On Instagram",
         "subheading": "Real girls, real eras. Tag us to be featured.",
-        "feed_embed": "https://www.instagram.com/p/Da2PNGiKbcw/?igsh=MXcwaGt4ZTl3OHQzcw=="
+        "feed_embed": ""
       }
     },
     "reviews": {
