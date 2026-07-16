@@ -458,6 +458,14 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .media-banner__overlay .btn { margin-top: .8rem; }
 @media (max-width: 700px) { .media-banner__frame { aspect-ratio: 4 / 5 !important; } }
 
+/* Product-page reviews (2 per product) */
+.pdp-reviews { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1rem, 2.5vw, 2rem); }
+.pdp-review { margin: 0; padding: clamp(1.4rem, 2.5vw, 2rem); background: var(--cream); border: 1px solid var(--line-soft); border-radius: var(--radius); }
+.pdp-review__stars { color: var(--champagne); letter-spacing: 2px; margin-bottom: .6rem; }
+.pdp-review blockquote { margin: 0 0 .8rem; font-family: var(--font-serif); font-size: clamp(1.05rem, 1.5vw, 1.3rem); line-height: 1.4; color: var(--ink); }
+.pdp-review figcaption { font-size: var(--fs-sm); letter-spacing: var(--tracking-mid); text-transform: uppercase; color: var(--ink-soft); }
+@media (max-width: 640px) { .pdp-reviews { grid-template-columns: 1fr; } }
+
 /* Two videos + centred text */
 .video-duo__grid { display: grid; grid-template-columns: 1fr 1.05fr 1fr; align-items: center; gap: clamp(1rem, 3vw, 2.75rem); }
 .video-duo__media { position: relative; border-radius: var(--radius); overflow: hidden; background: var(--bg-warm); }

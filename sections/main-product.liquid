@@ -32,7 +32,7 @@
         </div>
         <h1>{{ p.title }}</h1>
         <div class="product-rating">
-          <span class="stars">★★★★★</span> 4.9 · {{ p.metafields.reviews.count | default: '128' }} reviews
+          <span class="stars">★★★★★</span> 5.0 · {{ p.metafields.reviews.count | default: '2' }} reviews
         </div>
         <div class="price">
           {%- if on_sale -%}<s>{{ p.compare_at_price | money }}</s> <span style="color:var(--accent-ink)">{{ p.price | money }}</span>
@@ -165,6 +165,31 @@
   </div>
 </section>
 
+{%- comment -%} REVIEWS (2 per product) {%- endcomment -%}
+{%- if section.settings.r1_quote != blank or section.settings.r2_quote != blank -%}
+<section class="section">
+  <div class="wrap">
+    <div class="section-head" data-reveal><span class="eyebrow">Reviews</span><h2 class="h-display">{{ section.settings.reviews_heading }}</h2></div>
+    <div class="pdp-reviews">
+      {%- if section.settings.r1_quote != blank -%}
+        <figure class="pdp-review" data-reveal>
+          <div class="pdp-review__stars">★★★★★</div>
+          <blockquote>{{ section.settings.r1_quote }}</blockquote>
+          <figcaption>{{ section.settings.r1_author }}</figcaption>
+        </figure>
+      {%- endif -%}
+      {%- if section.settings.r2_quote != blank -%}
+        <figure class="pdp-review" data-reveal data-reveal-delay="0.08">
+          <div class="pdp-review__stars">★★★★★</div>
+          <blockquote>{{ section.settings.r2_quote }}</blockquote>
+          <figcaption>{{ section.settings.r2_author }}</figcaption>
+        </figure>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+{%- endif -%}
+
 {%- comment -%} STYLING / COMPLETE THE LOOK {%- endcomment -%}
 {%- assign has_recs = false -%}
 {%- if recommendations.performed and recommendations.products.size > 0 -%}{%- assign has_recs = true -%}{%- endif -%}
@@ -194,7 +219,7 @@
   "@type": "Product",
   "name": {{ p.title | json }},
   "image": [{{ p.featured_media | image_url: width: 1200 | prepend: "https:" | json }}],
-  "description": {{ p.description | strip_html | truncate: 300 | json }},
+  "description": {{ p.description | split: '<!--DETAILS-->' | first | strip_html | truncate: 300 | json }},
   "brand": { "@type": "Brand", "name": "PC Era" },
   "offers": {
     "@type": "Offer",
@@ -203,7 +228,7 @@
     "availability": "{% if p.available %}https://schema.org/InStock{% else %}https://schema.org/OutOfStock{% endif %}",
     "url": {{ p.url | prepend: shop.url | json }}
   },
-  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "4.9", "reviewCount": "128" }
+  "aggregateRating": { "@type": "AggregateRating", "ratingValue": "5.0", "reviewCount": "2" }
 }
 </script>
 
@@ -211,7 +236,13 @@
 {
   "name": "Product",
   "settings": [
-    { "type": "textarea", "id": "love_points", "label": "Why you'll love it (one per line)", "default": "Tailored to flatter every body — designed on real fit models.\nPremium European fabric that photographs and wears like luxury.\nVersatile enough for brunch, the office, or a sunset in Santorini." }
+    { "type": "textarea", "id": "love_points", "label": "Why you'll love it (one per line)", "default": "Tailored to flatter every body — designed on real fit models.\nPremium European fabric that photographs and wears like luxury.\nVersatile enough for brunch, the office, or a sunset in Santorini." },
+    { "type": "header", "content": "Reviews (2 per product)" },
+    { "type": "text", "id": "reviews_heading", "label": "Reviews heading", "default": "She said it best" },
+    { "type": "textarea", "id": "r1_quote", "label": "Review 1", "default": "Obsessed. The fit is so flattering and the fabric feels way more expensive than it is." },
+    { "type": "text", "id": "r1_author", "label": "Review 1 — name", "default": "Aditi S. · Verified buyer" },
+    { "type": "textarea", "id": "r2_quote", "label": "Review 2", "default": "Got so many compliments the first time I wore it. Runs true to size and the quality is beautiful." },
+    { "type": "text", "id": "r2_author", "label": "Review 2 — name", "default": "Riya M. · Verified buyer" }
   ],
   "blocks": [
     {
