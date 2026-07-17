@@ -24,18 +24,6 @@
         "est_text": "PC ERA — Est. 2026"
       }
     },
-    "summer_duo": {
-      "type": "video-duo",
-      "settings": {
-        "eyebrow": "The Summer Edit",
-        "heading": "Summer Collection",
-        "text": "Soft silhouettes, golden-hour tones and pieces made for every era of your summer.",
-        "cta_text": "Shop now",
-        "cta_link": "shopify://collections/shop-all",
-        "ratio": "3 / 4",
-        "bg": "ivory"
-      }
-    },
     "welcome": {
       "type": "welcome",
       "settings": {
@@ -296,7 +284,6 @@
   },
   "order": [
     "hero",
-    "summer_duo",
     "welcome",
     "new_in_top",
     "marquee",
