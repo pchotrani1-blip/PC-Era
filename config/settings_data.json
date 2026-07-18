@@ -21,7 +21,33 @@
     "cart_upsell": true,
     "social_instagram": "https://instagram.com/wearpcera",
     "social_facebook": "https://facebook.com/wearpcera",
-    "social_pinterest": "https://pinterest.com/wearpcera"
+    "social_pinterest": "https://pinterest.com/wearpcera",
+    "sections": {
+      "cart-drawer": {
+        "type": "cart-drawer",
+        "settings": {}
+      },
+      "mobile-nav": {
+        "type": "mobile-nav",
+        "settings": {
+          "menu": "main-menu"
+        }
+      },
+      "newsletter-popup": {
+        "type": "newsletter-popup",
+        "settings": {
+          "enabled": true,
+          "delay": 6,
+          "eyebrow": "The newsletter",
+          "heading": "Join the Era.",
+          "subheading": "Early access to new drops, private sales and quiet inspiration — straight to your inbox.",
+          "placeholder": "you@email.com",
+          "button": "Subscribe",
+          "dismiss_text": "No thanks"
+        }
+      }
+    },
+    "content_for_index": []
   },
   "presets": {
     "PC Era": {
@@ -33,5 +59,10 @@
       "color_beige": "#EEE7D7",
       "color_ink": "#222222"
     }
+  },
+  "platform_customizations": {
+    "custom_css": [
+      "@media (max-width: 768px) {.product__media-list, .product__media-wrapper, .product-single__photos, .product__media-container, [class*=\"product\"][class*=\"media\"], [class*=\"product\"][class*=\"photo\"] {grid-template-columns: 1fr !important; columns: 1 !important; display: block !important; }}"
+    ]
   }
 }
