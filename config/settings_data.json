@@ -61,8 +61,6 @@
     }
   },
   "platform_customizations": {
-    "custom_css": [
-      "@media (max-width: 768px) {.product__media-list, .product__media-wrapper, .product-single__photos, .product__media-container, [class*=\"product\"][class*=\"media\"], [class*=\"product\"][class*=\"photo\"] {grid-template-columns: 1fr !important; columns: 1 !important; display: block !important; }}"
-    ]
+    "custom_css": []
   }
 }
