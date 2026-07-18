@@ -61,7 +61,7 @@
     {%- if color_opt -%}
       <div class="swatches">
         {%- for v in color_opt.values limit: 5 -%}
-          <span class="swatch" style="background:{{ v | downcase | replace: ' ', '' }}" title="{{ v }}"></span>
+          <span class="swatch" style="background:{% render 'swatch-color', name: v %}" title="{{ v }}"></span>
         {%- endfor -%}
       </div>
     {%- endif -%}

@@ -1,0 +1,50 @@
+{%- comment -%}
+  Maps a colour NAME to a display hex for swatches (CSS keyword 'brown' is a harsh maroon, etc).
+  Param: name (string). Falls back to the raw name for anything unmapped.
+{%- endcomment -%}
+{%- liquid
+  assign c = name | downcase | strip
+  case c
+    when 'white'
+      assign hex = '#F1EEE8'
+    when 'off white', 'offwhite', 'ivory', 'cream'
+      assign hex = '#F3EBDD'
+    when 'black'
+      assign hex = '#1F1F1F'
+    when 'brown'
+      assign hex = '#7B5A3A'
+    when 'chocolate', 'coffee', 'cocoa'
+      assign hex = '#5A3E2B'
+    when 'tan', 'camel', 'beige', 'nude'
+      assign hex = '#D2B48C'
+    when 'maroon', 'wine', 'burgundy'
+      assign hex = '#7C2B34'
+    when 'blue'
+      assign hex = '#8FA6BF'
+    when 'navy'
+      assign hex = '#2C3A55'
+    when 'sky', 'powder blue'
+      assign hex = '#B9CBDD'
+    when 'purple', 'lavender', 'lilac'
+      assign hex = '#B9A6C8'
+    when 'pink', 'blush', 'rose'
+      assign hex = '#E6C3C1'
+    when 'red'
+      assign hex = '#B23A3A'
+    when 'green'
+      assign hex = '#8CA07E'
+    when 'sage', 'olive'
+      assign hex = '#B7C0A8'
+    when 'grey', 'gray'
+      assign hex = '#9A9A9A'
+    when 'charcoal'
+      assign hex = '#3F3F3F'
+    when 'yellow', 'mustard', 'butter'
+      assign hex = '#E4C67A'
+    when 'orange', 'rust', 'terracotta'
+      assign hex = '#C06B3E'
+    else
+      assign hex = c | replace: ' ', ''
+  endcase
+  echo hex
+-%}

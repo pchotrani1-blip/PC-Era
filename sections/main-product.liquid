@@ -71,7 +71,7 @@
                       class="variant-pill {% if is_color %}swatch-pill{% endif %}"
                       data-value="{{ value | escape }}"
                       aria-pressed="{% if option.selected_value == value %}true{% else %}false{% endif %}"
-                      {% if is_color %}style="background:{{ value | downcase | replace: ' ', '' }}" title="{{ value }}" aria-label="{{ value }}"{% endif %}>
+                      {% if is_color %}style="background:{% render 'swatch-color', name: value %}" title="{{ value }}" aria-label="{{ value }}"{% endif %}>
                       {%- unless is_color -%}{{ value }}{%- endunless -%}
                     </button>
                   {%- endfor -%}
