@@ -12,7 +12,7 @@
     <div class="product">
       {%- comment -%} GALLERY {%- endcomment -%}
       <div class="product-gallery" data-reveal>
-        {%- for media in p.media limit: 12 -%}
+        {%- for media in p.media limit: 13 -%}
           <div class="media-zoom">
             <img src="{{ media | image_url: width: 1200 }}"
                  srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 1200 }} 1200w"
