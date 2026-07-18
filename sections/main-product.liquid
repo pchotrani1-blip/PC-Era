@@ -11,18 +11,27 @@
   <div class="wrap">
     <div class="product">
       {%- comment -%} GALLERY {%- endcomment -%}
-      <div class="product-gallery" data-reveal>
-        {%- for media in p.media limit: 13 -%}
-          <div class="media-zoom">
-            <img src="{{ media | image_url: width: 1200 }}"
-                 srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 1200 }} 1200w"
-                 sizes="(max-width:900px) 100vw, 50vw"
-                 alt="{{ media.alt | default: p.title | escape }}"
-                 loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="1200" height="1500">
+      <div class="product-gallery" data-reveal data-pdp-gallery>
+        <div class="product-gallery__track" data-pdp-track>
+          {%- for media in p.media limit: 13 -%}
+            <div class="media-zoom">
+              <img src="{{ media | image_url: width: 1200 }}"
+                   srcset="{{ media | image_url: width: 600 }} 600w, {{ media | image_url: width: 1200 }} 1200w"
+                   sizes="(max-width:900px) 100vw, 50vw"
+                   alt="{{ media.alt | default: p.title | escape }}"
+                   loading="{% if forloop.first %}eager{% else %}lazy{% endif %}" width="1200" height="1500">
+            </div>
+          {%- else -%}
+            <div class="media-zoom">{{ 'product-1' | placeholder_svg_tag }}</div>
+          {%- endfor -%}
+        </div>
+        {%- if p.media.size > 1 -%}
+          <button type="button" class="pdp-nav pdp-nav--prev" data-pdp-prev aria-label="Previous image">&lsaquo;</button>
+          <button type="button" class="pdp-nav pdp-nav--next" data-pdp-next aria-label="Next image">&rsaquo;</button>
+          <div class="pdp-dots">
+            {%- for media in p.media limit: 13 -%}<span class="pdp-dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
           </div>
-        {%- else -%}
-          <div class="media-zoom">{{ 'product-1' | placeholder_svg_tag }}</div>
-        {%- endfor -%}
+        {%- endif -%}
       </div>
 
       {%- comment -%} INFO {%- endcomment -%}

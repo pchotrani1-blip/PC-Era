@@ -65,6 +65,24 @@
     }
   });
 
+  /* ---------- Product-page gallery (swipe + dots + arrows on mobile) ---------- */
+  document.querySelectorAll('[data-pdp-track]').forEach((track) => {
+    const gallery = track.closest('[data-pdp-gallery]');
+    if (!gallery) return;
+    const dots = gallery.querySelectorAll('.pdp-dot');
+    const prev = gallery.querySelector('[data-pdp-prev]');
+    const next = gallery.querySelector('[data-pdp-next]');
+    const go = (dir) => track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    if (prev) prev.addEventListener('click', (e) => { e.preventDefault(); go(-1); });
+    if (next) next.addEventListener('click', (e) => { e.preventDefault(); go(1); });
+    if (dots.length) {
+      track.addEventListener('scroll', () => {
+        const i = Math.round(track.scrollLeft / track.clientWidth);
+        dots.forEach((d, di) => d.classList.toggle('is-active', di === i));
+      }, { passive: true });
+    }
+  });
+
   /* ---------- Generic toggle drawers (cart / nav / search) ---------- */
   function bindDrawer(triggerSel, drawerSel) {
     const drawer = document.querySelector(drawerSel);
