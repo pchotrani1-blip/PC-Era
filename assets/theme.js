@@ -196,3 +196,33 @@
     });
   });
 })();
+// Variant colour image switching
+document.addEventListener('DOMContentLoaded', function () {
+  function filterImagesByColour(colour) {
+    document.querySelectorAll('[data-media-id], .product__media-item, .product-single__photo').forEach(function (el) {
+      var img = el.querySelector('img');
+      if (!img) return;
+      var alt = (img.alt || '').trim().toLowerCase();
+      var match = colour ? alt === colour.toLowerCase() : true;
+      el.style.display = match ? '' : 'none';
+    });
+  }
+
+  document.addEventListener('change', function (e) {
+    var el = e.target;
+    if (el.name === 'Color' || el.name === 'Colour' || el.name === 'color' || el.name === 'colour') {
+      filterImagesByColour(el.value);
+    }
+  });
+
+  // Also handle swatch buttons if theme uses them
+  document.addEventListener('click', function (e) {
+    var swatch = e.target.closest('[data-value][data-option]');
+    if (swatch) {
+      var optionName = (swatch.dataset.option || '').toLowerCase();
+      if (optionName === 'colour' || optionName === 'color') {
+        filterImagesByColour(swatch.dataset.value);
+      }
+    }
+  });
+});
