@@ -53,7 +53,7 @@
 
     {%- if section.settings.cta_text != blank -%}
       <div class="text-center mt-4" data-reveal>
-        <a href="{{ coll.url | default: section.settings.cta_link }}" class="btn btn--ghost">{{ section.settings.cta_text }}</a>
+        <a href="{{ section.settings.cta_link | default: coll.url }}" class="btn btn--ghost">{{ section.settings.cta_text }}</a>
       </div>
     {%- endif -%}
   </div>
