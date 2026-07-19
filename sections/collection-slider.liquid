@@ -14,9 +14,14 @@
     </div>
 
     {%- assign coll = collections[section.settings.collection] -%}
+    {%- assign pinned = all_products[section.settings.pin_first] -%}
     <div class="na-slider__track" data-slider>
       {%- if coll.products.size > 0 -%}
+        {%- if section.settings.pin_first != blank and pinned != empty -%}
+          <div class="na-slider__item">{% render 'product-card', product: pinned %}</div>
+        {%- endif -%}
         {%- for product in coll.products limit: section.settings.count -%}
+          {%- if pinned != empty and product.id == pinned.id -%}{%- continue -%}{%- endif -%}
           <div class="na-slider__item">{% render 'product-card', product: product %}</div>
         {%- endfor -%}
       {%- else -%}
@@ -51,6 +56,7 @@
   "name": "Collection slider",
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "product", "id": "pin_first", "label": "Show this product first", "info": "Optional — pins one product to the front of the slider." },
     { "type": "range", "id": "count", "label": "Products", "min": 4, "max": 16, "step": 1, "default": 12 },
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }, { "value": "butter", "label": "Butter" }
