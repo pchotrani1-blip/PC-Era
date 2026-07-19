@@ -8,8 +8,36 @@
     </div>
 
     {%- assign coll = collections[section.settings.collection] -%}
-    <div class="product-grid{% if section.settings.count == 3 %} product-grid--3{% elsif section.settings.count == 2 %} product-grid--2{% endif %}">
-      {%- if coll.products.size > 0 -%}
+    {%- liquid
+      assign p1 = all_products[section.settings.product_1]
+      assign p2 = all_products[section.settings.product_2]
+      assign p3 = all_products[section.settings.product_3]
+      assign p4 = all_products[section.settings.product_4]
+      assign curated_count = 0
+      if section.settings.product_1 != blank and p1 != empty
+        assign curated_count = curated_count | plus: 1
+      endif
+      if section.settings.product_2 != blank and p2 != empty
+        assign curated_count = curated_count | plus: 1
+      endif
+      if section.settings.product_3 != blank and p3 != empty
+        assign curated_count = curated_count | plus: 1
+      endif
+      if section.settings.product_4 != blank and p4 != empty
+        assign curated_count = curated_count | plus: 1
+      endif
+      assign gridn = section.settings.count
+      if curated_count > 0
+        assign gridn = curated_count
+      endif
+    -%}
+    <div class="product-grid{% if gridn == 3 %} product-grid--3{% elsif gridn == 2 %} product-grid--2{% endif %}">
+      {%- if curated_count > 0 -%}
+        {%- if section.settings.product_1 != blank and p1 != empty -%}{% render 'product-card', product: p1 %}{%- endif -%}
+        {%- if section.settings.product_2 != blank and p2 != empty -%}{% render 'product-card', product: p2 %}{%- endif -%}
+        {%- if section.settings.product_3 != blank and p3 != empty -%}{% render 'product-card', product: p3 %}{%- endif -%}
+        {%- if section.settings.product_4 != blank and p4 != empty -%}{% render 'product-card', product: p4 %}{%- endif -%}
+      {%- elsif coll.products.size > 0 -%}
         {%- for product in coll.products limit: section.settings.count -%}
           {% render 'product-card', product: product, reveal_delay: forloop.index0 | times: 0.05 %}
         {%- endfor -%}
@@ -35,8 +63,13 @@
 {
   "name": "Featured collection",
   "settings": [
-    { "type": "collection", "id": "collection", "label": "Collection" },
+    { "type": "collection", "id": "collection", "label": "Collection", "info": "Used only if no hand-picked products are set below." },
     { "type": "range", "id": "count", "label": "Products", "min": 2, "max": 8, "step": 1, "default": 4 },
+    { "type": "header", "content": "Hand-pick products (overrides the collection)" },
+    { "type": "product", "id": "product_1", "label": "Product 1" },
+    { "type": "product", "id": "product_2", "label": "Product 2" },
+    { "type": "product", "id": "product_3", "label": "Product 3" },
+    { "type": "product", "id": "product_4", "label": "Product 4" },
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }
     ], "default": "cream" },
