@@ -15,6 +15,7 @@
 
     {%- assign coll = collections[section.settings.collection] -%}
     {%- assign pinned = all_products[section.settings.pin_first] -%}
+    {%- assign pinned_last = all_products[section.settings.pin_last] -%}
     <div class="na-slider__track" data-slider>
       {%- if coll.products.size > 0 -%}
         {%- if section.settings.pin_first != blank and pinned != empty -%}
@@ -22,8 +23,12 @@
         {%- endif -%}
         {%- for product in coll.products limit: section.settings.count -%}
           {%- if pinned != empty and product.id == pinned.id -%}{%- continue -%}{%- endif -%}
+          {%- if pinned_last != empty and product.id == pinned_last.id -%}{%- continue -%}{%- endif -%}
           <div class="na-slider__item">{% render 'product-card', product: product %}</div>
         {%- endfor -%}
+        {%- if section.settings.pin_last != blank and pinned_last != empty -%}
+          <div class="na-slider__item">{% render 'product-card', product: pinned_last %}</div>
+        {%- endif -%}
       {%- else -%}
         {%- for i in (1..6) -%}
           <div class="na-slider__item">
@@ -57,6 +62,7 @@
   "settings": [
     { "type": "collection", "id": "collection", "label": "Collection" },
     { "type": "product", "id": "pin_first", "label": "Show this product first", "info": "Optional — pins one product to the front of the slider." },
+    { "type": "product", "id": "pin_last", "label": "Show this product last", "info": "Optional — pushes one product to the end of the slider." },
     { "type": "range", "id": "count", "label": "Products", "min": 4, "max": 16, "step": 1, "default": 12 },
     { "type": "select", "id": "bg", "label": "Background", "options": [
       { "value": "cream", "label": "Cream" }, { "value": "ivory", "label": "Ivory" }, { "value": "warm", "label": "Beige" }, { "value": "butter", "label": "Butter" }
