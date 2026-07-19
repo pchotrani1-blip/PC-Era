@@ -39,6 +39,7 @@
       "type": "collection-slider",
       "settings": {
         "collection": "new-arrivals",
+        "pin_first": "bloom-crop-shirt",
         "count": 12,
         "bg": "cream",
         "eyebrow": "Just landed",
