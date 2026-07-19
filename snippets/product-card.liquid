@@ -18,9 +18,9 @@
     {%- endif -%}
 
     <div class="pc-track" data-pc-track>
-      {%- for image in imgs limit: 6 -%}
+      {%- for image in imgs limit: 4 -%}
         <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">
-          <img src="{{ image | image_url: width: 700 }}" srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 700 }} 700w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" width="700" height="933">
+          <img src="{{ image | image_url: width: 600 }}" srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 600 }} 600w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" decoding="async" width="600" height="800">
         </a>
       {%- else -%}
         <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">{{ 'product-1' | placeholder_svg_tag }}</a>
@@ -31,7 +31,7 @@
       <button type="button" class="pc-nav pc-nav--prev" data-pc-prev aria-label="Previous image">&lsaquo;</button>
       <button type="button" class="pc-nav pc-nav--next" data-pc-next aria-label="Next image">&rsaquo;</button>
       <div class="pc-dots">
-        {%- for image in imgs limit: 6 -%}<span class="pc-dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
+        {%- for image in imgs limit: 4 -%}<span class="pc-dot{% if forloop.first %} is-active{% endif %}"></span>{%- endfor -%}
       </div>
     {%- endif -%}
   </div>
