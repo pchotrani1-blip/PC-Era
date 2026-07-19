@@ -130,6 +130,9 @@
       "settings": {
         "collection": "dresses",
         "count": 3,
+        "product_1": "amalfi-dress",
+        "product_2": "celeste-set",
+        "product_3": "ruffle-set",
         "bg": "ivory",
         "eyebrow": "Hand-picked",
         "heading": "The Edit",
