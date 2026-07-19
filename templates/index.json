@@ -138,8 +138,8 @@
         "eyebrow": "Hand-picked",
         "heading": "The Edit",
         "subheading": "A few of our favourites to start your era.",
-        "cta_text": "Shop dresses",
-        "cta_link": ""
+        "cta_text": "Shop all",
+        "cta_link": "shopify://collections/shop-all"
       }
     },
     "ugc": {
