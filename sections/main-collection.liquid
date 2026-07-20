@@ -46,13 +46,25 @@
 
 <section class="section--tight">
   <div class="wrap">
+    {%- assign pin_first = all_products[section.settings.pin_first_tops] -%}
+    {%- assign pin_last = all_products[section.settings.pin_last_tops] -%}
+    {%- assign do_pin = false -%}
+    {%- if collection.handle == 'tops' and current_tags == blank -%}{%- assign do_pin = true -%}{%- endif -%}
     {%- paginate collection.products by 24 -%}
       <div class="product-grid">
+        {%- if do_pin and paginate.current_page == 1 and section.settings.pin_first_tops != blank and pin_first != empty -%}
+          {% render 'product-card', product: pin_first %}
+        {%- endif -%}
         {%- for product in collection.products -%}
+          {%- if do_pin and pin_first != empty and product.id == pin_first.id -%}{%- continue -%}{%- endif -%}
+          {%- if do_pin and pin_last != empty and product.id == pin_last.id -%}{%- continue -%}{%- endif -%}
           {% render 'product-card', product: product, reveal_delay: forloop.index0 | modulo: 4 | times: 0.05 %}
         {%- else -%}
-          <p class="muted">No pieces in this era yet — check back soon.</p>
+          {%- unless do_pin -%}<p class="muted">No pieces in this era yet — check back soon.</p>{%- endunless -%}
         {%- endfor -%}
+        {%- if do_pin and paginate.current_page == paginate.pages and section.settings.pin_last_tops != blank and pin_last != empty -%}
+          {% render 'product-card', product: pin_last %}
+        {%- endif -%}
       </div>
       {%- if paginate.pages > 1 -%}
         <div class="text-center mt-4">
@@ -77,7 +89,10 @@
     { "type": "image_picker", "id": "banner_tops", "label": "Tops hero" },
     { "type": "image_picker", "id": "banner_skirts", "label": "Skirts hero" },
     { "type": "image_picker", "id": "banner_trousers", "label": "Trousers hero" },
-    { "type": "image_picker", "id": "banner_coords", "label": "Co-ord Sets hero" }
+    { "type": "image_picker", "id": "banner_coords", "label": "Co-ord Sets hero" },
+    { "type": "header", "content": "Product order — Tops collection" },
+    { "type": "product", "id": "pin_first_tops", "label": "Tops: show this product first" },
+    { "type": "product", "id": "pin_last_tops", "label": "Tops: show this product last" }
   ]
 }
 {% endschema %}
