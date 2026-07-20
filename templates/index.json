@@ -134,6 +134,7 @@
         "product_1": "amalfi-dress",
         "product_2": "celeste-set",
         "product_3": "ruffle-set",
+        "product_4": "",
         "bg": "ivory",
         "eyebrow": "Hand-picked",
         "heading": "The Edit",
@@ -198,7 +199,7 @@
         "eyebrow": "#InMyPCEra",
         "heading": "Our Latest On Instagram",
         "subheading": "Real girls, real eras. Tag us to be featured.",
-        "feed_embed": ""
+        "feed_embed": "<!-- LightWidget WIDGET --><script src=\"https://cdn.lightwidget.com/widgets/lightwidget.js\"></script><iframe src=\"//lightwidget.com/widgets/3c8e5fbc78fc5b22b96cb688a4c9ddb7.html\" scrolling=\"no\" allowtransparency=\"true\" class=\"lightwidget-widget\" style=\"width:100%;border:0;overflow:hidden;\"></iframe>"
       }
     },
     "reviews": {
