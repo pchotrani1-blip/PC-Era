@@ -21,7 +21,9 @@
         "banner_tops": "shopify://shop_images/Untitled_-_19_July_2026_at_05.09.03_e18dba20-2f51-41e3-9e00-77726029516b.png",
         "banner_skirts": "shopify://shop_images/Untitled_design_f420f6ee-d469-4621-8e3f-3224f250e093.png",
         "banner_trousers": "shopify://shop_images/Untitled_design_-_3_14c1bce9-67e5-46f2-919c-2bc5e8db89a7.png",
-        "banner_coords": "shopify://shop_images/Untitled_design_-_3.png"
+        "banner_coords": "shopify://shop_images/Untitled_design_-_3.png",
+        "pin_first_tops": "solea-top",
+        "pin_last_tops": "gathered-top"
       }
     }
   },
