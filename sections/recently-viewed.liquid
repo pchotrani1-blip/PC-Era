@@ -18,7 +18,13 @@
     Promise.all(list.map(function (h) {
       return fetch('/products/' + h + '?view=card').then(function (r) { return r.ok ? r.text() : ''; }).catch(function () { return ''; });
     })).then(function (cards) {
-      var html = cards.filter(Boolean).join('');
+      var html = cards.filter(function (c) {
+        // Guard: only accept a real card fragment, never a full page or the password page
+        if (!c) return false;
+        var low = c.toLowerCase();
+        if (low.indexOf('<!doctype') !== -1 || low.indexOf('<html') !== -1) return false;
+        return low.indexOf('product-card') !== -1 || low.indexOf('data-product-card') !== -1;
+      }).join('');
       if (html) { grid.innerHTML = html; section.hidden = false; }
     });
   })();
