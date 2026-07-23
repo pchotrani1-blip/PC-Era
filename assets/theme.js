@@ -194,6 +194,36 @@
     }
   });
 
+  /* ---------- Card quick-add: size tray toggle ---------- */
+  document.addEventListener('click', (e) => {
+    const toggle = e.target.closest('[data-atc-toggle]');
+    if (toggle) {
+      e.preventDefault();
+      const wrap = toggle.closest('[data-atc-wrap]');
+      const tray = wrap && wrap.querySelector('[data-atc-tray]');
+      if (!tray) return;
+      const willOpen = tray.hasAttribute('hidden');
+      document.querySelectorAll('[data-atc-tray]:not([hidden])').forEach((t) => {
+        if (t !== tray) {
+          t.setAttribute('hidden', '');
+          const b = t.closest('[data-atc-wrap]') && t.closest('[data-atc-wrap]').querySelector('[data-atc-toggle]');
+          if (b) b.setAttribute('aria-expanded', 'false');
+        }
+      });
+      if (willOpen) { tray.removeAttribute('hidden'); toggle.setAttribute('aria-expanded', 'true'); }
+      else { tray.setAttribute('hidden', ''); toggle.setAttribute('aria-expanded', 'false'); }
+      return;
+    }
+    // Click outside an open tray closes it
+    if (!e.target.closest('[data-atc-tray]')) {
+      document.querySelectorAll('[data-atc-tray]:not([hidden])').forEach((t) => {
+        t.setAttribute('hidden', '');
+        const b = t.closest('[data-atc-wrap]') && t.closest('[data-atc-wrap]').querySelector('[data-atc-toggle]');
+        if (b) b.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
+
   /* ---------- Sticky add-to-cart (mobile/product) ---------- */
   const sticky = document.querySelector('.sticky-atc');
   const mainAtc = document.querySelector('[data-main-atc]');
