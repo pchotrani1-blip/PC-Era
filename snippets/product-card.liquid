@@ -58,24 +58,26 @@
       </div>
     {%- endif -%}
 
-    {%- comment -%} Always-visible add to cart with inline size picker {%- endcomment -%}
+    {%- comment -%} Always-visible add to cart with inline size picker — wrapped so it pins to card bottom {%- endcomment -%}
     {%- if product.available -%}
-      {%- if product.variants.size == 1 -%}
-        <button type="button" class="card-atc" data-add-to-cart="{{ product.variants.first.id }}">Add to cart</button>
-      {%- elsif product.variants.size <= 8 -%}
-        <div class="card-atc-wrap" data-atc-wrap>
+      <div class="card-atc-wrap"{% if product.variants.size > 1 and product.variants.size <= 8 %} data-atc-wrap{% endif %}>
+        {%- if product.variants.size == 1 -%}
+          <button type="button" class="card-atc" data-add-to-cart="{{ product.variants.first.id }}">Add to cart</button>
+        {%- elsif product.variants.size <= 8 -%}
           <button type="button" class="card-atc" data-atc-toggle aria-expanded="false">Add to cart</button>
           <div class="card-sizes" data-atc-tray hidden>
             {%- for v in product.variants -%}
               <button type="button" class="card-size" data-add-to-cart="{{ v.id }}"{% unless v.available %} disabled aria-disabled="true"{% endunless %} title="{{ v.title | escape }}">{{ v.title }}</button>
             {%- endfor -%}
           </div>
-        </div>
-      {%- else -%}
-        <a href="{{ product.url }}" class="card-atc">Select options</a>
-      {%- endif -%}
+        {%- else -%}
+          <a href="{{ product.url }}" class="card-atc">Select options</a>
+        {%- endif -%}
+      </div>
     {%- else -%}
-      <button type="button" class="card-atc card-atc--soldout" disabled>Sold out</button>
+      <div class="card-atc-wrap">
+        <button type="button" class="card-atc card-atc--soldout" disabled>Sold out</button>
+      </div>
     {%- endif -%}
   </div>
 </article>
