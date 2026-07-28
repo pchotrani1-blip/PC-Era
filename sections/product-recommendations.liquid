@@ -1,25 +1,56 @@
 {%- comment -%}
   PC ERA — "You may also like"
-  Uses Shopify's product recommendations engine (intent: related) to show
-  similar products. Loaded client-side via the Product Recommendations API
-  so it works on first visit with no history.
+  Shows similar products. Renders an instant fallback from the same
+  collection (so it ALWAYS shows something, even on a brand-new store),
+  then upgrades to Shopify's product-recommendations engine
+  (intent: related) client-side once those are available.
 {%- endcomment -%}
+
+{%- liquid
+  assign limit = section.settings.limit
+  # Pick a source collection for the fallback: first real collection the
+  # product belongs to, else Shop All / New Arrivals.
+  assign rec_source = blank
+  for c in product.collections
+    unless c.handle == 'frontpage' or c.handle == 'all'
+      assign rec_source = c
+      break
+    endunless
+  endfor
+  if rec_source == blank
+    assign rec_source = product.collections.first
+  endif
+  if rec_source == blank or rec_source.all_products_count == 0
+    assign rec_source = collections['shop-all']
+  endif
+  if rec_source == blank or rec_source.all_products_count == 0
+    assign rec_source = collections['new-arrivals']
+  endif
+-%}
+
 <section class="section bg-{{ section.settings.bg }}" data-product-recs
-  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent=related&limit={{ section.settings.limit }}"
-  {% unless recommendations.performed %}hidden{% endunless %}>
-  {%- if recommendations.performed and recommendations.products_count > 0 -%}
-    <div class="wrap">
-      <div class="section-head">
-        {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
-        {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading }}</h2>{%- endif -%}
-      </div>
-      <div class="product-grid">
+  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent=related&limit={{ limit }}">
+  <div class="wrap">
+    <div class="section-head">
+      {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
+      {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading }}</h2>{%- endif -%}
+    </div>
+    <div class="product-grid" data-recs-grid>
+      {%- if recommendations.performed and recommendations.products.size > 0 -%}
         {%- for product in recommendations.products -%}
           {% render 'product-card', product: product %}
         {%- endfor -%}
-      </div>
+      {%- else -%}
+        {%- assign shown = 0 -%}
+        {%- for p in rec_source.products -%}
+          {%- if p.id == product.id -%}{%- continue -%}{%- endif -%}
+          {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+          {% render 'product-card', product: p %}
+          {%- assign shown = shown | plus: 1 -%}
+        {%- endfor -%}
+      {%- endif -%}
     </div>
-  {%- endif -%}
+  </div>
 </section>
 
 <script>
@@ -55,21 +86,21 @@
     }
     document.querySelectorAll('[data-product-recs]').forEach(function (sec) {
       if (sec.dataset.recsLoaded) return;
+      sec.dataset.recsLoaded = '1';
       var url = sec.getAttribute('data-url');
       if (!url) return;
+      // Upgrade the fallback to Shopify's real recommendations when available.
       fetch(url).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
-        if (!t) { sec.hidden = true; return; }
+        if (!t) return;
         var doc = new DOMParser().parseFromString(t, 'text/html');
-        var fresh = doc.querySelector('[data-product-recs]');
-        if (fresh && fresh.querySelector('.product-grid')) {
-          sec.innerHTML = fresh.innerHTML;
-          sec.hidden = false;
-          sec.dataset.recsLoaded = '1';
-          initCards(sec);
-        } else {
-          sec.hidden = true;
+        var freshGrid = doc.querySelector('[data-recs-grid]');
+        var curGrid = sec.querySelector('[data-recs-grid]');
+        // Only replace if Shopify returned real recommendation cards.
+        if (freshGrid && curGrid && freshGrid.querySelector('.product-card')) {
+          curGrid.innerHTML = freshGrid.innerHTML;
+          initCards(curGrid);
         }
-      }).catch(function () { sec.hidden = true; });
+      }).catch(function () {});
     });
   })();
 </script>
