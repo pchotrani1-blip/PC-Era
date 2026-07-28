@@ -11,6 +11,15 @@
           <p><strong>Phone / WhatsApp</strong> · <a class="link-underline" style="padding:0;text-transform:none;letter-spacing:0" href="tel:+91{{ section.settings.phone | remove: ' ' }}">+91 {{ section.settings.phone }}</a></p>
           <p><strong>Hours</strong> · {{ section.settings.hours }}</p>
         </div>
+        {%- if section.settings.legal_name != blank or section.settings.trade_name != blank or section.settings.address != blank or section.settings.gstin != blank -%}
+          <div class="flow mt-3" style="font-size:.9rem;border-top:1px solid var(--line);padding-top:1rem">
+            <p class="eyebrow" style="margin-bottom:.6rem">Registered business details</p>
+            {%- if section.settings.legal_name != blank -%}<p><strong>Legal name</strong> · {{ section.settings.legal_name }}</p>{%- endif -%}
+            {%- if section.settings.trade_name != blank -%}<p><strong>Trade name</strong> · {{ section.settings.trade_name }}</p>{%- endif -%}
+            {%- if section.settings.address != blank -%}<p><strong>Registered address</strong> · {{ section.settings.address | newline_to_br }}</p>{%- endif -%}
+            {%- if section.settings.gstin != blank -%}<p><strong>GSTIN</strong> · {{ section.settings.gstin }}</p>{%- endif -%}
+          </div>
+        {%- endif -%}
       </div>
       <div data-reveal data-reveal-delay="0.1">
         {%- form 'contact' -%}
@@ -42,7 +51,12 @@
     { "type": "richtext", "id": "body", "label": "Body", "default": "<p>Questions about sizing, an order, or a styling dilemma? Our team replies within 24 hours, Monday to Friday.</p>" },
     { "type": "text", "id": "email", "label": "Email", "default": "Wearpcera@gmail.com" },
     { "type": "text", "id": "phone", "label": "Phone / WhatsApp", "default": "99901 26117" },
-    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Sat, 10am–6pm" }
+    { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Sat, 10am–6pm" },
+    { "type": "header", "content": "Registered business details (as per GST)" },
+    { "type": "text", "id": "legal_name", "label": "Legal name (as per GST certificate)", "default": "PC era" },
+    { "type": "text", "id": "trade_name", "label": "Trade name", "default": "PC era" },
+    { "type": "textarea", "id": "address", "label": "Registered address", "default": "C-40, Gate No. 5, Estate Marg, Okhla Industrial Area Phase 2, New Delhi, South East Delhi – 110020" },
+    { "type": "text", "id": "gstin", "label": "GSTIN", "default": "07AAICK7230R1ZX" }
   ]
 }
 {% endschema %}
