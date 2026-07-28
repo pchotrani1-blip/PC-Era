@@ -10,7 +10,7 @@
   endif
   assign imgs = product.images
 -%}
-<article class="product-card" data-reveal {% if reveal_delay %}data-reveal-delay="{{ reveal_delay }}"{% endif %}>
+<article class="product-card"{% unless no_reveal %} data-reveal {% if reveal_delay %}data-reveal-delay="{{ reveal_delay }}"{% endif %}{% endunless %}>
   <div class="product-card__media">
     {%- if badge -%}<span class="product-card__badge">{{ badge }}</span>
     {%- elsif on_sale -%}<span class="product-card__badge">Last chance</span>

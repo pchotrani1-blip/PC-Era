@@ -53,17 +53,17 @@
     {%- paginate collection.products by 24 -%}
       <div class="product-grid">
         {%- if do_pin and paginate.current_page == 1 and section.settings.pin_first_tops != blank and pin_first != empty -%}
-          {% render 'product-card', product: pin_first %}
+          {% render 'product-card', product: pin_first, no_reveal: true %}
         {%- endif -%}
         {%- for product in collection.products -%}
           {%- if do_pin and pin_first != empty and product.id == pin_first.id -%}{%- continue -%}{%- endif -%}
           {%- if do_pin and pin_last != empty and product.id == pin_last.id -%}{%- continue -%}{%- endif -%}
-          {% render 'product-card', product: product %}
+          {% render 'product-card', product: product, no_reveal: true %}
         {%- else -%}
           {%- unless do_pin -%}<p class="muted">No pieces in this era yet — check back soon.</p>{%- endunless -%}
         {%- endfor -%}
         {%- if do_pin and paginate.current_page == paginate.pages and section.settings.pin_last_tops != blank and pin_last != empty -%}
-          {% render 'product-card', product: pin_last %}
+          {% render 'product-card', product: pin_last, no_reveal: true %}
         {%- endif -%}
       </div>
       {%- if paginate.pages > 1 -%}
