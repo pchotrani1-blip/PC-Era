@@ -21,13 +21,18 @@
         "r2_author": "Riya M. · Verified buyer"
       }
     },
-    "recent": {
-      "type": "recently-viewed",
-      "settings": {}
+    "you_may_like": {
+      "type": "product-recommendations",
+      "settings": {
+        "bg": "ivory",
+        "eyebrow": "You may also like",
+        "heading": "Similar styles",
+        "limit": 4
+      }
     }
   },
   "order": [
     "main",
-    "recent"
+    "you_may_like"
   ]
 }
