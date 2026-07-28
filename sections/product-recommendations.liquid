@@ -24,15 +24,27 @@
 
 <script>
   (function () {
+    function loadDeferred(track) {
+      if (window.PCEraLoadDeferred) { window.PCEraLoadDeferred(track); return; }
+      track.querySelectorAll('img.pc-defer').forEach(function (im) {
+        if (im.dataset.src) im.src = im.dataset.src;
+        if (im.dataset.srcset) im.srcset = im.dataset.srcset;
+        im.classList.remove('pc-defer');
+      });
+    }
     function initCards(root) {
       root.querySelectorAll('[data-pc-track]').forEach(function (track) {
         var media = track.closest('.product-card__media'); if (!media) return;
         var dots = media.querySelectorAll('.pc-dot');
         var prev = media.querySelector('[data-pc-prev]');
         var next = media.querySelector('[data-pc-next]');
-        var go = function (d) { track.scrollBy({ left: d * track.clientWidth, behavior: 'smooth' }); };
+        var go = function (d) { loadDeferred(track); track.scrollBy({ left: d * track.clientWidth, behavior: 'smooth' }); };
         if (prev) prev.addEventListener('click', function (e) { e.preventDefault(); go(-1); });
         if (next) next.addEventListener('click', function (e) { e.preventDefault(); go(1); });
+        ['pointerenter', 'touchstart', 'focusin'].forEach(function (evt) {
+          media.addEventListener(evt, function () { loadDeferred(track); }, { once: true, passive: true });
+        });
+        track.addEventListener('scroll', function () { loadDeferred(track); }, { once: true, passive: true });
         if (dots.length) {
           track.addEventListener('scroll', function () {
             var i = Math.round(track.scrollLeft / track.clientWidth);

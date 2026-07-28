@@ -265,6 +265,7 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .pc-track { position: absolute; inset: 0; z-index: 1; display: flex; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: none; -webkit-overflow-scrolling: touch; }
 .pc-track::-webkit-scrollbar { display: none; }
 .pc-cell { position: relative; flex: 0 0 100%; scroll-snap-align: center; display: block; }
+.pc-cell img.pc-defer { background: var(--bg-warm); }
 .product-card:hover .pc-cell img { transform: scale(1.04); }
 .pc-dots { position: absolute; bottom: 10px; left: 0; right: 0; z-index: 3; display: flex; gap: 5px; justify-content: center; pointer-events: none; }
 .pc-dot { width: 6px; height: 6px; border-radius: 999px; background: color-mix(in srgb, var(--ink) 28%, transparent); transition: background var(--dur-1) var(--ease); }

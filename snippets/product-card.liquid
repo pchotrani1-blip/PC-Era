@@ -20,7 +20,11 @@
     <div class="pc-track" data-pc-track>
       {%- for image in imgs limit: 6 -%}
         <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">
-          <img src="{{ image | image_url: width: 600 }}" srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 600 }} 600w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" decoding="async" width="600" height="800">
+          {%- if forloop.first -%}
+            <img src="{{ image | image_url: width: 600 }}" srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 600 }} 600w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" decoding="async" width="600" height="800">
+          {%- else -%}
+            <img class="pc-defer" data-src="{{ image | image_url: width: 600 }}" data-srcset="{{ image | image_url: width: 400 }} 400w, {{ image | image_url: width: 600 }} 600w" sizes="(max-width:640px) 50vw, 25vw" alt="{{ image.alt | default: product.title | escape }}" loading="lazy" decoding="async" width="600" height="800">
+          {%- endif -%}
         </a>
       {%- else -%}
         <a href="{{ product.url }}" class="pc-cell" aria-label="{{ product.title | escape }}">{{ 'product-1' | placeholder_svg_tag }}</a>

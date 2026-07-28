@@ -48,15 +48,28 @@
   });
 
   /* ---------- Swipeable product-card carousels ---------- */
+  function loadDeferredImages(track) {
+    track.querySelectorAll('img.pc-defer').forEach((im) => {
+      if (im.dataset.src) im.src = im.dataset.src;
+      if (im.dataset.srcset) im.srcset = im.dataset.srcset;
+      im.classList.remove('pc-defer');
+      delete im.dataset.src; delete im.dataset.srcset;
+    });
+  }
+  window.PCEraLoadDeferred = loadDeferredImages;
   document.querySelectorAll('[data-pc-track]').forEach((track) => {
     const media = track.closest('.product-card__media');
     if (!media) return;
     const dots = media.querySelectorAll('.pc-dot');
     const prev = media.querySelector('[data-pc-prev]');
     const next = media.querySelector('[data-pc-next]');
-    const go = (dir) => track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' });
+    const go = (dir) => { loadDeferredImages(track); track.scrollBy({ left: dir * track.clientWidth, behavior: 'smooth' }); };
     if (prev) prev.addEventListener('click', (e) => { e.preventDefault(); go(-1); });
     if (next) next.addEventListener('click', (e) => { e.preventDefault(); go(1); });
+    // Load images 2–6 only when the shopper first engages the card
+    ['pointerenter', 'touchstart', 'focusin'].forEach((evt) =>
+      media.addEventListener(evt, () => loadDeferredImages(track), { once: true, passive: true }));
+    track.addEventListener('scroll', () => loadDeferredImages(track), { once: true, passive: true });
     if (dots.length) {
       track.addEventListener('scroll', () => {
         const i = Math.round(track.scrollLeft / track.clientWidth);
