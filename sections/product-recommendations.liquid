@@ -39,8 +39,7 @@
   endif
 -%}
 
-<section class="section bg-{{ section.settings.bg }}" data-product-recs
-  data-url="{{ routes.product_recommendations_url }}?section_id={{ section.id }}&product_id={{ product.id }}&intent=related&limit={{ limit }}">
+<section class="section bg-{{ section.settings.bg }}">
   <div class="wrap">
     <div class="section-head">
       {%- if section.settings.eyebrow != blank -%}<span class="eyebrow">{{ section.settings.eyebrow }}</span>{%- endif -%}
@@ -78,58 +77,6 @@
     </div>
   </div>
 </section>
-
-<script>
-  (function () {
-    function loadDeferred(track) {
-      if (window.PCEraLoadDeferred) { window.PCEraLoadDeferred(track); return; }
-      track.querySelectorAll('img.pc-defer').forEach(function (im) {
-        if (im.dataset.src) im.src = im.dataset.src;
-        if (im.dataset.srcset) im.srcset = im.dataset.srcset;
-        im.classList.remove('pc-defer');
-      });
-    }
-    function initCards(root) {
-      root.querySelectorAll('[data-pc-track]').forEach(function (track) {
-        var media = track.closest('.product-card__media'); if (!media) return;
-        var dots = media.querySelectorAll('.pc-dot');
-        var prev = media.querySelector('[data-pc-prev]');
-        var next = media.querySelector('[data-pc-next]');
-        var go = function (d) { loadDeferred(track); track.scrollBy({ left: d * track.clientWidth, behavior: 'smooth' }); };
-        if (prev) prev.addEventListener('click', function (e) { e.preventDefault(); go(-1); });
-        if (next) next.addEventListener('click', function (e) { e.preventDefault(); go(1); });
-        ['pointerenter', 'touchstart', 'focusin'].forEach(function (evt) {
-          media.addEventListener(evt, function () { loadDeferred(track); }, { once: true, passive: true });
-        });
-        track.addEventListener('scroll', function () { loadDeferred(track); }, { once: true, passive: true });
-        if (dots.length) {
-          track.addEventListener('scroll', function () {
-            var i = Math.round(track.scrollLeft / track.clientWidth);
-            dots.forEach(function (dd, di) { dd.classList.toggle('is-active', di === i); });
-          }, { passive: true });
-        }
-      });
-    }
-    document.querySelectorAll('[data-product-recs]').forEach(function (sec) {
-      if (sec.dataset.recsLoaded) return;
-      sec.dataset.recsLoaded = '1';
-      var url = sec.getAttribute('data-url');
-      if (!url) return;
-      // Upgrade the fallback to Shopify's real recommendations when available.
-      fetch(url).then(function (r) { return r.ok ? r.text() : ''; }).then(function (t) {
-        if (!t) return;
-        var doc = new DOMParser().parseFromString(t, 'text/html');
-        var freshGrid = doc.querySelector('[data-recs-grid]');
-        var curGrid = sec.querySelector('[data-recs-grid]');
-        // Only replace if Shopify returned real recommendation cards.
-        if (freshGrid && curGrid && freshGrid.querySelector('.product-card')) {
-          curGrid.innerHTML = freshGrid.innerHTML;
-          initCards(curGrid);
-        }
-      }).catch(function () {});
-    });
-  })();
-</script>
 
 {% schema %}
 {
