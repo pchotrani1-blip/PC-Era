@@ -8,8 +8,8 @@
 
 {%- liquid
   assign limit = section.settings.limit
-  # Pick a source collection for the fallback: first real collection the
-  # product belongs to, else Shop All / New Arrivals.
+  # Pick a fallback source collection so the section is never empty.
+  # 1. First real category collection the product belongs to
   assign rec_source = blank
   for c in product.collections
     unless c.handle == 'frontpage' or c.handle == 'all'
@@ -17,14 +17,25 @@
       break
     endunless
   endfor
+  # 2. Any collection the product is in
   if rec_source == blank
     assign rec_source = product.collections.first
   endif
+  # 3. Known catalog collections by handle
+  assign fallback_handles = 'shop-all,new-arrivals,all,dresses,tops,co-ords,coords' | split: ','
+  for h in fallback_handles
+    if rec_source == blank or rec_source.all_products_count == 0
+      assign rec_source = collections[h]
+    endif
+  endfor
+  # 4. Last resort: first non-empty collection in the whole store
   if rec_source == blank or rec_source.all_products_count == 0
-    assign rec_source = collections['shop-all']
-  endif
-  if rec_source == blank or rec_source.all_products_count == 0
-    assign rec_source = collections['new-arrivals']
+    for c in collections
+      if c.all_products_count > 0 and c.handle != 'frontpage'
+        assign rec_source = c
+        break
+      endif
+    endfor
   endif
 -%}
 
