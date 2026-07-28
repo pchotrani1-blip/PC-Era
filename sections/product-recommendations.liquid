@@ -53,12 +53,27 @@
         {%- endfor -%}
       {%- else -%}
         {%- assign shown = 0 -%}
-        {%- for p in rec_source.products -%}
-          {%- if p.id == product.id -%}{%- continue -%}{%- endif -%}
-          {%- if shown >= limit -%}{%- break -%}{%- endif -%}
-          {% render 'product-card', product: p %}
-          {%- assign shown = shown | plus: 1 -%}
-        {%- endfor -%}
+        {%- if rec_source != blank -%}
+          {%- for p in rec_source.products -%}
+            {%- if p.id == product.id -%}{%- continue -%}{%- endif -%}
+            {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+            {% render 'product-card', product: p %}
+            {%- assign shown = shown | plus: 1 -%}
+          {%- endfor -%}
+        {%- endif -%}
+        {%- comment -%} Ultimate fallback — curated products by handle, works even if all collections are empty {%- endcomment -%}
+        {%- if shown == 0 -%}
+          {%- assign handle_list = section.settings.fallback_handles | split: ',' -%}
+          {%- for h in handle_list -%}
+            {%- assign hh = h | strip -%}
+            {%- assign p = all_products[hh] -%}
+            {%- if p != empty and p.id != product.id -%}
+              {%- if shown >= limit -%}{%- break -%}{%- endif -%}
+              {% render 'product-card', product: p %}
+              {%- assign shown = shown | plus: 1 -%}
+            {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
       {%- endif -%}
     </div>
   </div>
@@ -125,7 +140,8 @@
     ], "default": "ivory" },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "You may also like" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "Similar styles" },
-    { "type": "range", "id": "limit", "label": "Products to show", "min": 2, "max": 10, "step": 1, "default": 4 }
+    { "type": "range", "id": "limit", "label": "Products to show", "min": 2, "max": 10, "step": 1, "default": 4 },
+    { "type": "textarea", "id": "fallback_handles", "label": "Fallback products (comma-separated handles)", "info": "Shown only if no collection/recommendation products are found. Use product handles, e.g. amalfi-dress,celeste-set.", "default": "amalfi-dress,celeste-set,ruffle-set,bloom-crop-shirt,solea-top,gathered-top" }
   ],
   "presets": [{ "name": "You may also like" }]
 }
