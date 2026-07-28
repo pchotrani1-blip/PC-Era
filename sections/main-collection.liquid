@@ -58,7 +58,7 @@
         {%- for product in collection.products -%}
           {%- if do_pin and pin_first != empty and product.id == pin_first.id -%}{%- continue -%}{%- endif -%}
           {%- if do_pin and pin_last != empty and product.id == pin_last.id -%}{%- continue -%}{%- endif -%}
-          {% render 'product-card', product: product, reveal_delay: forloop.index0 | modulo: 4 | times: 0.05 %}
+          {% render 'product-card', product: product %}
         {%- else -%}
           {%- unless do_pin -%}<p class="muted">No pieces in this era yet — check back soon.</p>{%- endunless -%}
         {%- endfor -%}
