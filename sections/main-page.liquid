@@ -10,6 +10,22 @@
     {{ page.content }}
   </div>
 </section>
+{%- if page.handle contains 'contact' -%}
+  {%- comment -%} Registered business details — shown on the Contact page whichever template it uses {%- endcomment -%}
+  <section class="section--tight">
+    <div class="wrap wrap--reading">
+      <div class="flow" style="font-size:.95rem;border-top:1px solid var(--line);padding-top:1.4rem">
+        <p class="eyebrow" style="margin-bottom:.6rem">Registered business details</p>
+        <p><strong>Legal name</strong> · K. C. Creations Fabrics Private Limited</p>
+        <p><strong>Trade name</strong> · PC ERA</p>
+        <p><strong>Registered address</strong> · II, C-8, Lajpat Nagar, Near Park Line, South Delhi, Delhi – 110024</p>
+        <p><strong>GSTIN</strong> · 07AAICK7230R1ZX</p>
+        <p><strong>Email</strong> · <a class="link-underline" style="padding:0;text-transform:none;letter-spacing:0" href="mailto:Wearpcera@gmail.com">Wearpcera@gmail.com</a></p>
+        <p><strong>Phone / WhatsApp</strong> · <a class="link-underline" style="padding:0;text-transform:none;letter-spacing:0" href="tel:+919990126117">+91 99901 26117</a></p>
+      </div>
+    </div>
+  </section>
+{%- endif -%}
 {% schema %}
 { "name": "Page", "settings": [] }
 {% endschema %}
