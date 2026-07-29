@@ -11,11 +11,10 @@
           <p><strong>Phone / WhatsApp</strong> · <a class="link-underline" style="padding:0;text-transform:none;letter-spacing:0" href="tel:+91{{ section.settings.phone | remove: ' ' }}">+91 {{ section.settings.phone }}</a></p>
           <p><strong>Hours</strong> · {{ section.settings.hours }}</p>
         </div>
-        {%- if section.settings.legal_name != blank or section.settings.trade_name != blank or section.settings.address != blank or section.settings.gstin != blank -%}
+        {%- if section.settings.legal_name != blank or section.settings.address != blank or section.settings.gstin != blank -%}
           <div class="flow mt-3" style="font-size:.9rem;border-top:1px solid var(--line);padding-top:1rem">
             <p class="eyebrow" style="margin-bottom:.6rem">Registered business details</p>
             {%- if section.settings.legal_name != blank -%}<p><strong>Legal name</strong> · {{ section.settings.legal_name }}</p>{%- endif -%}
-            {%- if section.settings.trade_name != blank -%}<p><strong>Trade name</strong> · {{ section.settings.trade_name }}</p>{%- endif -%}
             {%- if section.settings.address != blank -%}<p><strong>Registered address</strong> · {{ section.settings.address | newline_to_br }}</p>{%- endif -%}
             {%- if section.settings.gstin != blank -%}<p><strong>GSTIN</strong> · {{ section.settings.gstin }}</p>{%- endif -%}
           </div>
@@ -54,7 +53,6 @@
     { "type": "text", "id": "hours", "label": "Hours", "default": "Mon–Sat, 10am–6pm" },
     { "type": "header", "content": "Registered business details (as per GST)" },
     { "type": "text", "id": "legal_name", "label": "Legal name (as per GST certificate)", "default": "K. C. Creations Fabrics Private Limited" },
-    { "type": "text", "id": "trade_name", "label": "Trade name", "default": "PC ERA" },
     { "type": "textarea", "id": "address", "label": "Registered address", "default": "II, C-8, Lajpat Nagar, Near Park Line, South Delhi, Delhi – 110024" },
     { "type": "text", "id": "gstin", "label": "GSTIN", "default": "07AAICK7230R1ZX" }
   ]
