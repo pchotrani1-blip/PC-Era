@@ -382,9 +382,14 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .ig-embeds { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
 .ig-embeds .instagram-media { flex: 0 1 328px; min-width: 300px; margin: 0 !important; }
 @media (max-width: 900px) {
-  .hero-ed { align-items: flex-end; }
-  .hero-ed__scrim { background: linear-gradient(180deg, rgba(252,250,244,0) 0%, rgba(252,250,244,0) 45%, rgba(252,250,244,.58) 100%); }
-  .hero-ed__inner { max-width: 100%; padding-bottom: clamp(2rem, 8vw, 3.5rem); }
+  /* Stack the hero on mobile so text never overlaps the models */
+  .hero-ed { display: block; min-height: 0; align-items: initial; background: var(--cream); }
+  .hero-ed__photo { position: relative; inset: auto; width: 100%; aspect-ratio: 4 / 5; z-index: 1; }
+  .hero-ed__photo img { object-position: center 20%; }
+  .hero-ed__scrim { display: none; }
+  .hero-ed .wrap { padding-top: 1.6rem; }
+  .hero-ed__inner { max-width: 100%; padding-block: 0 clamp(2rem, 8vw, 3rem); }
+  .hero-ed__title-main, .hero-ed__lead { text-shadow: none; }
   .hero-ed__est { display: none; }
 }
 
