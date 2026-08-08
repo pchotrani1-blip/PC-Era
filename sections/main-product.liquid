@@ -58,7 +58,7 @@
         {%- form 'product', p, id: 'product-form', class: 'product-form' -%}
           {%- unless p.has_only_default_variant -%}
             {%- for option in p.options_with_values -%}
-              <div class="variant-group" data-variant-group>
+              <div class="variant-group" data-variant-group data-option-position="{{ forloop.index0 }}">
                 <div class="variant-group__label">
                   <span>{{ option.name }}</span>
                   {%- if option.name == 'Size' -%}<a href="#size-guide" class="link-underline" style="font-size:.7rem">Size guide</a>{%- endif -%}
@@ -83,9 +83,13 @@
 
           <input type="hidden" name="id" value="{{ p.selected_or_first_available_variant.id }}">
 
+          <script type="application/json" data-variant-json>
+            [{%- for v in p.variants -%}{"id":{{ v.id }},"options":{{ v.options | json }},"available":{{ v.available }}}{%- unless forloop.last -%},{%- endunless -%}{%- endfor -%}]
+          </script>
+
           <div class="product-actions" data-main-atc>
             {%- if p.available -%}
-              <button type="submit" class="btn btn--block" data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }} — {{ p.price | money }}</button>
+              <button type="submit" class="btn btn--block" data-atc-sync data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }} — {{ p.price | money }}</button>
             {%- else -%}
               <button type="button" class="btn btn--block" disabled>{{ 'products.product.sold_out' | t }}</button>
             {%- endif -%}
@@ -218,7 +222,7 @@
 {%- comment -%} STICKY MOBILE ATC {%- endcomment -%}
 <div class="sticky-atc">
   <span class="s-title">{{ p.title }} · {{ p.price | money }}</span>
-  <button class="btn" data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }}</button>
+  <button class="btn" data-atc-sync data-add-to-cart="{{ p.selected_or_first_available_variant.id }}">{{ 'products.product.add_to_cart' | t }}</button>
 </div>
 
 {%- comment -%} PRODUCT SCHEMA {%- endcomment -%}

@@ -152,17 +152,61 @@
     localStorage.setItem(RKEY, JSON.stringify(rv.slice(0, 8)));
   }
 
-  /* ---------- Variant pills ---------- */
-  document.querySelectorAll('[data-variant-group]').forEach((group) => {
-    group.querySelectorAll('.variant-pill').forEach((pill) => {
-      pill.addEventListener('click', () => {
-        group.querySelectorAll('.variant-pill').forEach((p) => p.setAttribute('aria-pressed', 'false'));
-        pill.setAttribute('aria-pressed', 'true');
-        const input = group.querySelector('input[type="hidden"]');
-        if (input) input.value = pill.dataset.value;
+  /* ---------- Variant pills → resolve the correct variant id ---------- */
+  (function () {
+    const form = document.querySelector('.product-form');
+    if (!form) return;
+    const groups = Array.from(form.querySelectorAll('[data-variant-group]'));
+    const idInput = form.querySelector('input[name="id"]');
+    const syncBtns = document.querySelectorAll('[data-atc-sync]'); // main + sticky ATC
+    let variants = [];
+    try {
+      const el = form.querySelector('[data-variant-json]');
+      if (el) variants = JSON.parse(el.textContent);
+    } catch (e) {}
+
+    function selectedValues() {
+      return groups
+        .slice()
+        .sort((a, b) => (+a.dataset.optionPosition || 0) - (+b.dataset.optionPosition || 0))
+        .map((g) => {
+          const pressed = g.querySelector('.variant-pill[aria-pressed="true"]');
+          return pressed ? pressed.dataset.value : null;
+        });
+    }
+    function updateVariant() {
+      if (!variants.length) return;
+      const sel = selectedValues();
+      const match = variants.find(
+        (v) => v.options.length === sel.length && v.options.every((o, i) => o === sel[i])
+      );
+      if (!match) return;
+      if (idInput) idInput.value = match.id;
+      syncBtns.forEach((btn) => {
+        btn.setAttribute('data-add-to-cart', match.id);
+        btn.disabled = !match.available;
+        if (!match.available) {
+          if (!btn.dataset.labelSaved) btn.dataset.labelSaved = btn.textContent;
+          btn.textContent = 'Sold out';
+        } else if (btn.dataset.labelSaved) {
+          btn.textContent = btn.dataset.labelSaved;
+          btn.removeAttribute('data-label-saved');
+        }
+      });
+    }
+    groups.forEach((group) => {
+      group.querySelectorAll('.variant-pill').forEach((pill) => {
+        pill.addEventListener('click', () => {
+          group.querySelectorAll('.variant-pill').forEach((p) => p.setAttribute('aria-pressed', 'false'));
+          pill.setAttribute('aria-pressed', 'true');
+          const hidden = group.querySelector('input[type="hidden"]');
+          if (hidden) hidden.value = pill.dataset.value;
+          updateVariant();
+        });
       });
     });
-  });
+    updateVariant(); // sync on load
+  })();
 
   /* ---------- Cart: add to cart (AJAX) ---------- */
   async function addToCart(id, qty) {
