@@ -6,23 +6,39 @@
       {%- if section.settings.heading != blank -%}<h2 class="h-display">{{ section.settings.heading | replace: 'Era', '<em class="accent-italic">Era</em>' }}</h2>{%- endif -%}
       {%- if section.settings.subheading != blank -%}<p class="lead">{{ section.settings.subheading }}</p>{%- endif -%}
     </div>
-    <div class="nl-form-wrap">
+    <div class="nl-form-wrap" id="nlSecForm">
       {%- form 'customer', data-newsletter: true -%}
         <input type="hidden" name="contact[tags]" value="newsletter">
-        {%- if form.posted_successfully? -%}
-          <p class="nl-success">Welcome to your era — check your inbox.</p>
-        {%- else -%}
+        <div class="nl-success" data-nl-success {% unless form.posted_successfully? %}hidden{% endunless %}>
+          <p class="nl-success__msg">{{ section.settings.success_message }}</p>
+          {%- if section.settings.success_code != blank -%}
+            <button type="button" class="nl-code" data-nl-code aria-label="Copy discount code">
+              <span class="nl-code__value">{{ section.settings.success_code }}</span>
+              <span class="nl-code__hint">Tap to copy</span>
+            </button>
+          {%- endif -%}
+        </div>
+        <div data-nl-field {% if form.posted_successfully? %}hidden{% endif %}>
           <label class="nl-label" for="nl-email">{{ section.settings.email_label }}</label>
           <div class="nl-field">
             <input type="email" id="nl-email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required aria-label="Email address">
             <button type="submit">{{ section.settings.button }} <span aria-hidden="true">&#8599;</span></button>
           </div>
           {%- if section.settings.note != blank -%}<p class="nl-note">{{ section.settings.note }}</p>{%- endif -%}
-        {%- endif -%}
+        </div>
       {%- endform -%}
     </div>
   </div>
 </section>
+<script>
+(function(){
+  var root=document.getElementById('nlSecForm'); if(!root) return;
+  var form=root.querySelector('form'),field=root.querySelector('[data-nl-field]'),success=root.querySelector('[data-nl-success]'),codeBtn=root.querySelector('[data-nl-code]');
+  if(codeBtn){codeBtn.addEventListener('click',function(){var v=codeBtn.querySelector('.nl-code__value').textContent.trim(),h=codeBtn.querySelector('.nl-code__hint');function d(){if(h)h.textContent='Copied ✓';codeBtn.classList.add('is-copied');}try{navigator.clipboard.writeText(v).then(d,d);}catch(e){d();}});}
+  function reveal(){if(field)field.setAttribute('hidden','');if(success)success.removeAttribute('hidden');}
+  if(form){form.addEventListener('submit',function(e){var em=form.querySelector('input[type=email]');if(em&&!em.checkValidity())return;e.preventDefault();var b=form.querySelector('button[type=submit]');if(b){b.disabled=true;b.style.opacity='.6';}fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}}).then(function(){reveal();}).catch(function(){reveal();});});}
+})();
+</script>
 
 {% schema %}
 {
@@ -37,7 +53,10 @@
     { "type": "text", "id": "email_label", "label": "Field label", "default": "Your email" },
     { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "you@email.com" },
     { "type": "text", "id": "button", "label": "Button", "default": "Subscribe" },
-    { "type": "text", "id": "note", "label": "Note", "default": "By subscribing, you agree to our privacy policy. Unsubscribe anytime." }
+    { "type": "text", "id": "note", "label": "Note", "default": "By subscribing, you agree to our privacy policy. Unsubscribe anytime." },
+    { "type": "header", "content": "After subscribing" },
+    { "type": "textarea", "id": "success_message", "label": "Success message", "default": "You're in. Here's your 10% off — copy the code and use it at checkout:" },
+    { "type": "text", "id": "success_code", "label": "Discount code to reveal", "info": "Leave blank to hide. Must match a real discount in Shopify → Discounts.", "default": "WELCOME10" }
   ],
   "presets": [{ "name": "Newsletter" }]
 }
