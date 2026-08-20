@@ -10,7 +10,15 @@
     {%- form 'customer', data-newsletter: true -%}
       <input type="hidden" name="contact[tags]" value="newsletter,popup">
       {%- if form.posted_successfully? -%}
-        <p class="nl-success">You're in — check your inbox.</p>
+        <div class="nl-success">
+          <p class="nl-success__msg">{{ section.settings.success_message }}</p>
+          {%- if section.settings.success_code != blank -%}
+            <button type="button" class="nl-code" data-nl-code aria-label="Copy discount code">
+              <span class="nl-code__value">{{ section.settings.success_code }}</span>
+              <span class="nl-code__hint">Tap to copy</span>
+            </button>
+          {%- endif -%}
+        </div>
       {%- else -%}
         <div class="nl-field">
           <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required aria-label="Email address">
@@ -33,6 +41,17 @@
   setTimeout(open, delay);
   pop.querySelectorAll('[data-nlp-close]').forEach(function(el){ el.addEventListener('click', close); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+  var codeBtn = pop.querySelector('[data-nl-code]');
+  if(codeBtn){
+    codeBtn.addEventListener('click', function(){
+      var val = codeBtn.querySelector('.nl-code__value').textContent.trim();
+      var hint = codeBtn.querySelector('.nl-code__hint');
+      function done(){ if(hint){ hint.textContent = 'Copied ✓'; } codeBtn.classList.add('is-copied'); }
+      try { navigator.clipboard.writeText(val).then(done, done); } catch(e){ done(); }
+    });
+  }
+  // If we land back on the page already subscribed, make sure the popup shows the code.
+  if(pop.querySelector('.nl-success')){ open(); }
 })();
 </script>
 {%- endif -%}
@@ -48,7 +67,10 @@
     { "type": "textarea", "id": "subheading", "label": "Subheading", "default": "Early access to new drops, private sales and quiet inspiration — straight to your inbox." },
     { "type": "text", "id": "placeholder", "label": "Placeholder", "default": "you@email.com" },
     { "type": "text", "id": "button", "label": "Button", "default": "Subscribe" },
-    { "type": "text", "id": "dismiss_text", "label": "Dismiss text", "default": "No thanks" }
+    { "type": "text", "id": "dismiss_text", "label": "Dismiss text", "default": "No thanks" },
+    { "type": "header", "content": "After subscribing" },
+    { "type": "textarea", "id": "success_message", "label": "Success message", "default": "You're in. Here's your 10% off — copy the code and use it at checkout:" },
+    { "type": "text", "id": "success_code", "label": "Discount code to reveal", "info": "Leave blank to hide. Make sure this matches a real discount in Shopify → Discounts.", "default": "WELCOME10" }
   ]
 }
 {% endschema %}

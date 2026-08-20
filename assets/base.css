@@ -466,6 +466,12 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .nl-field button { font-size: var(--fs-xs); letter-spacing: var(--tracking-mid); text-transform: uppercase; padding: 0 .4rem; color: var(--champagne); white-space: nowrap; cursor: pointer; }
 .nl-note { font-size: .78rem; color: var(--ink-soft); margin-top: 1rem; }
 .nl-success { font-family: var(--font-serif); font-size: 1.3rem; }
+.nl-success__msg { margin-bottom: 1.1rem; }
+.nl-code { display: inline-flex; flex-direction: column; align-items: center; gap: .25rem; margin: .2rem auto 0; padding: .7rem 1.4rem; border: 1px dashed var(--champagne); border-radius: var(--radius); background: rgba(185, 143, 62, .06); cursor: pointer; transition: background .2s var(--ease); }
+.nl-code:hover { background: rgba(185, 143, 62, .12); }
+.nl-code__value { font-family: var(--font-sans); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; font-size: 1.15rem; color: var(--ink); }
+.nl-code__hint { font-family: var(--font-sans); font-size: var(--fs-xs); letter-spacing: var(--tracking-mid); text-transform: uppercase; color: var(--champagne); }
+.nl-code.is-copied { background: rgba(185, 143, 62, .16); }
 @media (max-width: 800px) { .nl-grid { grid-template-columns: 1fr; } }
 
 /* Size chart */
