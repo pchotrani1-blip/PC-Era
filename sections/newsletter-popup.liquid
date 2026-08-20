@@ -9,22 +9,20 @@
     {%- if section.settings.subheading != blank -%}<p>{{ section.settings.subheading }}</p>{%- endif -%}
     {%- form 'customer', data-newsletter: true -%}
       <input type="hidden" name="contact[tags]" value="newsletter,popup">
-      {%- if form.posted_successfully? -%}
-        <div class="nl-success">
-          <p class="nl-success__msg">{{ section.settings.success_message }}</p>
-          {%- if section.settings.success_code != blank -%}
-            <button type="button" class="nl-code" data-nl-code aria-label="Copy discount code">
-              <span class="nl-code__value">{{ section.settings.success_code }}</span>
-              <span class="nl-code__hint">Tap to copy</span>
-            </button>
-          {%- endif -%}
-        </div>
-      {%- else -%}
-        <div class="nl-field">
-          <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required aria-label="Email address">
-          <button type="submit">{{ section.settings.button }} <span aria-hidden="true">&#8599;</span></button>
-        </div>
-      {%- endif -%}
+      {%- comment -%} Success block: hidden until subscribe succeeds (shown by JS, or by Liquid on reload fallback) {%- endcomment -%}
+      <div class="nl-success" data-nl-success {% unless form.posted_successfully? %}hidden{% endunless %}>
+        <p class="nl-success__msg">{{ section.settings.success_message }}</p>
+        {%- if section.settings.success_code != blank -%}
+          <button type="button" class="nl-code" data-nl-code aria-label="Copy discount code">
+            <span class="nl-code__value">{{ section.settings.success_code }}</span>
+            <span class="nl-code__hint">Tap to copy</span>
+          </button>
+        {%- endif -%}
+      </div>
+      <div class="nl-field" data-nl-field {% if form.posted_successfully? %}hidden{% endif %}>
+        <input type="email" name="contact[email]" placeholder="{{ section.settings.placeholder }}" required aria-label="Email address">
+        <button type="submit">{{ section.settings.button }} <span aria-hidden="true">&#8599;</span></button>
+      </div>
     {%- endform -%}
     <button type="button" class="nl-popup__dismiss" data-nlp-close>{{ section.settings.dismiss_text }}</button>
   </div>
@@ -41,7 +39,13 @@
   setTimeout(open, delay);
   pop.querySelectorAll('[data-nlp-close]').forEach(function(el){ el.addEventListener('click', close); });
   document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
+
+  var form    = pop.querySelector('form');
+  var field   = pop.querySelector('[data-nl-field]');
+  var success = pop.querySelector('[data-nl-success]');
   var codeBtn = pop.querySelector('[data-nl-code]');
+
+  // Tap-to-copy the code
   if(codeBtn){
     codeBtn.addEventListener('click', function(){
       var val = codeBtn.querySelector('.nl-code__value').textContent.trim();
@@ -50,8 +54,29 @@
       try { navigator.clipboard.writeText(val).then(done, done); } catch(e){ done(); }
     });
   }
-  // If we land back on the page already subscribed, make sure the popup shows the code.
-  if(pop.querySelector('.nl-success')){ open(); }
+
+  function reveal(){
+    if(field) field.setAttribute('hidden','');
+    if(success) success.removeAttribute('hidden');
+    try{ localStorage.setItem('pcera_nlp_subscribed','1'); }catch(e){}
+  }
+
+  // Reveal the code the moment they subscribe — no page reload
+  if(form){
+    form.addEventListener('submit', function(e){
+      var emailInput = form.querySelector('input[type=email]');
+      if(emailInput && !emailInput.checkValidity()) return; // let browser show the error
+      e.preventDefault();
+      var btn = form.querySelector('button[type=submit]');
+      if(btn){ btn.disabled = true; btn.style.opacity = '.6'; }
+      fetch(form.action, { method:'POST', body:new FormData(form), headers:{'Accept':'application/json'} })
+        .then(function(){ reveal(); })
+        .catch(function(){ reveal(); }); // Shopify still records the signup; show the reward regardless
+    });
+  }
+
+  // Already subscribed earlier (Liquid reload fallback or returning visitor) -> show the code
+  if(success && !success.hasAttribute('hidden')) open();
 })();
 </script>
 {%- endif -%}
