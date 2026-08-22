@@ -486,6 +486,16 @@ details[open] > summary .nav-plus::after { transform: scaleY(0); }
 .size-table tbody tr { border-bottom: 1px solid var(--line-soft); }
 .size-table tbody tr:nth-child(even) { background: rgba(238, 231, 215, .35); }
 
+/* Compact size table inside product accordion */
+.pdp-size-table-wrap { margin-top: 1rem; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.pdp-size-table { width: 100%; border-collapse: collapse; min-width: 460px; font-size: .82rem; }
+.pdp-size-table thead th { font-family: var(--font-italic); font-style: italic; font-weight: 400; text-align: center; padding: .5rem .55rem; background: var(--beige); color: var(--ink); }
+.pdp-size-table thead th:first-child { text-align: left; }
+.pdp-size-table tbody th { text-align: left; font-weight: 400; font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; color: var(--ink-soft); padding: .5rem .55rem; white-space: nowrap; }
+.pdp-size-table tbody td { padding: .5rem .55rem; text-align: center; }
+.pdp-size-table tbody tr { border-bottom: 1px solid var(--line-soft); }
+.pdp-size-table tbody tr:nth-child(even) { background: rgba(238, 231, 215, .35); }
+
 /* Newsletter popup */
 .nl-popup { position: fixed; inset: 0; z-index: 200; display: none; }
 .nl-popup.is-open { display: block; }
