@@ -39,7 +39,7 @@
         {%- if section.settings.product_4 != blank and p4 != empty -%}{% render 'product-card', product: p4 %}{%- endif -%}
       {%- elsif coll.products.size > 0 -%}
         {%- for product in coll.products limit: section.settings.count -%}
-          {% render 'product-card', product: product, reveal_delay: forloop.index0 | times: 0.05 %}
+          {% render 'product-card', product: product, reveal_delay: forloop.index0, times: 0.05 %}
         {%- endfor -%}
       {%- else -%}
         {%- for i in (1..4) -%}
@@ -82,3 +82,15 @@
   "presets": [{ "name": "Featured collection" }]
 }
 {% endschema %}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{% render 'product-card', product: product, reveal_delay: forloop.index0
+    | times: 0.05 %}"
+  to: "{% render 'product-card', product: product, reveal_delay: forloop.index0, times:
+    0.05 %}"
+  position: 2210..2298
+{% endcomment %}
